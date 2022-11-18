@@ -10,6 +10,7 @@
         "viewMode": "Toggle View Mode",
         "editMode": "Toggle Sculpt/Paint",
         "sculpt": {
+            "raise": "Raise",
             "flat": "Flat",
             "smooth": "Smooth",
             "mold": "Mold",

@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Metadata -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <!-- Libraries -->
-    <script src="scripts/lib/i18n.min.js"></script>
-    <script
-      src="https://kit.fontawesome.com/ba56e683fc.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- JS -->
-    <script type="module" src="scripts/main.js"></script>
-    <script type="module" src="scripts/locale.js"></script>
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles/style.css" />
-    <!-- Google Fonts -->
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap');
-    </style>
-  </head>
-  <body oncontextmenu="return false;">
-    <main>
-      <nav id="ui">
-        <div id="menu">
+
+<head>
+  <!-- Metadata -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <!-- Libraries -->
+  <script src="scripts/lib/i18n.min.js"></script>
+  <script src="https://kit.fontawesome.com/ba56e683fc.js" crossorigin="anonymous"></script>
+  <!-- JS -->
+  <script type="module" src="scripts/main.js"></script>
+  <script type="module" src="scripts/locale.js"></script>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles/style.css" />
+  <!-- Google Fonts -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap');
+  </style>
+</head>
+
+<body oncontextmenu="return false;">
+  <main>
+    <nav id="ui">
+      <div id="menu">
+        <div class="main"> 
           <button class="item">
             <span><i class="fa-regular fa-file"></i> {menu.new}</span>
           </button>
@@ -39,51 +39,50 @@
             <span><i class="fa-solid fa-download"></i> {menu.export}</span>
           </button>
         </div>
-        <aside id="controls">
-          <button class="option tooltip" data-tool="cycle-view" data-tooltip="Cycle View" >
-            <i class="fa-solid fa-circle"></i>
+      </div>
+      <aside id="controls">
+        <button class="option tooltip" data-tool="cycle-view" data-tooltip="{controls.viewMode}">
+          <i class="fa-solid fa-circle"></i>
+        </button>
+        <button class="option tooltip" data-tool="cycle-mode" data-tooltip="{controls.editMode}">
+          <i class="fa-solid fa-draw-polygon"></i>
+        </button>
+        <hr />
+        <div id="sculpt-buttons">
+          <button class="option tooltip active" data-tool="sculpt" data-sculpt-mode="raise"
+            data-tooltip="{controls.sculpt.raise}">
+            <span>raise</span>
+        </div>
+        </button>
+        <button class="option" data-tool="sculpt" data-sculpt-mode="flat" data-tooltip="{controls.sculpt.flat}">
+          <span>flat</span>
+        </button>
+        <button class="option" data-tool="sculpt" data-sculpt-mode="smooth" data-tooltip="{controls.sculpt.smooth}">
+          <span>smooth</span>
+        </button>
+        <button class="option" data-tool="sculpt" data-sculpt-mode="mold" data-tooltip="{controls.sculpt.mold}">
+          <span>mold</span>
+        </button>
+        <button class="option" data-tool="sculpt" data-sculpt-mode="normal" data-tooltip="{controls.sculpt.normal}">
+          <span>normal</span>
+        </button>
+        </div>
+        <div id="paint-buttons" style="display: none">
+          <button class="option" data-tool="paint" data-sculpt-mode="paint1" data-tooltip="{controls.paint.normal}">
+            <span>1</span>
           </button>
-          <button class="option tooltip" data-tool="cycle-mode" data-tooltip="Cycle Mode" >
-            <i class="fa-solid fa-draw-polygon"></i>
+          <button class="option" data-tool="paint" data-sculpt-mode="paint2" data-tooltip="{controls.paint.normal}">
+            <span>2</span>
           </button>
-          <hr />
-          <div id="sculpt-buttons">
-            <button
-              class="option tooltip active"
-              data-tool="sculpt"
-              data-sculpt-mode="raise"
-            >
-                <span>raise</span>
-              </div>
-            </button>
-            <button class="option" data-tool="sculpt" data-sculpt-mode="flat">
-                <span>flat</span>
-            </button>
-            <button class="option" data-tool="sculpt" data-sculpt-mode="smooth">
-                <span>smooth</span>
-            </button>
-            <button class="option" data-tool="sculpt" data-sculpt-mode="mold">
-                <span>mold</span>
-            </button>
-            <button class="option" data-tool="sculpt" data-sculpt-mode="normal">
-                <span>normal</span>
-            </button>
-          </div>
-          <div id="paint-buttons" style="display: none">
-            <button class="option" data-tool="paint" data-sculpt-mode="paint1">
-                <span>1</span>
-            </button>
-            <button class="option" data-tool="paint" data-sculpt-mode="paint2">
-                <span>2</span>
-            </button>
-            <button class="option" data-tool="paint" data-sculpt-mode="paint3">
-                <span>3</span>
-            </button>
-          </div>
-        </aside>
-      </nav>
-      <div id="canvas-container"></div>
-    </main>
-    <footer></footer>
-  </body>
+          <button class="option" data-tool="paint" data-sculpt-mode="paint3" data-tooltip="{controls.paint.normal}">
+            <span>3</span>
+          </button>
+        </div>
+      </aside>
+    </nav>
+    <div id="canvas-container"></div>
+  </main>
+  <footer></footer>
+</body>
+
 </html>

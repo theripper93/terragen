@@ -23,20 +23,28 @@ hr {
 }
 
 #menu {
-  display: flex;
-  flex-direction: row;
-  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(2, 40%);
   height: $navbar-height;
   pointer-events: all;
 
-  .item {
-    @include neon($blue);
+  .main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 
-    height: calc($navbar-height - 2 * $control-padding);
-    min-width: 10%;
-    padding: 1rem;
-    margin: $control-padding;
-    font-weight: 600;
+    .item {
+      @include neon($blue);
+
+      display: flex;
+      height: calc($navbar-height - 2 * $control-padding);
+      padding: 0.5rem;
+      margin: $control-padding;
+      font-weight: 600;
+
+      i {
+        font-size: 1rem;
+      }
+    }
   }
 }
 
@@ -60,6 +68,10 @@ hr {
 #controls .option.active,
 #menu .item.active {
   @include neon($orange);
+  &.tooltip:hover::before {
+    color: $orange;
+    text-shadow: 0 0 3px $orange;
+  }
 }
 
 /* Tooltips */
