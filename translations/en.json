@@ -7,8 +7,8 @@
         "export": "Export"
     },
     "controls": {
-        "viewMode": "View Mode",
-        "editMode": "Edit Mode",
+        "viewMode": "Toggle View Mode",
+        "editMode": "Toggle Sculpt/Paint",
         "sculpt": {
             "flat": "Flat",
             "smooth": "Smooth",
