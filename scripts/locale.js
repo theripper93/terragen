@@ -1,11 +1,11 @@
 import { initControls } from './controls.js';
 import { initMenu } from './menu.js';
 
-fetch(`../translations/${navigator.language}.json`).then(async (locale) => {
+fetch(`./translations/${navigator.language}.json`).then(async (locale) => {
     const res = await locale.json();
     initTranslations(res);
 }).catch((err) => {
-    fetch("../translations/en.json").then(async (locale) => {
+    fetch("./translations/en.json").then(async (locale) => {
         const res = await locale.json();
         initTranslations(res);
     });
