@@ -27,7 +27,6 @@ export function initControls(){
                 if(canvas.cursor.mode === "sculpt"){
                     sculptButtons.style.display = "block";
                     paintButtons.style.display = "none";
-                    debugger
                     e.target.innerHTML = '<i class="fa-solid fa-draw-polygon"></i>';
                 }else{
                     sculptButtons.style.display = "none";
