@@ -72,22 +72,21 @@ i {
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  transition: all 1s;
 }
 
 /* Tooltip text */
 .tooltip .tooltiptext {
+  position: absolute;
+  z-index: 100;
   visibility: hidden;
-  width: 120px;
-  background-color: black;
+  background: transparentize($pink, 0.9);
+  box-shadow: 0 0 0.4rem transparentize($pink, 0.9), 0 0 0.6rem transparentize($pink, 0.9);
   color: #fff;
   text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
-
-  /* Position the tooltip text - see examples below! */
-  position: absolute;
-  z-index: 1;
+  padding: 0.5rem;
+  text-decoration: underline;
+  font-size: 0.8rem;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */

@@ -38,36 +38,64 @@
           <button class="option" data-tool="cycle-mode">
             <i class="fa-solid fa-draw-polygon"></i>
           </button>
-          <hr/>
+          <hr />
           <div id="sculpt-buttons">
-            <button class="option active" data-tool="sculpt" data-sculpt-mode="raise">
+            <button
+              class="option active"
+              data-tool="sculpt"
+              data-sculpt-mode="raise"
+            >
+              <div class="tooltip">
                 <span>raise</span>
+                <span class="tooltiptext">Raise</span>
+              </div>
             </button>
             <button class="option" data-tool="sculpt" data-sculpt-mode="flat">
+              <div class="tooltip">
                 <span>flat</span>
+                <span class="tooltiptext">Flat</span>
+              </div>
+
             </button>
             <button class="option" data-tool="sculpt" data-sculpt-mode="smooth">
+              <div class="tooltip">
                 <span>smooth</span>
+                <span class="tooltiptext">Smooth</span>
+              </div>
             </button>
             <button class="option" data-tool="sculpt" data-sculpt-mode="mold">
+              <div class="tooltip">
                 <span>mold</span>
+                <span class="tooltiptext">Mold</span>
+              </div>
             </button>
             <button class="option" data-tool="sculpt" data-sculpt-mode="normal">
+              <div class="tooltip">
                 <span>normal</span>
+                <span class="tooltiptext">Normal</span>
+              </div>
             </button>
           </div>
-          <div id="paint-buttons"  style="display: none;">
+          <div id="paint-buttons" style="display: none">
             <button class="option" data-tool="paint" data-sculpt-mode="paint1">
-                <span>paint1</span>
+              <div class="tooltip">
+                <span>1</span>
+                <span class="tooltiptext">1</span>
+              </div>
             </button>
             <button class="option" data-tool="paint" data-sculpt-mode="paint2">
-                <span>paint2</span>
+              <div class="tooltip">
+                <span>2</span>
+                <span class="tooltiptext">2</span>
+              </div>
             </button>
             <button class="option" data-tool="paint" data-sculpt-mode="paint3">
-                <span>paint3</span>
+              <div class="tooltip">
+                <span>3</span>
+                <span class="tooltiptext">3</span>
+              </div>
             </button>
           </div>
-          
         </aside>
       </nav>
       <div id="canvas-container"></div>
