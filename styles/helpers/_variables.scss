@@ -1,30 +1,39 @@
+/* Colours */
+$blue: hsl(181deg 79% 54%);
+$pink: hsl(325deg 79% 53%);
+$orange: hsl(23deg 100% 54%);
+$white: hsl(0deg 0% 100%);
+
+
 /* Sizing */
-$navbar-height: 48px;
-$toolbar-width: 80px;
-$control-padding: 8px;
+$navbar-height: 3rem;
+$toolbar-width: 5rem;
+$control-padding: .5rem;
 
 /* Mixins */
 
 @mixin neon($colour) {
+  $transparent: transparentize($colour, .5);
+
   display: flex;
   align-items: center;
   justify-content: center;
   background: transparent;
   backdrop-filter: blur(20px);
-  border: 1px solid #{$colour};
-  color: #{$colour};
-  box-shadow: 0 0 0.1rem hsl(0deg 0% 100% / 59.3%),
-    0 0 0.3rem #{$colour}, 0 0 0.2rem #{$colour};
+  border: 1px solid $colour;
+  color: $colour;
+  box-shadow: 0 0 .1rem $white,
+    0 0 .4rem $transparent, 0 0 .2rem $colour;
   transition: all 0.5s;
 
   &:hover {
     cursor: pointer;
-    box-shadow: 0 0 0.1rem hsl(0deg 0% 100%), 0 0 0.5rem #{$colour},
-      0 0 0.4rem #{$colour};
+    box-shadow: 0 0 .1rem $white, 0 0 .6rem $transparent,
+      0 0 .5rem $colour;
   }
 
   &:active {
-    box-shadow: 0 0 0.1rem hsl(0deg 0% 100%);
+    box-shadow: 0 0 .1rem $white;
   }
 
   i, span {

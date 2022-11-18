@@ -4,6 +4,15 @@ body {
   font-family: 'Roboto Mono', monospace;
 }
 
+hr {
+  width: calc($toolbar-width - 2 * $control-padding);
+  justify-self: center;
+  border: 1px solid transparent;
+  background: $pink;
+  box-shadow: 0 0 0.1rem $pink, 0 0 0.2rem $pink;
+  margin: 0.5rem 0;
+}
+
 #ui {
   position: fixed;
   width: 100vw;
@@ -21,7 +30,7 @@ body {
   pointer-events: all;
 
   .item {
-    @include neon('#2de3e6');
+    @include neon($blue);
 
     height: calc($navbar-height - 2 * $control-padding);
     min-width: 10%;
@@ -32,12 +41,15 @@ body {
 }
 
 #controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: $toolbar-width;
   height: calc(100vh - $navbar-height);
   pointer-events: all;
 
   .option {
-    @include neon('#e62897');
+    @include neon($pink);
 
     width: calc($toolbar-width - 2 * $control-padding);
     margin: $control-padding;
@@ -47,7 +59,7 @@ body {
 
 #controls .option.active,
 #menu .item.active {
-  @include neon('#ff6c12');
+  @include neon($orange);
 }
 
 /* Tooltips
