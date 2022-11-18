@@ -521,14 +521,7 @@ class OrbitControls extends EventDispatcher {
 		}
 
 		function handleMouseDownPan( event ) {
-
-			const oldCameraPos = scope.object.position.clone();
 			panStart.set( event.clientX, event.clientY );
-			setTimeout( () => {
-				if(oldCameraPos.distanceTo(scope.object.position) > 0.01) {
-					game.Levels3DPreview.GameCamera.lock = false;
-				}
-			}, 100 );
 
 		}
 

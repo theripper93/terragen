@@ -11,6 +11,11 @@ THREE.Mesh.prototype.raycast = acceleratedRaycast;
 globalThis.canvas = {
     DEBUG: true,
     project: {},
+    materials: {
+        wireframe: new THREE.MeshBasicMaterial({color: 0xff9500, wireframe: true, vertexColors: true}),
+        noTexture: new THREE.MeshStandardMaterial( { color: 0xffffff, vertexColors: true} ),
+        terrain: new THREE.MeshStandardMaterial( { color: 0xffffff, vertexColors: true} ),
+    },
 };
 
 function loadEXR(url) {
@@ -51,6 +56,14 @@ canvas.scene.gridHelper = new THREE.GridHelper( 10, 10 );
 canvas.scene.add( canvas.scene.gridHelper );
 canvas.scene.axisHelper = new THREE.AxesHelper( 5 );
 canvas.scene.add( canvas.scene.axisHelper );
+canvas.scene._mode = "terrain";
+canvas.scene.toggleMode = (mode) => {
+    const modes = Object.keys(canvas.materials)
+    const index = modes.indexOf(canvas.scene._mode);
+    const nextIndex = (index + 1) % modes.length;
+    canvas.scene._mode = modes[nextIndex];
+    canvas.scene.terrain.material = canvas.materials[canvas.scene._mode];
+};
 
 loadEXR("assets/venice_sunrise_1k.exr")
 
