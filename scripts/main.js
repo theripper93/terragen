@@ -40,6 +40,11 @@ canvas.controls.rotateSpeed = 0.5;
 canvas.controls.panSpeed = 0.5;
 canvas.controls.enableDamping = true;
 canvas.controls.dampingFactor = 0.1;
+canvas.controls.mouseButtons = {
+    LEFT: undefined,
+    MIDDLE: THREE.MOUSE.ROTATE,
+    RIGHT: THREE.MOUSE.PAN
+}
 
 
 canvas.scene.gridHelper = new THREE.GridHelper( 10, 10 );
@@ -59,8 +64,12 @@ function animate() {
 };
 
 function setupBasicShape(){
-    var geometry = new THREE.BoxGeometry( 5, 1, 5, 10, 10, 10 );
-    var material = new THREE.MeshStandardMaterial( { color: 0x00ff00} );
+    var geometry = new THREE.BoxGeometry( 5, 1, 5, 50, 50, 50 );
+    geometry.setAttribute("color", new THREE.BufferAttribute(new Float32Array(geometry.attributes.position.count * 3), 3));
+    for(let i = 0; i < geometry.attributes.color.count; i++){
+        geometry.attributes.color.setXYZ(i, 1,1,1);
+    }
+    var material = new THREE.MeshStandardMaterial( { color: 0xffffff, vertexColors: true} );
     var cube = new THREE.Mesh( geometry, material );
     cube.geometry.computeBoundsTree();
     canvas.scene.terrain = cube;
