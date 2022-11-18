@@ -26,74 +26,58 @@
     <main>
       <nav id="ui">
         <div id="menu">
-          <button class="item"><span><i class="fa-regular fa-file"></i> {menu.new}</span></button>
-          <button class="item"><span><i class="fa-regular fa-folder-open"></i> {menu.open}</span></button>
-          <button class="item"><span><i class="fa-regular fa-floppy-disk"></i> {menu.save}</span></button>
-          <button class="item"><span><i class="fa-solid fa-download"></i> {menu.export}</span></button>
+          <button class="item">
+            <span><i class="fa-regular fa-file"></i> {menu.new}</span>
+          </button>
+          <button class="item">
+            <span><i class="fa-regular fa-folder-open"></i> {menu.open}</span>
+          </button>
+          <button class="item">
+            <span><i class="fa-regular fa-floppy-disk"></i> {menu.save}</span>
+          </button>
+          <button class="item">
+            <span><i class="fa-solid fa-download"></i> {menu.export}</span>
+          </button>
         </div>
         <aside id="controls">
-          <button class="option" data-tool="cycle-view">
+          <button class="option tooltip" data-tool="cycle-view" data-tooltip="Cycle View" >
             <i class="fa-solid fa-circle"></i>
           </button>
-          <button class="option" data-tool="cycle-mode">
+          <button class="option tooltip" data-tool="cycle-mode" data-tooltip="Cycle Mode" >
             <i class="fa-solid fa-draw-polygon"></i>
           </button>
           <hr />
           <div id="sculpt-buttons">
             <button
-              class="option active"
+              class="option tooltip active"
               data-tool="sculpt"
               data-sculpt-mode="raise"
             >
-              <div class="tooltip">
                 <span>raise</span>
-                <span class="tooltiptext">Raise</span>
               </div>
             </button>
             <button class="option" data-tool="sculpt" data-sculpt-mode="flat">
-              <div class="tooltip">
                 <span>flat</span>
-                <span class="tooltiptext">Flat</span>
-              </div>
-
             </button>
             <button class="option" data-tool="sculpt" data-sculpt-mode="smooth">
-              <div class="tooltip">
                 <span>smooth</span>
-                <span class="tooltiptext">Smooth</span>
-              </div>
             </button>
             <button class="option" data-tool="sculpt" data-sculpt-mode="mold">
-              <div class="tooltip">
                 <span>mold</span>
-                <span class="tooltiptext">Mold</span>
-              </div>
             </button>
             <button class="option" data-tool="sculpt" data-sculpt-mode="normal">
-              <div class="tooltip">
                 <span>normal</span>
-                <span class="tooltiptext">Normal</span>
-              </div>
             </button>
           </div>
           <div id="paint-buttons" style="display: none">
             <button class="option" data-tool="paint" data-sculpt-mode="paint1">
-              <div class="tooltip">
                 <span>1</span>
-                <span class="tooltiptext">1</span>
-              </div>
             </button>
             <button class="option" data-tool="paint" data-sculpt-mode="paint2">
-              <div class="tooltip">
                 <span>2</span>
-                <span class="tooltiptext">2</span>
-              </div>
             </button>
             <button class="option" data-tool="paint" data-sculpt-mode="paint3">
-              <div class="tooltip">
                 <span>3</span>
-                <span class="tooltiptext">3</span>
-              </div>
             </button>
           </div>
         </aside>

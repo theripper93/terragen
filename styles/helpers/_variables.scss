@@ -4,16 +4,15 @@ $pink: hsl(325deg 79% 53%);
 $orange: hsl(23deg 100% 54%);
 $white: hsl(0deg 0% 100%);
 
-
 /* Sizing */
 $navbar-height: 3rem;
 $toolbar-width: 5rem;
-$control-padding: .5rem;
+$control-padding: 0.5rem;
 
 /* Mixins */
 
 @mixin neon($colour) {
-  $transparent: transparentize($colour, .5);
+  $transparent: transparentize($colour, 0.5);
 
   display: flex;
   align-items: center;
@@ -22,21 +21,24 @@ $control-padding: .5rem;
   backdrop-filter: blur(20px);
   border: 1px solid $colour;
   color: $colour;
-  box-shadow: 0 0 .1rem $white,
-    0 0 .4rem $transparent, 0 0 .2rem $colour;
+  box-shadow: 0 0 0.1rem $white, 0 0 0.4rem $transparent, 0 0 0.2rem $colour;
   transition: all 0.5s;
 
   &:hover {
     cursor: pointer;
-    box-shadow: 0 0 .1rem $white, 0 0 .6rem $transparent,
-      0 0 .5rem $colour;
+    box-shadow: 0 0 0.1rem $white, 0 0 0.6rem $transparent, 0 0 0.5rem $colour;
   }
 
   &:active {
-    box-shadow: 0 0 .1rem $white;
+    box-shadow: 0 0 0.1rem $white;
   }
 
-  i, span {
-      pointer-events: none;
+  i,
+  span {
+    pointer-events: none;
+  }
+
+  i {
+    font-size: 1.75rem;
   }
 }
