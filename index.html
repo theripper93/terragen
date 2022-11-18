@@ -23,10 +23,21 @@
           <button class="item"><span>Menu 4</span></button>
         </div>
         <aside id="controls">
-          <button class="option" onclick="canvas.scene.toggleMode();"><span>A</span></button>
-          <button class="option" onclick="canvas.cursor.toggleMode();"><span>B</span></button>
-          <button class="option"><span>C</span></button>
-          <button class="option"><span>D</span></button>
+          <button class="option" onclick="canvas.cursor.sculptMode = 'raise';">
+            <span>raise</span>
+          </button>
+          <button class="option" onclick="canvas.cursor.sculptMode = 'flat';">
+            <span>flat</span>
+          </button>
+          <button class="option" onclick="canvas.cursor.sculptMode = 'smooth';">
+            <span>smooth</span>
+          </button>
+          <button class="option" onclick="canvas.cursor.sculptMode = 'mold';">
+            <span>mold</span>
+          </button>
+          <button class="option" onclick="canvas.cursor.sculptMode = 'normal';">
+            <span>normal</span>
+          </button>
         </aside>
       </nav>
       <div id="canvas-container"></div>
