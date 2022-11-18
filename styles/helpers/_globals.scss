@@ -22,7 +22,7 @@ body {
 
   .item {
     @include neon('#2de3e6');
-    
+
     height: calc($navbar-height - 2 * $control-padding);
     min-width: 10%;
     padding: 1rem;
@@ -43,6 +43,11 @@ body {
     margin: $control-padding;
     aspect-ratio: 1;
   }
+}
+
+#controls .option .active,
+#menu .item .active {
+  @include neon('#ff6c12');
 }
 
 /* Tooltips
