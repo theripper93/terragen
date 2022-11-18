@@ -1,6 +1,7 @@
 {
     "test": "this is a localized string",
     "menu": {
-        "draw": "Draw"
+        "draw": "Draw",
+        "test": "Test"
     }
 }
