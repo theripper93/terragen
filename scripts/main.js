@@ -51,11 +51,10 @@ canvas.controls.mouseButtons = {
     RIGHT: THREE.MOUSE.PAN
 }
 
-
-canvas.scene.gridHelper = new THREE.GridHelper( 10, 10 );
+canvas.scene.gridHelper = new THREE.GridHelper( 10, 10, new THREE.Color("#00c3ff"), new THREE.Color("magenta") );
 canvas.scene.add( canvas.scene.gridHelper );
 canvas.scene.axisHelper = new THREE.AxesHelper( 5 );
-canvas.scene.add( canvas.scene.axisHelper );
+//canvas.scene.add( canvas.scene.axisHelper );
 canvas.scene._mode = "terrain";
 canvas.scene.toggleMode = (mode) => {
     const modes = Object.keys(canvas.materials)

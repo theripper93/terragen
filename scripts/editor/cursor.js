@@ -47,6 +47,14 @@ export class Cursor{
         this.mode = this.mode === "sculpt" ? "paint" : "sculpt";
     }
 
+    get sculptMode(){
+        return this._sculptMode ?? "raise";
+    }
+
+    set sculptMode(value){
+        this._sculptMode = value;
+    }
+
     get geometry(){
         return new THREE.SphereGeometry(1, 32, 32);
     }
@@ -79,7 +87,7 @@ export class Cursor{
             vertex.applyMatrix4(terrain.matrixWorld);
             const distance = vertex.distanceTo(position);
             if(distance < this.radius){
-                vertex.distance = this.radius/distance;
+                vertex.distance = Math.log(this.radius/distance);
                 vertex.index = i;
                 result.push(vertex);
             }
@@ -98,10 +106,22 @@ export class Cursor{
         const geometry = canvas.scene.terrain.geometry;
         for(let vertex of vertexData){
             const positionAttributes = geometry.getAttribute("position");
+            let x = positionAttributes.getX(vertex.index);
             let y = positionAttributes.getY(vertex.index);
-            let diff = this.leftDown ? vertex.distance/100 : -vertex.distance/100;
-            diff = Math.sign(diff) * Math.min(Math.abs(diff), this.radius);
-            y += diff;
+            let z = positionAttributes.getZ(vertex.index);
+            const cameraPosition = canvas.camera.position;
+            if(this.sculptMode === "raise"){
+                let diff = this.leftDown ? vertex.distance/30 : -vertex.distance/30;
+                diff = Math.sign(diff) * Math.min(Math.abs(diff), this.radius);
+                y += diff;
+            }else if(this.sculptMode === "mold"){
+                let diff = this.leftDown ? vertex.distance/30 : -vertex.distance/30;
+                diff = Math.sign(diff) * Math.min(Math.abs(diff), this.radius);
+                const direction = new THREE.Vector3(x, y, z).sub(cameraPosition).normalize();
+                x += direction.x * diff;
+                y += direction.y * diff;
+                z += direction.z * diff;
+            }
             positionAttributes.setY(vertex.index, y);
         }
 
