@@ -1,7 +1,9 @@
 {
     "test": "this is a localized string",
     "menu": {
-        "draw": "Draw",
-        "test": "Test"
+        "new": "New",
+        "save": "Save",
+        "open": "Open",
+        "export": "Export"
     }
 }
