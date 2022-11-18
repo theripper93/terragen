@@ -26336,8 +26336,6 @@ function WebGLRenderer( parameters = {} ) {
 		materialProperties.currentProgram = program;
 		materialProperties.uniformsList = uniformsList;
 
-		game.Levels3DPreview.materialProgramCache[material.uuid] = materialProperties
-
 		return program;
 
 	}
