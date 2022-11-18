@@ -45,8 +45,8 @@ body {
   }
 }
 
-#controls .option .active,
-#menu .item .active {
+#controls .option.active,
+#menu .item.active {
   @include neon('#ff6c12');
 }
 
