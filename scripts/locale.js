@@ -1,4 +1,5 @@
 import { initControls } from './controls.js';
+import { initMenu } from './menu.js';
 
 fetch(`../translations/${navigator.language}.json`).then(async (locale) => {
     const res = await locale.json();
@@ -43,6 +44,7 @@ function initTranslations(data){
     }
     translate(document.querySelector("#ui"));
     initControls();
+    initMenu();
 };
 
 
