@@ -1,7 +1,7 @@
 @import './variables';
 
 body {
-  font-family: Roboto, sans-serif;
+  font-family: Consolas, sans-serif;
   font-size: 1rem;
   position: relative;
 }
@@ -20,10 +20,14 @@ body {
   height: $navbar-height;
   display: flex;
   flex-direction: row;
-  background-color: hsl(240deg 29% 54% / 50%);
+  background-blend-mode: overlay, normal;
+  backdrop-filter: blur(20px);
+  pointer-events: all;
 
   .item {
-    background-color: blue;
+    background: hsl(280deg 100% 87% / 50%);
+    border: 1px solid hsl(280deg 100% 87% / 50%);
+    color: white;
     min-width: 10%;
     height: calc($navbar-height - 2 * $control-padding);
     margin: $control-padding;
@@ -36,6 +40,7 @@ body {
 #controls {
   width: $toolbar-width;
   height: calc(100vh - $navbar-height);
+  pointer-events: all;
 
   .option {
     background-color: hsl(240deg 29% 54%);
