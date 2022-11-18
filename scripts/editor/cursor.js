@@ -60,7 +60,7 @@ export class Cursor{
     }
 
     get material(){
-        return new THREE.MeshBasicMaterial({color: 0x0000ff, transparent: true, opacity: 0.5});
+        return new THREE.MeshStandardMaterial({color: "hsl(23, 100%, 53%)",emissive: "hsl(23, 100%, 53%)",emissiveIntensity:1, transparent: true, opacity: 0.5});
     }
 
     get radius(){
@@ -104,8 +104,10 @@ export class Cursor{
         if((!this.leftDown && !this.rightDown) || !this.mesh.visible) return;
         const vertexData = this.getVertexData();
         const geometry = canvas.scene.terrain.geometry;
+        const positionAttributes = geometry.getAttribute("position");
+        const normalAttributes = geometry.getAttribute("normal");
+        const avgY = vertexData.reduce((a, b) => a + b.y, 0) / vertexData.length;
         for(let vertex of vertexData){
-            const positionAttributes = geometry.getAttribute("position");
             let x = positionAttributes.getX(vertex.index);
             let y = positionAttributes.getY(vertex.index);
             let z = positionAttributes.getZ(vertex.index);
@@ -114,15 +116,35 @@ export class Cursor{
                 let diff = this.leftDown ? vertex.distance/30 : -vertex.distance/30;
                 diff = Math.sign(diff) * Math.min(Math.abs(diff), this.radius);
                 y += diff;
+                positionAttributes.setY(vertex.index, y);
+            }else if(this.sculptMode === "flat"){
+                let diff = this.radius/8;
+                y += diff;
+                positionAttributes.setY(vertex.index, y);
+            }else if(this.sculptMode === "smooth"){
+                let diff = vertex.distance/30;
+                const avgDist = Math.abs(avgY - y);
+                y += avgDist * diff;
+                positionAttributes.setY(vertex.index, y);
+
             }else if(this.sculptMode === "mold"){
                 let diff = this.leftDown ? vertex.distance/30 : -vertex.distance/30;
                 diff = Math.sign(diff) * Math.min(Math.abs(diff), this.radius);
-                const direction = new THREE.Vector3(x, y, z).sub(cameraPosition).normalize();
+                const direction = new THREE.Vector3(vertex.x, vertex.y, vertex.z).sub(cameraPosition).normalize();
+                diff*=-1;
                 x += direction.x * diff;
                 y += direction.y * diff;
                 z += direction.z * diff;
+                positionAttributes.setXYZ(vertex.index, x, y, z);
+            }else if(this.sculptMode === "normal"){
+                let diff = this.leftDown ? vertex.distance/30 : -vertex.distance/30;
+                diff = Math.sign(diff) * Math.min(Math.abs(diff), this.radius);
+                const direction = new THREE.Vector3(normalAttributes.getX(vertex.index), normalAttributes.getY(vertex.index), normalAttributes.getZ(vertex.index)).normalize();
+                x += direction.x * diff;
+                y += direction.y * diff;
+                z += direction.z * diff;
+                positionAttributes.setXYZ(vertex.index, x, y, z);
             }
-            positionAttributes.setY(vertex.index, y);
         }
 
         geometry.computeVertexNormals();
