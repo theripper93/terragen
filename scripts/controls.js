@@ -10,15 +10,29 @@ export function initControls(){
         switch (tool) {
             case "cycle-view":
                 canvas.scene.toggleMode();
+                switch (canvas.scene._mode) {
+                    case "wireframe":
+                        e.target.innerHTML = '<i class="fa-solid fa-border-none"></i>';
+                        break;
+                    case "noTexture":
+                        e.target.innerHTML = '<i class="fa-regular fa-circle"></i>';
+                        break;
+                    case "terrain":
+                        e.target.innerHTML = '<i class="fa-solid fa-circle"></i>';
+                        break;
+                }
                 break;
             case "cycle-mode":
                 canvas.cursor.toggleMode();
                 if(canvas.cursor.mode === "sculpt"){
                     sculptButtons.style.display = "block";
                     paintButtons.style.display = "none";
+                    debugger
+                    e.target.innerHTML = '<i class="fa-solid fa-draw-polygon"></i>';
                 }else{
                     sculptButtons.style.display = "none";
                     paintButtons.style.display = "block";
+                    e.target.innerHTML = '<i class="fa-solid fa-paintbrush"></i>';
                 }
                 break;
             case "sculpt":
