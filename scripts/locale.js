@@ -1,3 +1,4 @@
+
 fetch(`../translations/${navigator.language}.json`).then(async (locale) => {
     const res = await locale.json();
     initTranslations(res);
@@ -39,8 +40,7 @@ function initTranslations(data){
         }
         el.innerHTML = innerHtml;
     }
-    
-    translate(document.body);
+    translate(document.querySelector("#ui"));
 };
 
 

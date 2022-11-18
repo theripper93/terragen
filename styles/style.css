@@ -19,7 +19,6 @@ ul {
 }
 
 #canvas-container {
-  background-color: red;
   width: 100vw;
   height: 100vh;
   position: absolute;
@@ -31,6 +30,7 @@ ul {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  pointer-events: none;
 }
 
 #ui-top {
