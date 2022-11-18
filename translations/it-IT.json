@@ -5,5 +5,15 @@
         "save": "Save",
         "open": "Open",
         "export": "Export"
+    },
+    "controls": {
+        "viewMode": "Toggle View Mode",
+        "editMode": "Toggle Sculpt/Paint",
+        "sculpt": {
+            "flat": "Flat",
+            "smooth": "Smooth",
+            "mold": "Mold",
+            "normal": "Normal"
+        }
     }
 }
