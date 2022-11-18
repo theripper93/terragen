@@ -32,21 +32,24 @@
           <button class="item"><span>Menu 4</span></button>
         </div>
         <aside id="controls">
-          <button class="option">
+          <button class="option" data-tool="cycle-view">
             <i class="fa-solid fa-window-minimize"></i>
           </button>
-          <button class="option">
+          <button class="option" data-tool="cycle-mode">
             <span>flat</span>
           </button>
-          <button class="option">
-            <span>smooth</span>
-          </button>
-          <button class="option">
-            <span>mold</span>
-          </button>
-          <button class="option">
-            <span>normal</span>
-          </button>
+          <div id="sculpt-buttons">
+            <button class="option" data-tool="sculpt" data-sculpt-mode="normal">
+                <span>smooth</span>
+              </button>
+              <button class="option">
+                <span>mold</span>
+              </button>
+              <button class="option">
+                <span>normal</span>
+              </button>
+          </div>
+          
         </aside>
       </nav>
       <div id="canvas-container"></div>
