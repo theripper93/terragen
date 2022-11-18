@@ -11,6 +11,11 @@ THREE.Mesh.prototype.raycast = acceleratedRaycast;
 globalThis.canvas = {
     DEBUG: true,
     project: {},
+    materials: {
+        wireframe: new THREE.MeshBasicMaterial({color: 0x000000, wireframe: true, vertexColors: true}),
+        noTexture: new THREE.MeshStandardMaterial( { color: 0xffffff, vertexColors: true} ),
+        terrain: new THREE.MeshStandardMaterial( { color: 0xffffff, vertexColors: true} ),
+    },
 };
 
 function loadEXR(url) {
