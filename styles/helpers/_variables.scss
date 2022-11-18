@@ -14,12 +14,12 @@ $control-padding: 8px;
   border: 1px solid #{$colour};
   color: #{$colour};
   box-shadow: 0 0 0.1rem hsl(0deg 0% 100% / 59.3%),
-    0 0 0.7rem #{$colour}, 0 0 0.3rem #{$colour};
+    0 0 0.3rem #{$colour}, 0 0 0.2rem #{$colour};
   transition: all 0.5s;
 
   &:hover {
     cursor: pointer;
-    box-shadow: 0 0 0.1rem hsl(0deg 0% 100%), 0 0 0.6rem #{$colour},
+    box-shadow: 0 0 0.1rem hsl(0deg 0% 100%), 0 0 0.5rem #{$colour},
       0 0 0.4rem #{$colour};
   }
 
