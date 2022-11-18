@@ -30,6 +30,12 @@ export function initControls(){
                 e.target.classList.add("active");
                 break;
             case "paint":
+                const paintMode = e.target.dataset.paintMode;
+                canvas.cursor.paintMode = paintMode;
+                paintButtons.querySelectorAll("button").forEach((button)=>{
+                    button.classList.remove("active");
+                })
+                e.target.classList.add("active");
                 break;
         }
     })
