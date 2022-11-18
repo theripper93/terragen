@@ -1,0 +1,55 @@
+@import './variables';
+
+body {
+  font-family: Roboto, sans-serif;
+  font-size: 1rem;
+  position: relative;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#ui {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+#ui-top {
+  width: 100vw;
+  height: $navbar-height;
+  display: flex;
+  flex-direction: row;
+  background-color: hsl(240deg 29% 54% / 50%);
+}
+
+#ui-controls {
+  width: $toolbar-width;
+  height: calc(100vh - $navbar-height);
+}
+
+.control {
+  background-color: hsl(240deg 29% 54%);
+  width: calc($toolbar-width - 2 * $control-padding);
+  margin: $control-padding;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-item {
+  background-color: blue;
+  min-width: 10%;
+  height: calc($navbar-height - 2 * $control-padding);
+  margin: $control-padding;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
