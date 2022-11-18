@@ -43,6 +43,10 @@ export class Cursor{
         this._mode = value;
     }
 
+    toggleMode(){
+        this.mode = this.mode === "sculpt" ? "paint" : "sculpt";
+    }
+
     get geometry(){
         return new THREE.SphereGeometry(1, 32, 32);
     }
@@ -85,6 +89,7 @@ export class Cursor{
 
     _onMouseMove(){
         if(this.mode === "sculpt") this._onSculpt();
+        if(this.mode === "paint") this._onPaint();
     }
 
     _onSculpt(){
@@ -94,7 +99,8 @@ export class Cursor{
         for(let vertex of vertexData){
             const positionAttributes = geometry.getAttribute("position");
             let y = positionAttributes.getY(vertex.index);
-            const diff = this.leftDown ? vertex.distance/100 : -vertex.distance/100;
+            let diff = this.leftDown ? vertex.distance/100 : -vertex.distance/100;
+            diff = Math.sign(diff) * Math.min(Math.abs(diff), this.radius);
             y += diff;
             positionAttributes.setY(vertex.index, y);
         }
@@ -105,6 +111,18 @@ export class Cursor{
         geometry.computeBoundsTree();
         geometry.attributes.position.needsUpdate = true;
         geometry.attributes.normal.needsUpdate = true;
+    }
+
+    _onPaint(){
+        if((!this.leftDown && !this.rightDown) || !this.mesh.visible) return;
+        const vertexData = this.getVertexData();
+        const geometry = canvas.scene.terrain.geometry;
+        for(let vertex of vertexData){
+            const colorAttributes = geometry.getAttribute("color");
+            if(this.leftDown)colorAttributes.setXYZ(vertex.index, 1, 0, 0);
+            else colorAttributes.setXYZ(vertex.index, 0, 0, 1);
+        }
+        geometry.attributes.color.needsUpdate = true;
     }
 
     updatePosition(){
