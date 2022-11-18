@@ -3,38 +3,31 @@ $navbar-height: 48px;
 $toolbar-width: 80px;
 $control-padding: 8px;
 
-@keyframes flicker-blue {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
-    text-shadow:
-      0 0 .25rem hsl(0deg 0% 100%),
-      0 0 .6875rem hsl(0deg 0% 100%),
-      0 0 1.1875rem hsl(0deg 0% 100%),
-      0 0 2.5rem hsla(181deg 79% 54%),
-      0 0 5rem hsla(181deg 79% 54%),
-      0 0 5.625rem hsla(181deg 79% 54%),
-      0 0 6.25rem hsla(181deg 79% 54%),
-      0 0 9.375rem hsla(181deg 79% 54%);
+/* Mixins */
+
+@mixin neon($colour) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  backdrop-filter: blur(20px);
+  border: 1px solid #{$colour};
+  color: #{$colour};
+  box-shadow: 0 0 0.1rem hsl(0deg 0% 100% / 59.3%),
+    0 0 0.7rem #{$colour}, 0 0 0.3rem #{$colour};
+  transition: all 0.5s;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0.1rem hsl(0deg 0% 100%), 0 0 0.6rem hsl(#{$colour}),
+      0 0 0.4rem hsl(#{$colour});
   }
 
-  20%, 24%, 55% {       
-    text-shadow: none;
-  }
-}
-
-@keyframes flicker-pink {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
-    text-shadow:
-      0 0 .25rem hsl(0deg 0% 100%),
-      0 0 .6875rem hsl(0deg 0% 100%),
-      0 0 1.1875rem hsl(0deg 0% 100%),
-      0 0 2.5rem hsl(325deg 79% 53%),
-      0 0 5rem hsl(325deg 79% 53%),
-      0 0 5.625rem hsl(325deg 79% 53%),
-      0 0 6.25rem hsl(325deg 79% 53%),
-      0 0 9.375rem hsl(325deg 79% 53%);
+  &:active {
+    box-shadow: 0 0 0.1rem hsl(0deg 0% 100%);
   }
 
-  20%, 24%, 55% {       
-    text-shadow: none;
+  i, span {
+      pointer-events: none;
   }
 }

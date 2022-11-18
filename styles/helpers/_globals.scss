@@ -21,31 +21,13 @@ body {
   pointer-events: all;
 
   .item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include neon('#2de3e6');
+    
+    height: calc($navbar-height - 2 * $control-padding);
     min-width: 10%;
     padding: 1rem;
-    border: 1px solid hsla(181deg 79% 54% / 75%);
-    background: transparent;
-    backdrop-filter: blur(20px);
-    color: hsla(181deg 79% 54%);
-    height: calc($navbar-height - 2 * $control-padding);
     margin: $control-padding;
-    box-shadow: 0 0 0.1rem hsl(0deg 0% 100% / 59.3%),
-      0 0 0.7rem hsl(181deg 79% 54% / 50%), 0 0 0.3rem hsl(181deg 79% 54%);
-    transition: all 0.5s;
     font-weight: 600;
-
-    &:hover {
-      cursor: pointer;
-      box-shadow: 0 0 0.1rem hsl(0deg 0% 100%), 0 0 0.6rem hsl(181deg 79% 54%),
-        0 0 0.4rem hsl(181deg 79% 54%);
-    }
-
-    &:active {
-      box-shadow: 0 0 0.1rem hsl(0deg 0% 100%);
-    }
   }
 }
 
@@ -55,28 +37,11 @@ body {
   pointer-events: all;
 
   .option {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include neon('#e62897');
+
     width: calc($toolbar-width - 2 * $control-padding);
     margin: $control-padding;
     aspect-ratio: 1;
-    border: 1px solid hsl(325deg 79% 53%);
-    background-color: transparent;
-    box-shadow: 0 0 0.1rem hsl(0deg 0% 100% / 59.3%),
-      0 0 0.4rem hsl(325deg 79% 53% / 50%), 0 0 0.2rem hsl(325deg 79% 53% / 90%);
-    color: hsl(325deg 79% 53%);
-    transition: all 0.5s;
-
-    &:hover {
-      cursor: pointer;
-      box-shadow: 0 0 0.1rem hsl(0deg 0% 100%), 0 0 0.6rem hsl(325deg 79% 53%),
-        0 0 0.4rem hsl(325deg 79% 53%);
-    }
-
-    &:active {
-      box-shadow: 0 0 0.1rem hsl(0deg 0% 100%);
-    }
   }
 }
 
