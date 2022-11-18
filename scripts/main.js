@@ -64,6 +64,8 @@ canvas.scene.toggleMode = (mode) => {
     canvas.scene.terrain.material = canvas.materials[canvas.scene._mode];
 };
 
+canvas.scene.background = new THREE.Color("hsl(261, 56%, 18%)");
+
 loadEXR("assets/venice_sunrise_1k.exr")
 
 canvas.cursor = new Cursor();
