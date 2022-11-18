@@ -19,7 +19,7 @@ $control-padding: 8px;
 
   &:hover {
     cursor: pointer;
-    box-shadow: 0 0 0.1rem hsl(0deg 0% 100%), 0 0 0.6rem hsl(#{$colour}),
+    box-shadow: 0 0 0.1rem hsl(0deg 0% 100%), 0 0 0.6rem #{$colour},
       0 0 0.4rem #{$colour};
   }
 
