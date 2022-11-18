@@ -1,8 +1,7 @@
 @import './variables';
 
 body {
-  font-family: Consolas, sans-serif;
-  position: relative;
+  font-family: 'Roboto Mono', monospace;
 }
 
 #ui {
@@ -15,11 +14,10 @@ body {
 }
 
 #menu {
-  width: 100vw;
-  height: $navbar-height;
   display: flex;
   flex-direction: row;
-  background-blend-mode: overlay, normal;
+  width: 100vw;
+  height: $navbar-height;
   pointer-events: all;
 
   .item {
@@ -27,6 +25,7 @@ body {
     align-items: center;
     justify-content: center;
     min-width: 10%;
+    padding: 1rem;
     border: 1px solid hsla(181deg 79% 54% / 75%);
     background: transparent;
     backdrop-filter: blur(20px);
@@ -36,6 +35,7 @@ body {
     box-shadow: 0 0 0.1rem hsl(0deg 0% 100% / 59.3%),
       0 0 0.7rem hsl(181deg 79% 54% / 50%), 0 0 0.3rem hsl(181deg 79% 54%);
     transition: all 0.5s;
+    font-weight: 600;
 
     &:hover {
       cursor: pointer;
@@ -67,7 +67,7 @@ body {
       0 0 0.4rem hsl(325deg 79% 53% / 50%), 0 0 0.2rem hsl(325deg 79% 53% / 90%);
     color: hsl(325deg 79% 53%);
     transition: all 0.5s;
-    
+
     &:hover {
       cursor: pointer;
       box-shadow: 0 0 0.1rem hsl(0deg 0% 100%), 0 0 0.6rem hsl(325deg 79% 53%),
@@ -78,4 +78,33 @@ body {
       box-shadow: 0 0 0.1rem hsl(0deg 0% 100%);
     }
   }
+}
+
+/* Tooltips
+* https://www.w3schools.com/css/css_tooltip.asp */
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }

@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Metadata -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Libraries -->
     <script src="scripts/lib/i18n.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/ba56e683fc.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- JS -->
     <script type="module" src="scripts/main.js"></script>
     <script type="module" src="scripts/locale.js"></script>
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="styles/style.css" />
+    <!-- Google Fonts -->
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap');
     </style>
-    <title>Document</title>
   </head>
   <body oncontextmenu="return false;">
     <main>
@@ -23,19 +32,19 @@
           <button class="item"><span>Menu 4</span></button>
         </div>
         <aside id="controls">
-          <button class="option" onclick="canvas.cursor.sculptMode = 'raise';">
-            <span>raise</span>
+          <button class="option">
+            <i class="fa-solid fa-window-minimize"></i>
           </button>
-          <button class="option" onclick="canvas.cursor.sculptMode = 'flat';">
+          <button class="option">
             <span>flat</span>
           </button>
-          <button class="option" onclick="canvas.cursor.sculptMode = 'smooth';">
+          <button class="option">
             <span>smooth</span>
           </button>
-          <button class="option" onclick="canvas.cursor.sculptMode = 'mold';">
+          <button class="option">
             <span>mold</span>
           </button>
-          <button class="option" onclick="canvas.cursor.sculptMode = 'normal';">
+          <button class="option">
             <span>normal</span>
           </button>
         </aside>
