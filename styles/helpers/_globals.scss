@@ -25,8 +25,8 @@ body {
   pointer-events: all;
 
   .item {
-    background: hsl(280deg 100% 87% / 50%);
-    border: 1px solid hsl(280deg 100% 87% / 50%);
+    background: transparent;
+    border: 1px solid hsla(181deg 79% 54% / 75%);
     color: white;
     min-width: 10%;
     height: calc($navbar-height - 2 * $control-padding);
@@ -34,6 +34,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 0 0.1rem hsl(0deg 0% 100% / 59.3%),
+      0 0 0.7rem hsl(181deg 79% 54% / 50%), 0 0 0.3rem hsla(181deg 79% 54% / 90%);
   }
 }
 
@@ -43,7 +45,11 @@ body {
   pointer-events: all;
 
   .option {
-    background-color: hsl(240deg 29% 54%);
+    background-color: transparent;
+    border: 1px solid hsla(181deg 79% 54% / 75%);
+    box-shadow: 0 0 0.1rem hsl(0deg 0% 100% / 59.3%),
+      0 0 0.4rem hsl(181deg 79% 54% / 50%), 0 0 0.2rem hsla(181deg 79% 54% / 90%);
+    color: white;
     width: calc($toolbar-width - 2 * $control-padding);
     margin: $control-padding;
     aspect-ratio: 1;
