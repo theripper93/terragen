@@ -40,6 +40,11 @@ canvas.controls.rotateSpeed = 0.5;
 canvas.controls.panSpeed = 0.5;
 canvas.controls.enableDamping = true;
 canvas.controls.dampingFactor = 0.1;
+canvas.controls.mouseButtons = {
+    LEFT: undefined,
+    MIDDLE: THREE.MOUSE.ROTATE,
+    RIGHT: THREE.MOUSE.PAN
+}
 
 
 canvas.scene.gridHelper = new THREE.GridHelper( 10, 10 );

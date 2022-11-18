@@ -118,6 +118,7 @@ export class Cursor{
             this.mesh.visible = intersects.length > 0;
         }
 
-        canvas.controls.enabled = !this.mesh.visible;
+        canvas.controls.enablePan = !this.mesh.visible;
+        canvas.controls.enableZoom = !this.mesh.visible;
     }
 }
