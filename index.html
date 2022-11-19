@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Terragen</title>
-    <link rel="icon" type="image/svg" href="/assets/ellipse.svg" />
+    <link type="image/svg" href="/assets/ellipse.svg" rel="icon" />
     <!-- Libraries -->
     <script src="scripts/lib/i18n.min.js"></script>
     <script src="scripts/lib/pixi.min.js"></script>
@@ -17,30 +17,28 @@
     <!-- JS -->
     <script src="scripts/main.js" type="module"></script>
     <script src="scripts/locale.js" type="module"></script>
-    <!-- Stylesheet -->
-    <link href="styles/style.css" rel="stylesheet" />
-    <!-- Google Fonts -->
     <style>
+      @import './styles/style.css';
       @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap');
     </style>
   </head>
 
   <body oncontextmenu="return false;">
     <main style="display: none">
-      <nav id="ui">
-        <div id="menu">
+      <div id="ui">
+        <nav id="menu">
           <section class="left">
             <button class="item" data-action="new">
-              <span><i class="fa-regular fa-file"></i> {menu.new}</span>
+              <span><i class="fa-regular fa-file"></i>{menu.new}</span>
             </button>
             <button class="item" data-action="open">
-              <span><i class="fa-regular fa-folder-open"></i> {menu.open}</span>
+              <span><i class="fa-regular fa-folder-open"></i>{menu.open}</span>
             </button>
             <button class="item" data-action="save">
-              <span><i class="fa-regular fa-floppy-disk"></i> {menu.save}</span>
+              <span><i class="fa-regular fa-floppy-disk"></i>{menu.save}</span>
             </button>
             <button class="item" data-action="export">
-              <span><i class="fa-solid fa-download"></i> {menu.export}</span>
+              <span><i class="fa-solid fa-download"></i>{menu.export}</span>
             </button>
           </section>
           <aside class="right">
@@ -51,7 +49,7 @@
               <i class="fa-regular fa-circle-question"></i>
             </button>
           </aside>
-        </div>
+        </nav>
         <aside id="controls">
           <section class="toggles">
             <button
@@ -148,7 +146,7 @@
             value="50"
           />
         </aside>
-      </nav>
+      </div>
       <figure id="canvas-container"></figure>
     </main>
     <footer id="mobile-warning">
