@@ -24,12 +24,12 @@
   .left {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: $control-padding;
 
     .item {
       display: flex;
       height: calc($navbar-height - 2 * $control-padding);
       padding: $control-padding;
-      margin-right: $control-padding;
       font-size: 0.9rem;
       @include neon-group($pink);
       @include neon-hover($pink);
@@ -67,11 +67,12 @@
   width: $toolbar-width;
   height: calc(100vh - $navbar-height);
   pointer-events: all;
+  gap: 1rem;
 
   .toggles,
   .tools {
+    display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
     @include neon-group($blue);
 
     .option {
@@ -83,8 +84,8 @@
       &.tooltip.active {
         // Active Tool
         @include neon-item($blue);
-        background: color.adjust($bg-dark, $alpha: -0.5);
-        border: 1px solid color.adjust($blue, $alpha: -0.6);
+        background: color.adjust($bg-dark, $alpha: -0.75);
+        border: 1px solid color.adjust($blue, $alpha: -0.5);
         border-radius: 2px;
       }
     }

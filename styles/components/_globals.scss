@@ -25,14 +25,16 @@ input[type='range' i] {
   appearance: none;
   outline: none;
   transform: rotate(270deg);
-  margin-top: 4.6875rem;
+  margin-top: 3.5rem;
   border: 1px solid $blue;
   color: transparent;
-  box-shadow: 0 0 0.6rem color.adjust($blue, $alpha: -0.9), 0 0 0.1rem $blue;
+  box-shadow: 0 0 0.05rem $white, 0 0 0.1rem $blue,
+    0 0 0.3rem color.adjust($blue, $alpha: -0.5);
 
   &::-webkit-slider-thumb {
+    // NOTE: Width and height are reversed due to rotation
     width: 0.5rem;
-    height: 1rem;
+    height: 0.75rem;
     border: 0 solid transparent;
     appearance: none;
     background: $blue;

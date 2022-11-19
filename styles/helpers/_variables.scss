@@ -23,7 +23,8 @@ $control-padding: 0.5rem;
   backdrop-filter: blur(10px);
   border: 1px solid $colour;
   color: $colour;
-  box-shadow: 0 0 0.1rem $white, 0 0 0.2rem $colour, 0 0 0.3rem color.adjust($colour, $alpha: -0.5);
+  box-shadow: 0 0 0.1rem $white, 0 0 0.2rem $colour,
+    0 0 0.3rem color.adjust($colour, $alpha: -0.5);
   transition: all 0.2s;
 
   i,
@@ -53,8 +54,8 @@ $control-padding: 0.5rem;
   &:hover {
     border: 1px solid $colour;
     background: color.adjust($bg-dark, $alpha: -0.6);
-    box-shadow: 0 0 0.5rem color.adjust($colour, $alpha: -0.85),
-      0 0 0.3rem $colour;
+    box-shadow: 0 0 0.3rem $colour,
+      0 0 0.5rem color.adjust($colour, $alpha: -0.85);
   }
 
   &:active {
