@@ -5,20 +5,27 @@ body {
   font-family: 'Roboto Mono', monospace;
 }
 
+button {
+  &:hover,
+  &:active {
+    cursor: pointer;
+  }
+}
+
 hr {
   width: calc($toolbar-width - 2 * $control-padding);
   justify-self: center;
   border: 1px solid transparent;
   background: $blue;
-  box-shadow: 0 0 0.05rem $blue, 0 0 0.01rem $white, 0 0 0.15rem $blue;
+  box-shadow: 0 0 0.01rem $white, 0 0 0.05rem $blue, 0 0 0.15rem $blue;
   margin: 0.5rem 0;
 }
 
 #ui {
+  display: flex;
   position: fixed;
   width: 100vw;
   height: 100vh;
-  display: flex;
   flex-direction: column;
   pointer-events: none;
 }
@@ -34,13 +41,12 @@ hr {
     grid-template-columns: repeat(4, 1fr);
 
     .item {
-      @include neon-group($pink);
-
       display: flex;
       height: calc($navbar-height - 2 * $control-padding);
       padding: 0.5rem;
       margin: $control-padding;
       font-size: 0.9rem;
+      @include neon-group($pink);
 
       i {
         font-size: 0.9rem;
@@ -60,41 +66,37 @@ hr {
 
   .toggles,
   .tools {
+    flex-direction: column;
     @include neon-group($blue);
 
-    flex-direction: column;
-
     .option {
-      @include neon-item($blue);
-
       width: calc($toolbar-width - 2 * $control-padding);
       margin: $control-padding;
       aspect-ratio: 1;
+      @include neon-item($blue);
     }
   }
 }
 
 #controls .option.active,
 #menu .item.active {
-  @include neon-item($blue);
-
   background: color.adjust($bg-dark, $alpha: -0.65);
   border: 1px solid color.adjust($blue, $alpha: -0.5);
   border-radius: 2px;
+  @include neon-item($blue);
 }
 
 /* Tooltips */
 .tooltip {
-  @include tooltip-style($blue);
-
+  display: inline-block;
   position: relative;
   text-align: center;
-  display: inline-block;
+  @include tooltip-style($blue);
 
   &:hover::before {
-    content: attr(data-tooltip);
     position: absolute;
     left: 150%;
+    content: attr(data-tooltip);
     padding: 0.1rem 0.25rem;
     animation: fade 1.5s;
     white-space: nowrap;
