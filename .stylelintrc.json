@@ -4,6 +4,7 @@
     "stylelint-config-prettier-scss"
   ],
   "rules": {
-      "string-quotes": "single"
+      "string-quotes": "single",
+      "no-global-function-names": null
   }
 }
