@@ -73,3 +73,19 @@ $control-padding: 0.5rem;
     color: $blue;
   }
 }
+
+
+@keyframes fade {
+  // Workaround for transition interacting poorly with animation delay
+  0% {
+    opacity: 0;
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

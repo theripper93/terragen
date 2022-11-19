@@ -22,8 +22,8 @@ hr {
   margin: 0.5rem 0;
 }
 
-/* The page for telling mobile users to fuck off */
 #mobile-warning {
+  /* The page for telling mobile users to fuck off */
   display: none;
   h1 {
     background: -webkit-linear-gradient($blue, $pink);
@@ -33,6 +33,7 @@ hr {
 }
 
 #ui {
+  // Page Wrapper
   display: flex;
   position: fixed;
   width: 100vw;
@@ -42,6 +43,7 @@ hr {
 }
 
 #menu {
+  // Top Navbar
   display: grid;
   grid-template-columns: repeat(2, 30%);
   height: $navbar-height;
@@ -67,6 +69,7 @@ hr {
 }
 
 #controls {
+  // Side Navbar
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,14 +94,15 @@ hr {
 
 #controls .option.active,
 #menu .item.active {
+  // Active Tool
   background: color.adjust($bg-dark, $alpha: -0.65);
   border: 1px solid color.adjust($blue, $alpha: -0.5);
   border-radius: 2px;
   @include neon-item($blue);
 }
 
-/* Tooltips */
 .tooltip {
+  // Tooltips 
   display: inline-block;
   position: relative;
   text-align: center;
@@ -111,20 +115,5 @@ hr {
     padding: 0.1rem 0.25rem;
     animation: fade 1.5s;
     white-space: nowrap;
-  }
-}
-
-@keyframes fade {
-  // Workaround for transition interacting poorly with animation delay
-  0% {
-    opacity: 0;
-  }
-
-  80% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
   }
 }
