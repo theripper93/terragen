@@ -157,14 +157,7 @@ export class Cursor{
 
     _onPaint(){
         if((!this.leftDown && !this.rightDown) || !this.mesh.visible) return;
-        const vertexData = this.getVertexData();
-        const geometry = canvas.scene.terrain.geometry;
-        for(let vertex of vertexData){
-            const colorAttributes = geometry.getAttribute("color");
-            if(this.leftDown)colorAttributes.setXYZ(vertex.index, 1, 0, 0);
-            else colorAttributes.setXYZ(vertex.index, 0, 0, 1);
-        }
-        geometry.attributes.color.needsUpdate = true;
+        canvas.painting.brush.paint();
     }
 
     updatePosition(){

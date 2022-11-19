@@ -2,21 +2,33 @@ import * as THREE from './lib/three.module.js';
 import { EXRLoader } from "./lib/EXRLoader.js";
 import { OrbitControls } from './lib/OrbitControls.js';
 import { Cursor } from './editor/cursor.js';
+import { initPainting } from './editor/painting.js';
 import { computeBoundsTree, disposeBoundsTree, acceleratedRaycast } from './lib/three-mesh-bvh.js';
 
 THREE.BufferGeometry.prototype.computeBoundsTree = computeBoundsTree;
 THREE.BufferGeometry.prototype.disposeBoundsTree = disposeBoundsTree;
 THREE.Mesh.prototype.raycast = acceleratedRaycast;
 
+globalThis.THREE = THREE;
+
 globalThis.canvas = {
     DEBUG: true,
-    project: {},
+    project: {
+        geometry: {
+            width: 5,
+            height: 5,
+            resolution: 50,
+        }
+    },
+    painting: {},
     materials: {
         wireframe: new THREE.MeshBasicMaterial({color: 0xff9500, wireframe: true, vertexColors: true}),
         noTexture: new THREE.MeshStandardMaterial( { color: 0xffffff, vertexColors: true} ),
         terrain: new THREE.MeshStandardMaterial( { color: 0xffffff, vertexColors: true} ),
     },
 };
+
+initPainting(new THREE.Vector2(1024, 1024));
 
 function loadEXR(url) {
     const pmremGenerator = new THREE.PMREMGenerator(canvas.renderer);
@@ -78,12 +90,13 @@ function animate() {
 };
 
 function setupBasicShape(){
-    var geometry = new THREE.BoxGeometry( 5, 1, 5, 50, 50, 50 );
+    var geometry = new THREE.BoxGeometry( canvas.project.geometry.width, 1, canvas.project.geometry.height, 50, 50, 50 );
     geometry.setAttribute("color", new THREE.BufferAttribute(new Float32Array(geometry.attributes.position.count * 3), 3));
     for(let i = 0; i < geometry.attributes.color.count; i++){
         geometry.attributes.color.setXYZ(i, 1,1,1);
     }
-    var material = new THREE.MeshStandardMaterial( { color: 0xffffff, vertexColors: true} );
+    var material = canvas.materials.terrain;
+    material.map = new THREE.CanvasTexture(canvas.painting.colorMap.view);
     var cube = new THREE.Mesh( geometry, material );
     cube.geometry.computeBoundsTree();
     canvas.scene.terrain = cube;

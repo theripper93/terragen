@@ -592,36 +592,15 @@ class OrbitControls extends EventDispatcher {
 			}
 
 			scope.update();
-			game.Levels3DPreview.GameCamera.yTarget = null;
-			game.Levels3DPreview.GameCamera.currentZoomDist = scope.object.position.y - (game.Levels3DPreview.controls.target.y + game.Levels3DPreview.GameCamera.collisionPoint)
-
+			
 		}
 
 		function handleKeyDown( event ) {
 
-			if(!game.Levels3DPreview._active || !game.Levels3DPreview.hasFocus) return;
 
 			let needsUpdate = false;
 
-			const {panUp, panDown, panLeft, panRight} = game.Levels3DPreview.interactionManager._panKeys;
-
-			if(panUp.includes(event.code)){
-				pan( 0, scope.keyPanSpeed );
-				needsUpdate = true;
-			}
-			if(panDown.includes(event.code)){
-				pan( 0, - scope.keyPanSpeed );
-				needsUpdate = true;
-			}
-			if(panLeft.includes(event.code)){
-				pan( scope.keyPanSpeed, 0 );
-				needsUpdate = true;
-			}
-			if(panRight.includes(event.code)){
-				pan( - scope.keyPanSpeed, 0 );
-				needsUpdate = true;
-			}
-			/*switch ( event.code ) {
+			switch ( event.code ) {
 
 				case scope.keys.UP:
 					pan( 0, scope.keyPanSpeed );
@@ -643,13 +622,12 @@ class OrbitControls extends EventDispatcher {
 					needsUpdate = true;
 					break;
 
-			}*/
+			}
 
 			if ( needsUpdate ) {
 
 				// prevent the browser from scrolling on cursor keys
 				//event.preventDefault();
-				game.Levels3DPreview.GameCamera.lock = false;
 				scope.update();
 
 			}
