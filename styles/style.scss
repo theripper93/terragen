@@ -1,2 +1,6 @@
+// Reset
 @use './helpers/reset';
-@use './helpers/globals';
+
+// Components
+@use './components/globals';
+@use './components/ui';

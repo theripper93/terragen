@@ -1,0 +1,73 @@
+@use 'sass:color';
+@import '../helpers/variables';
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  background: $bg;
+  overflow-y: hidden;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: 1px solid transparent;
+
+  &:hover,
+  &:active {
+    cursor: pointer;
+  }
+}
+
+input[type='range'] {
+  /* Difficult to style sliders
+  * TODO: Fix upper area */
+  appearance: none;
+  transform: rotate(270deg);
+  margin-top: 75px;
+  border: 1px solid $blue;
+  box-shadow: 0 0 0.6rem color.adjust($blue, $alpha: -0.9), 0 0 0.1rem $blue;
+
+  &::-webkit-slider-thumb {
+    width: 12px;
+    height: 12px;
+    appearance: none;
+    border-radius: 2px;
+    background: $blue;
+    margin: -2.75px;
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+    }
+  }
+
+  &::-webkit-slider-runnable-track {
+    background: $bg;
+    border: 1px solid color.adjust($blue, $alpha: -0.5);
+  }
+
+  &:focus::-webkit-slider-runnable-track {
+    background: color.adjust($bg, $blackness: 5%);
+  }
+}
+
+hr {
+  width: calc($toolbar-width - 2 * $control-padding);
+  justify-self: center;
+  border: 1px solid transparent;
+  background: $blue;
+  box-shadow: 0 0 0.01rem $white, 0 0 0.05rem $blue, 0 0 0.15rem $blue;
+  margin: 0.5rem 0;
+}
+
+#mobile-warning {
+  /* The page for telling mobile users to fuck off */
+  display: none;
+
+  h1 {
+    background: linear-gradient($blue, $pink);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
