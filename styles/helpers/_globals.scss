@@ -9,7 +9,7 @@ hr {
   justify-self: center;
   border: 1px solid transparent;
   background: $pink;
-  box-shadow: 0 0 0.1rem $pink, 0 0 0.2rem $pink;
+  box-shadow: 0 0 0.05rem $pink, 0 0 0.01rem $white, 0 0 0.25rem $pink;
   margin: 0.5rem 0;
 }
 
@@ -33,7 +33,7 @@ hr {
     grid-template-columns: repeat(4, 1fr);
 
     .item {
-      @include neon($blue);
+      @include neon-group($pink);
 
       display: flex;
       height: calc($navbar-height - 2 * $control-padding);
@@ -52,23 +52,31 @@ hr {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: $control-padding;
   width: $toolbar-width;
   height: calc(100vh - $navbar-height);
   pointer-events: all;
 
-  .option {
-    @include neon($pink);
+  .toggles,
+  .tools {
+    @include neon-group($orange);
+    flex-direction: column;
 
-    width: calc($toolbar-width - 2 * $control-padding);
-    margin: $control-padding;
-    aspect-ratio: 1;
+    .option {
+      @include neon-item($orange);
+
+      width: calc($toolbar-width - 2 * $control-padding);
+      margin: $control-padding;
+      aspect-ratio: 1;
+    }
   }
 }
 
 #controls .option.active,
 #menu .item.active {
-  @include neon($orange);
-  
+  @include neon-item($orange);
+  background: hsl(268deg 39% 15% / 100%);
+
   &.tooltip:hover::before {
     color: $orange;
     text-shadow: 0 0 3px $orange;

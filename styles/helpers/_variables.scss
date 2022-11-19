@@ -6,38 +6,48 @@ $white: hsl(0deg 0% 100%);
 
 /* Sizing */
 $navbar-height: 2.75rem;
-$toolbar-width: 3.5rem;
+$toolbar-width: 3rem;
 $control-padding: 0.5rem;
 
 /* Mixins */
-@mixin neon($colour) {
+@mixin neon-group($colour) {
+  $transparent: transparentize($colour, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: hsl(268deg 39% 15% / 50%);
+  backdrop-filter: blur(10px);
+  border: 1px solid $colour;
+  color: $colour;
+  box-shadow: 0 0 0.1rem $white, 0 0 0.3rem $transparent, 0 0 0.2rem $colour;
+  transition: all 0.2s;
+}
+
+@mixin neon-item($colour) {
   $transparent: transparentize($colour, 0.5);
 
   display: flex;
   align-items: center;
   justify-content: center;
-  background: hsl(268deg 39% 15% / 50%);
-  backdrop-filter: blur(20px);
-  border: 1px solid $colour;
+  background: transparent;
+  border: 1px solid transparent;
   color: $colour;
-  box-shadow: 0 0 0.1rem $white, 0 0 0.4rem $transparent, 0 0 0.2rem $colour;
-  transition: all 0.5s;
+  transition: all 0.2s;
 
   &:hover {
     cursor: pointer;
-    box-shadow: 0 0 0.1rem $white, 0 0 0.6rem $transparent, 0 0 0.5rem $colour;
+    background: hsl(268deg 39% 15% / 100%);
   }
 
   &:active {
     box-shadow: 0 0 0.1rem $white;
+    background: hsl(268deg 39% 15% / 100%);
   }
 
   i,
   span {
     pointer-events: none;
-  }
-
-  i {
-    font-size: 1.25rem;
   }
 }
