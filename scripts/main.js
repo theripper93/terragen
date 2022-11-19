@@ -22,9 +22,9 @@ globalThis.canvas = {
     },
     painting: {},
     materials: {
-        wireframe: new THREE.MeshBasicMaterial({color: 0xff9500, wireframe: true, vertexColors: true}),
-        noTexture: new THREE.MeshStandardMaterial( { color: 0xffffff, vertexColors: true} ),
-        terrain: new THREE.MeshStandardMaterial( { color: 0xffffff, vertexColors: true} ),
+        wireframe: new THREE.MeshBasicMaterial({color: 0xff9500, wireframe: true, side: THREE.DoubleSide}),
+        noTexture: new THREE.MeshStandardMaterial( { color: 0xffffff, side: THREE.DoubleSide} ),
+        terrain: new THREE.MeshStandardMaterial( { color: 0xffffff, side: THREE.DoubleSide} ),
     },
 };
 
@@ -65,8 +65,7 @@ canvas.controls.mouseButtons = {
 
 canvas.scene.gridHelper = new THREE.GridHelper( 10, 10, new THREE.Color("#00c3ff"), new THREE.Color("magenta") );
 canvas.scene.add( canvas.scene.gridHelper );
-canvas.scene.axisHelper = new THREE.AxesHelper( 5 );
-//canvas.scene.add( canvas.scene.axisHelper );
+canvas.scene.gridHelper.position.y -= 0.005;
 canvas.scene._mode = "terrain";
 canvas.scene.toggleMode = (mode) => {
     const modes = Object.keys(canvas.materials)
@@ -90,7 +89,8 @@ function animate() {
 };
 
 function setupBasicShape(){
-    var geometry = new THREE.BoxGeometry( canvas.project.geometry.width, 1, canvas.project.geometry.height, 50, 50, 50 );
+    var geometry = new THREE.PlaneGeometry( canvas.project.geometry.width, canvas.project.geometry.height, 50, 50 );
+    geometry.rotateX(-Math.PI/2);
     geometry.setAttribute("color", new THREE.BufferAttribute(new Float32Array(geometry.attributes.position.count * 3), 3));
     for(let i = 0; i < geometry.attributes.color.count; i++){
         geometry.attributes.color.setXYZ(i, 1,1,1);

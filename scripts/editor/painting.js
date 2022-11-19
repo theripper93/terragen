@@ -75,7 +75,7 @@ class Brush{
     paint(){
         const position = this.getPosition();
         const stroke = new PIXI.Graphics();
-        stroke.beginFill(0xff00ff);
+        stroke.beginFill(this.color);
         stroke.drawCircle(position.x, position.y, this.radius);
         stroke.endFill();
         const scale = this.brushScale;
