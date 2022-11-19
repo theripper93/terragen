@@ -64,6 +64,7 @@ hr {
 #mobile-warning {
   /* The page for telling mobile users to fuck off */
   display: none;
+  background: $bg;
 
   h1 {
     background: linear-gradient($blue, $pink);
