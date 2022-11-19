@@ -5,14 +5,13 @@ $orange: hsl(23deg 100% 54%);
 $white: hsl(0deg 0% 100%);
 
 /* Sizing */
-$navbar-height: 3rem;
-$toolbar-width: 4rem;
+$navbar-height: 2.75rem;
+$toolbar-width: 3.5rem;
 $control-padding: 0.5rem;
 
 /* Mixins */
-
 @mixin neon($colour) {
-  $transparent: color.adjust($colour, $alpha -0.5);
+  $transparent: transparentize($colour, 0.5);
 
   display: flex;
   align-items: center;
