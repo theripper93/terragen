@@ -45,6 +45,17 @@ export function initControls(){
             case "paint":
                 const paintMode = e.target.dataset.paintMode;
                 canvas.cursor.paintMode = paintMode;
+                switch (paintMode) {
+                    case "paint1":
+                        canvas.painting.brush.color = 0x00ff00;
+                        break;
+                    case "paint2":
+                        canvas.painting.brush.color = 0x0000ff;
+                        break;
+                    case "paint3":
+                        canvas.painting.brush.color = 0xff0000;
+                        break;
+                }
                 paintButtons.querySelectorAll("button").forEach((button)=>{
                     button.classList.remove("active");
                 })
