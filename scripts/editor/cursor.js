@@ -26,6 +26,7 @@ export class Cursor{
             this.leftDown = false;
             this.rightDown = false;
             this._lockCursor = false;
+            if(this.mode === "paint") canvas.painting.brush.commitGraphicsToTexture();
         })
         document.addEventListener('keydown', (event) => {
             this._altDown = event.altKey;

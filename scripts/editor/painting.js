@@ -8,19 +8,15 @@ export function initPainting(textureSize) {
     canvas.painting.metalnessMap = new PIXI.Application({width: textureSize.x, height: textureSize.y});
     canvas.painting.occulsionMap = new PIXI.Application({width: textureSize.x, height: textureSize.y});
 
+    canvas.painting.pixiApps = [canvas.painting.colorMap, canvas.painting.normalMap, canvas.painting.roughnessMap, canvas.painting.metalnessMap, canvas.painting.occulsionMap];
+
+    canvas.painting.pixiApps.forEach(a => {
+        a.width = textureSize.x;
+        a.height = textureSize.y;
+        a.rTex = PIXI.RenderTexture.create({width: textureSize.x, height: textureSize.y});
+    });
+
     canvas.painting.brush = new Brush(textureSize);
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 
@@ -53,6 +49,14 @@ class Brush{
         }
     }
 
+    get blurFilter(){
+        return new PIXI.filters.BlurFilter(this.blurStrength, 16);
+    }
+
+    get blurStrength(){
+        return this.radius / 2;
+    }
+
     getTexture(){}
 
     getPosition(){
@@ -80,6 +84,7 @@ class Brush{
         stroke.endFill();
         const scale = this.brushScale;
         stroke.scale.set(scale.x, scale.y);
+        stroke.filters = [this.blurFilter];
         this.maps.colorMap.stage.addChild(stroke);
         this.updateMaterial();
     }
@@ -91,5 +96,18 @@ class Brush{
                 val.needsUpdate = true;
             }
         }
+    }
+
+    commitGraphicsToTexture(){
+        for(const app of canvas.painting.pixiApps){
+            const rTex2 = PIXI.RenderTexture.create({width: this.textureResolution.x, height: this.textureResolution.y});
+            app.renderer.render(app.stage, {renderTexture: rTex2});
+            app.rTex.destroy(true);
+            app.rTex = rTex2;
+            const sprite = new PIXI.Sprite(app.rTex);
+            app.stage.removeChildren();
+            app.stage.addChild(sprite);
+        }
+        this.updateMaterial();
     }
 }
