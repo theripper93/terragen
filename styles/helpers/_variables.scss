@@ -1,8 +1,12 @@
+@use 'sass:color';
+
 /* Colours */
 $blue: hsl(181deg 79% 54%);
 $pink: hsl(325deg 79% 53%);
 $orange: hsl(23deg 100% 54%);
 $white: hsl(0deg 0% 100%);
+$bg: hsl(268deg 39% 15%);
+$bg-dark: hsl(261deg 89% 7%);
 
 /* Sizing */
 $navbar-height: 3rem;
@@ -11,18 +15,18 @@ $control-padding: 0.5rem;
 
 /* Mixins */
 @mixin neon-group($colour) {
-  $transparent: transparentize($colour, 0.5);
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: hsl(268deg 39% 15% / 50%);
+  background: color.adjust($bg, $alpha: -0.5);
   backdrop-filter: blur(10px);
   border: 1px solid $colour;
   color: $colour;
-  box-shadow: 0 0 0.1rem $white, 0 0 0.3rem $transparent, 0 0 0.2rem $colour;
+  box-shadow: 0 0 0.1rem $white, 0 0 0.3rem color.adjust($colour, $alpha: -0.5),
+    0 0 0.2rem $colour;
   transition: all 0.2s;
+  @include neon-hover($colour);
 
   i,
   span {
@@ -31,31 +35,41 @@ $control-padding: 0.5rem;
 }
 
 @mixin neon-item($colour) {
-  $transparent: transparentize($colour, 0.85);
-
   display: flex;
   align-items: center;
   justify-content: center;
   background: transparent;
   border: 1px solid transparent;
+  border-radius: 2px;
   color: $colour;
   transition: all 0.2s;
-
-  &:hover {
-    cursor: pointer;
-    border: 1px solid $colour;
-    background: hsla(261, 89%, 7%, 0.5);
-    box-shadow: 0 0 0.5rem $transparent, 0 0 0.3rem $colour;
-  }
-
-  &:active {
-    border: 1px solid $colour;
-    background: hsl(261, 89%, 7%);
-    box-shadow: none;
-  }
+  @include neon-hover($colour);
 
   i,
   span {
     pointer-events: none;
+  }
+}
+
+@mixin neon-hover($colour) {
+  &:hover {
+    border: 1px solid $colour;
+    background: color.adjust($bg-dark, $alpha: -0.5);
+    box-shadow: 0 0 0.5rem color.adjust($colour, $alpha: -0.85),
+      0 0 0.3rem $colour;
+  }
+
+  &:active {
+    border: 1px solid $colour;
+    background: $bg-dark;
+    box-shadow: none;
+  }
+}
+
+@mixin tooltip-style($colour) {
+  &:hover::before {
+    border: 1px solid $blue;
+    background: color.adjust($bg-dark, $alpha: -0.5);
+    color: $blue;
   }
 }
