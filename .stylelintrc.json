@@ -1,9 +1,20 @@
 {
+  "plugins": [
+    "stylelint-order"
+  ],
   "extends": [
     "stylelint-config-standard-scss",
     "stylelint-config-prettier-scss"
   ],
   "rules": {
-      "string-quotes": "single"
+    "string-quotes": "single",
+    "order/order": [
+      "custom-properties",
+      "declarations"
+    ],
+    "order/properties-order": [
+      "width",
+      "height"
+    ]
   }
 }
