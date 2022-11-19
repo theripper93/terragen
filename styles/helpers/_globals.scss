@@ -3,6 +3,7 @@
 
 body {
   font-family: 'Roboto Mono', monospace;
+  background: $bg;
 }
 
 button {
@@ -19,6 +20,16 @@ hr {
   background: $blue;
   box-shadow: 0 0 0.01rem $white, 0 0 0.05rem $blue, 0 0 0.15rem $blue;
   margin: 0.5rem 0;
+}
+
+/* The page for telling mobile users to fuck off */
+#mobile-warning {
+  display: none;
+  h1 {
+    background: -webkit-linear-gradient($blue, $pink);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 #ui {
