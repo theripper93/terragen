@@ -12,12 +12,12 @@ $control-padding: 0.5rem;
 /* Mixins */
 
 @mixin neon($colour) {
-  $transparent: transparentize($colour, 0.5);
+  $transparent: color.adjust($colour, $alpha -0.5);
 
   display: flex;
   align-items: center;
   justify-content: center;
-  background: hsla(268, 39%, 15%, 0.5);
+  background: hsl(268deg 39% 15% / 50%);
   backdrop-filter: blur(20px);
   border: 1px solid $colour;
   color: $colour;
@@ -39,6 +39,6 @@ $control-padding: 0.5rem;
   }
 
   i {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
   }
 }

@@ -68,6 +68,7 @@ hr {
 #controls .option.active,
 #menu .item.active {
   @include neon($orange);
+  
   &.tooltip:hover::before {
     color: $orange;
     text-shadow: 0 0 3px $orange;
