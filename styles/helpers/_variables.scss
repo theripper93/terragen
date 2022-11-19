@@ -5,7 +5,7 @@ $orange: hsl(23deg 100% 54%);
 $white: hsl(0deg 0% 100%);
 
 /* Sizing */
-$navbar-height: 2.75rem;
+$navbar-height: 3rem;
 $toolbar-width: 3rem;
 $control-padding: 0.5rem;
 
@@ -23,10 +23,15 @@ $control-padding: 0.5rem;
   color: $colour;
   box-shadow: 0 0 0.1rem $white, 0 0 0.3rem $transparent, 0 0 0.2rem $colour;
   transition: all 0.2s;
+
+  i,
+  span {
+    pointer-events: none;
+  }
 }
 
 @mixin neon-item($colour) {
-  $transparent: transparentize($colour, 0.5);
+  $transparent: transparentize($colour, 0.85);
 
   display: flex;
   align-items: center;
@@ -38,12 +43,15 @@ $control-padding: 0.5rem;
 
   &:hover {
     cursor: pointer;
-    background: hsl(268deg 39% 15% / 100%);
+    border: 1px solid $colour;
+    background: hsla(261, 89%, 7%, 0.5);
+    box-shadow: 0 0 0.5rem $transparent, 0 0 0.3rem $colour;
   }
 
   &:active {
-    box-shadow: 0 0 0.1rem $white;
-    background: hsl(268deg 39% 15% / 100%);
+    border: 1px solid $colour;
+    background: hsl(261, 89%, 7%);
+    box-shadow: none;
   }
 
   i,
