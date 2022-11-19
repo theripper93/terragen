@@ -82,7 +82,7 @@
 
       &.tooltip.active {
         // Active Tool
-        background: color.adjust($bg-dark, $alpha: -0.25);
+        background: color.adjust($bg-dark, $alpha: -0.5);
         border: 1px solid color.adjust($blue, $alpha: -0.5);
         border-radius: 2px;
         @include neon-item($blue);
