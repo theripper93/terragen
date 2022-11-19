@@ -1,5 +1,5 @@
-@import './variables';
 @use 'sass:color';
+@import './variables';
 
 body {
   font-family: 'Roboto Mono', monospace;
@@ -85,6 +85,8 @@ hr {
 
 /* Tooltips */
 .tooltip {
+  @include tooltip-style($blue);
+
   position: relative;
   text-align: center;
   display: inline-block;
@@ -94,9 +96,6 @@ hr {
     position: absolute;
     left: 150%;
     padding: 0.1rem 0.25rem;
-    border: 1px solid $blue;
-    background: $bg;
-    color: $blue;
     animation: fade 1.5s;
     white-space: nowrap;
   }

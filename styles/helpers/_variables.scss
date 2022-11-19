@@ -47,7 +47,8 @@ $control-padding: 0.5rem;
     cursor: pointer;
     border: 1px solid $colour;
     background: color.adjust($bg-dark, $alpha: -0.5);
-    box-shadow: 0 0 0.5rem color.adjust($colour, $alpha: -0.85), 0 0 0.3rem $colour;
+    box-shadow: 0 0 0.5rem color.adjust($colour, $alpha: -0.85),
+      0 0 0.3rem $colour;
   }
 
   &:active {
@@ -62,16 +63,10 @@ $control-padding: 0.5rem;
   }
 }
 
-@mixin tooltip-style() {
+@mixin tooltip-style($colour) {
   &:hover::before {
-    content: attr(data-tooltip);
-    position: absolute;
-    left: 150%;
-    padding: 0.1rem 0.25rem;
     border: 1px solid $blue;
-    background: $bg;
+    background: color.adjust($bg-dark, $alpha: -0.5);
     color: $blue;
-    animation: fade 1.5s;
-    white-space: nowrap;
   }
 }
