@@ -27,6 +27,7 @@ export function initPainting(textureSize) {
 class Brush{
     constructor(textureResolution){
         this.textureResolution = textureResolution;
+        this.color = 0xff0000;
     }
 
     get maps(){
