@@ -4,9 +4,15 @@
 body {
   font-family: 'Roboto Mono', monospace;
   background: $bg;
+  overflow-y: hidden;
 }
 
 button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: 1px solid transparent;
+
   &:hover,
   &:active {
     cursor: pointer;
@@ -25,9 +31,10 @@ hr {
 #mobile-warning {
   /* The page for telling mobile users to fuck off */
   display: none;
+
   h1 {
-    background: -webkit-linear-gradient($blue, $pink);
-    -webkit-background-clip: text;
+    background: linear-gradient($blue, $pink);
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 }
@@ -45,7 +52,7 @@ hr {
 #menu {
   // Top Navbar
   display: grid;
-  grid-template-columns: repeat(2, 30%);
+  grid-template-columns: repeat(2, 1fr);
   height: 3rem;
   pointer-events: all;
   align-items: center;
@@ -64,16 +71,27 @@ hr {
       font-size: 0.9rem;
       @include neon-group($pink);
       @include neon-hover($pink);
-
-      i {
-        font-size: 0.9rem;
-      }
     }
   }
 
   .right {
     display: flex;
-    align-self: right;
+    justify-self: flex-end;
+    padding: 0 0.25rem;
+    
+    .side-buttons {
+      color: $pink;
+      font-size: 1.25rem;
+      text-shadow: 0 0 0.3rem color.adjust($pink, $alpha: -0.5);
+
+      &:hover {
+        text-shadow: 0 0 0.1rem $pink, 0 0 0.4rem color.adjust($pink, $alpha: -0.25);
+      }
+
+      &:active {
+        text-shadow: 0 0 0.1rem $pink;
+      }
+    }
   }
 }
 
