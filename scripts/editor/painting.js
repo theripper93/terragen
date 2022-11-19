@@ -1,5 +1,3 @@
-import * as PIXI from '../lib/pixi.min.mjs';
-
 export function initPainting(textureSize) {
 
     canvas.painting.colorMap = new PIXI.Application({width: textureSize.x, height: textureSize.y});
@@ -11,6 +9,7 @@ export function initPainting(textureSize) {
     canvas.painting.pixiApps = [canvas.painting.colorMap, canvas.painting.normalMap, canvas.painting.roughnessMap, canvas.painting.metalnessMap, canvas.painting.occulsionMap];
 
     canvas.painting.pixiApps.forEach(a => {
+        a.renderer.backgroundColor = 0xffffff;
         a.width = textureSize.x;
         a.height = textureSize.y;
         a.rTex = PIXI.RenderTexture.create({width: textureSize.x, height: textureSize.y});
@@ -18,6 +17,8 @@ export function initPainting(textureSize) {
     });
 
     canvas.painting.brush = new Brush(textureSize);
+
+    canvas.painting.brush.commitGraphicsToTexture();
 }
 
 

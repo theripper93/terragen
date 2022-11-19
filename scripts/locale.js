@@ -45,6 +45,8 @@ function initTranslations(data){
     translate(document.querySelector("#ui"));
     initControls();
     initMenu();
+    canvas.loading.localization = true;
+    canvas.loading.loadComplete();
 };
 
 

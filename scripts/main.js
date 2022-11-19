@@ -31,6 +31,16 @@ globalThis.canvas = {
             resolution: 50,
         }
     },
+    loading: {
+        exr: false,
+        localization: false,
+        loadComplete: () =>{
+            if(canvas.loading.exr && canvas.loading.localization && !isMobile()){
+                canvas.painting.brush.updateMaterial();
+                document.querySelector("main").style.display = "block";
+            }
+        }
+    },
     painting: {},
     materials: {
         wireframe: new THREE.MeshBasicMaterial({color: 0xff9500, wireframe: true, side: THREE.DoubleSide}),
@@ -51,6 +61,8 @@ function loadEXR(url) {
       let newEnvMap = exrCubeRenderTarget ? exrCubeRenderTarget.texture : null;
       canvas.scene.environment = newEnvMap;
       pmremGenerator.dispose();
+      canvas.loading.exr = true;
+      canvas.loading.loadComplete();
     }
 }
 
