@@ -46,10 +46,13 @@ hr {
   // Top Navbar
   display: grid;
   grid-template-columns: repeat(2, 30%);
-  height: $navbar-height;
+  height: 3rem;
   pointer-events: all;
+  align-items: center;
+  justify-items: start;
+  justify-content: space-between;
 
-  .main {
+  .left {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 
@@ -60,12 +63,17 @@ hr {
       margin: $control-padding;
       font-size: 0.9rem;
       @include neon-group($pink);
-  @include neon-hover($pink);
+      @include neon-hover($pink);
 
       i {
         font-size: 0.9rem;
       }
     }
+  }
+
+  .right {
+    display: flex;
+    align-self: right;
   }
 }
 
@@ -103,7 +111,7 @@ hr {
 }
 
 .tooltip {
-  // Tooltips 
+  // Tooltips
   display: inline-block;
   position: relative;
   text-align: center;

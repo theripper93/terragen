@@ -27,7 +27,7 @@
     <main>
       <nav id="ui">
         <div id="menu">
-          <div class="main">
+          <section class="left">
             <button class="item" data-action="new">
               <span><i class="fa-regular fa-file"></i> {menu.new}</span>
             </button>
@@ -40,10 +40,13 @@
             <button class="item" data-action="export">
               <span><i class="fa-solid fa-download"></i> {menu.export}</span>
             </button>
-          </div>
+          </section>
+          <aside class="right">
+            <p>Help</p>
+          </aside>
         </div>
         <aside id="controls">
-          <div class="toggles">
+          <section class="toggles">
             <button
               class="option tooltip"
               data-tool="cycle-view"
@@ -58,9 +61,9 @@
             >
               <i class="fa-solid fa-draw-polygon"></i>
             </button>
-          </div>
+          </section>
           <hr />
-          <div class="tools">
+          <section class="tools">
             <div id="sculpt-buttons">
               <button
                 class="option tooltip active"
@@ -129,13 +132,13 @@
                 <span>3</span>
               </button>
             </div>
-          </div>
+          </section>
         </aside>
       </nav>
-      <div id="canvas-container"></div>
+      <figure id="canvas-container"></div>
     </main>
-    <aside id="mobile-warning">
+    <footer id="mobile-warning">
       <h1>Mobile devices are unsupported for this site.</h1>
-    </aside>
+    </footer>
   </body>
 </html>
