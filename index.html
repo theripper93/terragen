@@ -2,19 +2,23 @@
 <html lang="en">
   <head>
     <!-- Metadata -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Terragen</title>
+    <link rel="icon" type="image/svg" href="/assets/ellipse.svg" />
     <!-- Libraries -->
     <script src="scripts/lib/i18n.min.js"></script>
     <script src="scripts/lib/pixi.min.js"></script>
-    <script src="https://kit.fontawesome.com/ba56e683fc.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/ba56e683fc.js"
+      crossorigin="anonymous"
+    ></script>
     <!-- JS -->
     <script src="scripts/main.js" type="module"></script>
     <script src="scripts/locale.js" type="module"></script>
     <!-- Stylesheet -->
-    <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet" />
     <!-- Google Fonts -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap');
@@ -50,44 +54,99 @@
         </div>
         <aside id="controls">
           <section class="toggles">
-            <button class="option tooltip" data-tool="cycle-view" data-tooltip="{controls.viewMode}">
+            <button
+              class="option tooltip"
+              data-tool="cycle-view"
+              data-tooltip="{controls.viewMode}"
+            >
               <i class="fa-solid fa-circle"></i>
             </button>
-            <button class="option tooltip" data-tool="cycle-mode" data-tooltip="{controls.editMode}">
+            <button
+              class="option tooltip"
+              data-tool="cycle-mode"
+              data-tooltip="{controls.editMode}"
+            >
               <i class="fa-solid fa-draw-polygon"></i>
             </button>
           </section>
           <section class="tools">
             <div id="sculpt-buttons">
-              <button class="option tooltip active" data-sculpt-mode="raise" data-tool="sculpt" data-tooltip="{controls.sculpt.raise}">
+              <button
+                class="option tooltip active"
+                data-sculpt-mode="raise"
+                data-tool="sculpt"
+                data-tooltip="{controls.sculpt.raise}"
+              >
                 <i class="fa-solid fa-chevron-up"></i>
               </button>
-              <button class="option tooltip" data-sculpt-mode="flat" data-tool="sculpt" data-tooltip="{controls.sculpt.flat}">
+              <button
+                class="option tooltip"
+                data-sculpt-mode="flat"
+                data-tool="sculpt"
+                data-tooltip="{controls.sculpt.flat}"
+              >
                 <i class="fa-solid fa-arrow-right-arrow-left"></i>
               </button>
-              <button class="option tooltip" data-sculpt-mode="smooth" data-tool="sculpt" data-tooltip="{controls.sculpt.smooth}">
+              <button
+                class="option tooltip"
+                data-sculpt-mode="smooth"
+                data-tool="sculpt"
+                data-tooltip="{controls.sculpt.smooth}"
+              >
                 <i class="fa-solid fa-hands"></i>
               </button>
-              <button class="option tooltip" data-sculpt-mode="mold" data-tool="sculpt" data-tooltip="{controls.sculpt.mold}">
+              <button
+                class="option tooltip"
+                data-sculpt-mode="mold"
+                data-tool="sculpt"
+                data-tooltip="{controls.sculpt.mold}"
+              >
                 <i class="fa-solid fa-mound"></i>
               </button>
-              <button class="option tooltip" data-sculpt-mode="normal" data-tool="sculpt" data-tooltip="{controls.sculpt.normal}">
+              <button
+                class="option tooltip"
+                data-sculpt-mode="normal"
+                data-tool="sculpt"
+                data-tooltip="{controls.sculpt.normal}"
+              >
                 <i class="fa-solid fa-dollar-sign"></i>
               </button>
             </div>
             <div id="paint-buttons" style="display: none">
-              <button class="option tooltip" data-paint-mode="paint1" data-tool="paint" data-tooltip="{controls.paint.normal}">
+              <button
+                class="option tooltip"
+                data-paint-mode="paint1"
+                data-tool="paint"
+                data-tooltip="{controls.paint.normal}"
+              >
                 <span>1</span>
               </button>
-              <button class="option tooltip" data-paint-mode="paint2" data-tool="paint" data-tooltip="{controls.paint.normal}">
+              <button
+                class="option tooltip"
+                data-paint-mode="paint2"
+                data-tool="paint"
+                data-tooltip="{controls.paint.normal}"
+              >
                 <span>2</span>
               </button>
-              <button class="option tooltip" data-paint-mode="paint3" data-tool="paint" data-tooltip="{controls.paint.normal}">
+              <button
+                class="option tooltip"
+                data-paint-mode="paint3"
+                data-tool="paint"
+                data-tooltip="{controls.paint.normal}"
+              >
                 <span>3</span>
               </button>
             </div>
           </section>
-          <input id="slider" type="range" orient="vertical" min="1" max="100" value="50">
+          <input
+            id="slider"
+            type="range"
+            orient="vertical"
+            min="1"
+            max="100"
+            value="50"
+          />
         </aside>
       </nav>
       <figure id="canvas-container"></figure>

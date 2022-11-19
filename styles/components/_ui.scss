@@ -84,7 +84,7 @@
         // Active Tool
         @include neon-item($blue);
         background: color.adjust($bg-dark, $alpha: -0.5);
-        border: 1px solid color.adjust($blue, $alpha: -0.5);
+        border: 1px solid color.adjust($blue, $alpha: -0.6);
         border-radius: 2px;
       }
     }
