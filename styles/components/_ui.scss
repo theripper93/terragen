@@ -31,8 +31,8 @@
       height: calc($navbar-height - 2 * $control-padding);
       padding: $control-padding;
       font-size: 0.9rem;
-      @include neon-group($pink);
-      @include neon-hover($pink);
+      @include neon-group($blue);
+      @include neon-hover($blue);
     }
   }
 
