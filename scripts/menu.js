@@ -15,20 +15,31 @@ export function initMenu(){
 
 }
 
-function exportGLB(){
-    const exporter = new GLTFExporter();
-    canvas.scene.terrain.material = canvas.materials.terrain;
-exporter.parse(
-	canvas.scene.terrain,
-	function ( gltf ) {
+function exportGLB() {
+  const exporter = new GLTFExporter();
+  canvas.scene.terrain.material = canvas.materials.terrain;
+  exporter.parse(
+    canvas.scene.terrain,
+    function (gltf) {
+      saveArrayBuffer(gltf, "scene.glb");
+    },
+    function (error) {
+      console.log("An error happened");
+    },
+    { binary: true }
+  );
+}
 
-		console.log( gltf );
-		downloadJSON( gltf );
+function saveArrayBuffer(buffer, filename) {
+  save(new Blob([buffer], { type: "application/octet-stream" }), filename);
+}
 
-	},
-	function ( error ) {
-		console.log( 'An error happened' );
-	},
-	{binary: true}
-);
+const link = document.createElement("a");
+link.style.display = "none";
+document.body.appendChild(link);
+
+function save(blob, filename) {
+  link.href = URL.createObjectURL(blob);
+  link.download = filename;
+  link.click();
 }
