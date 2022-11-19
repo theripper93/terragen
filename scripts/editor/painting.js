@@ -14,6 +14,7 @@ export function initPainting(textureSize) {
         a.width = textureSize.x;
         a.height = textureSize.y;
         a.rTex = PIXI.RenderTexture.create({width: textureSize.x, height: textureSize.y});
+        a.spriteTex = PIXI.RenderTexture.create({width: textureSize.x, height: textureSize.y});
     });
 
     canvas.painting.brush = new Brush(textureSize);
@@ -100,11 +101,11 @@ class Brush{
 
     commitGraphicsToTexture(){
         for(const app of canvas.painting.pixiApps){
-            const rTex2 = PIXI.RenderTexture.create({width: this.textureResolution.x, height: this.textureResolution.y});
-            app.renderer.render(app.stage, {renderTexture: rTex2});
-            app.rTex.destroy(true);
-            app.rTex = rTex2;
-            const sprite = new PIXI.Sprite(app.rTex);
+            app.renderer.render(app.stage, {renderTexture: app.rTex});
+            const swap = app.spriteTex;
+            app.spriteTex = app.rTex;
+            app.rTex = swap;
+            const sprite = new PIXI.Sprite(app.spriteTex);
             app.stage.removeChildren();
             app.stage.addChild(sprite);
         }
