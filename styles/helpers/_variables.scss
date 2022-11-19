@@ -10,7 +10,7 @@ $bg-dark: hsl(261deg 89% 7%);
 
 /* Sizing */
 $navbar-height: 3rem;
-$toolbar-width: 3rem;
+$toolbar-width: 2.5rem;
 $control-padding: 0.5rem;
 
 /* Mixins */
@@ -34,6 +34,8 @@ $control-padding: 0.5rem;
 }
 
 @mixin neon-item($colour) {
+  @include neon-hover($colour);
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,7 +44,6 @@ $control-padding: 0.5rem;
   border-radius: 2px;
   color: $colour;
   transition: all 0.2s;
-  @include neon-hover($colour);
 
   i,
   span {

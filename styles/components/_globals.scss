@@ -42,7 +42,9 @@ input[type='range' i] {
     &:hover,
     &:active {
       cursor: pointer;
+      background: color.adjust($blue, $lightness: 10%);
     }
+
   }
 
   &::-webkit-slider-runnable-track {

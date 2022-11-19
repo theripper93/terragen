@@ -15,7 +15,7 @@
   // Top Navbar
   display: flex;
   height: 3rem;
-  margin: 0.5rem;
+  margin: $control-padding;
   pointer-events: all;
   align-items: center;
   justify-items: start;
@@ -27,12 +27,13 @@
     gap: $control-padding;
 
     .item {
+      @include neon-group($blue);
+      @include neon-hover($blue);
+      
       display: flex;
       height: calc($navbar-height - 2 * $control-padding);
       padding: $control-padding;
       font-size: 0.9rem;
-      @include neon-group($blue);
-      @include neon-hover($blue);
     }
   }
 
@@ -71,19 +72,22 @@
 
   .toggles,
   .tools {
+    @include neon-group($blue);
+    
     display: flex;
     flex-direction: column;
-    @include neon-group($blue);
 
     .option {
+      @include neon-item($blue);
+
       width: calc($toolbar-width - 2 * $control-padding);
       margin: $control-padding;
       aspect-ratio: 1;
-      @include neon-item($blue);
 
       &.tooltip.active {
         // Active Tool
         @include neon-item($blue);
+
         background: color.adjust($bg-dark, $alpha: -0.75);
         border: 1px solid color.adjust($blue, $alpha: -0.5);
         border-radius: 2px;
@@ -94,14 +98,15 @@
 
 .tooltip {
   // Tooltips
+  @include tooltip-style($blue);
+  
   display: inline-block;
   position: relative;
   text-align: center;
-  @include tooltip-style($blue);
 
   &:hover::before {
     position: absolute;
-    left: 150%;
+    left: 200%;
     content: attr(data-tooltip);
     padding: 0.1rem 0.25rem;
     font-size: 0.8rem;
