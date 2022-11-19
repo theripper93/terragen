@@ -5,7 +5,7 @@ $blue: hsl(181deg 79% 54%);
 $pink: hsl(325deg 79% 53%);
 $orange: hsl(23deg 100% 54%);
 $white: hsl(0deg 0% 100%);
-$bg: hsl(268deg 39% 15%);
+$bg: hsl(261, 57%, 18%);
 $bg-dark: hsl(261deg 89% 7%);
 
 /* Sizing */
@@ -26,7 +26,6 @@ $control-padding: 0.5rem;
   box-shadow: 0 0 0.1rem $white, 0 0 0.3rem color.adjust($colour, $alpha: -0.5),
     0 0 0.2rem $colour;
   transition: all 0.2s;
-  @include neon-hover($colour);
 
   i,
   span {
@@ -73,7 +72,6 @@ $control-padding: 0.5rem;
     color: $blue;
   }
 }
-
 
 @keyframes fade {
   // Workaround for transition interacting poorly with animation delay

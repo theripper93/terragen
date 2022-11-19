@@ -60,6 +60,7 @@ hr {
       margin: $control-padding;
       font-size: 0.9rem;
       @include neon-group($pink);
+  @include neon-hover($pink);
 
       i {
         font-size: 0.9rem;
