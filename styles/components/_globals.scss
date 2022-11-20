@@ -19,6 +19,7 @@ button {
   }
 }
 
+/* Inputs */
 input[type='range'],
 input[type='range' i] {
   /* Difficult to style sliders */
@@ -51,6 +52,20 @@ input[type='range' i] {
 
   &:focus::-webkit-slider-runnable-track {
     background: color.adjust($bg, $blackness: 5%);
+  }
+}
+
+input[type='color'] {
+  @include neon-group($blue);
+  @include neon-hover($blue);
+
+  &::-webkit-color-swatch {
+    border: 1px solid $blue;
+    box-shadow:0 0 0.1rem $blue,
+      0 0 0.2rem color.adjust($blue, $alpha: -0.5);
+
+    &-wrapper {
+    }
   }
 }
 
