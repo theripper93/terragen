@@ -38,6 +38,11 @@ class Brush{
     constructor(textureResolution){
         this.textureResolution = textureResolution;
         this._matrix = new PIXI.Matrix();
+        this.brushTexture = PIXI.Texture.from("../assets/brushes/brush.png");
+    }
+
+    get brushMask(){
+        return PIXI.Sprite.from(this.brushTexture);
     }
 
     get maps(){
@@ -63,12 +68,8 @@ class Brush{
         }
     }
 
-    get blurFilter(){
-        return new PIXI.filters.BlurFilter(this.blurStrength, 16);
-    }
-
-    get blurStrength(){
-        return (this.radius) * parseFloat(document.getElementById("blur").value) * 2;
+    get brushStrength(){
+        return parseFloat(document.getElementById("blur").value);
     }
 
     get opacity(){
@@ -120,8 +121,13 @@ class Brush{
             stroke.beginTextureFill({texture, color: this.color, alpha: this.opacity, matrix: this.matrix});
             stroke.drawCircle(position.x, position.y, this.radius);
             stroke.endFill();
+            const mask = this.brushMask;
+            mask.anchor.set(0.5);
+            mask.width = mask.height = this.radius * 2;
+            mask.position.set(position.x, position.y);
             stroke.scale.set(scale.x, scale.y);
-            stroke.filters = [this.blurFilter];
+            stroke.mask = mask;
+            app.stage.addChild(mask);
             app.stage.addChild(stroke);
         }
         this.updateMaterial();
@@ -162,3 +168,5 @@ class Brush{
         this.updateMaterial();
     }
 }
+
+
