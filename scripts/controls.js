@@ -12,13 +12,16 @@ export function initControls(){
                 canvas.scene.toggleMode();
                 switch (canvas.scene._mode) {
                     case "wireframe":
-                        e.target.innerHTML = '<i class="fa-solid fa-border-none"></i>';
+                        e.target.innerHTML =
+                          '<i class="fa-duotone fa-border-none"></i>'
                         break;
                     case "noTexture":
-                        e.target.innerHTML = '<i class="fa-regular fa-circle"></i>';
+                        e.target.innerHTML =
+                          '<i class="fa-duotone fa-circle-half-stroke"></i>'
                         break;
                     case "terrain":
-                        e.target.innerHTML = '<i class="fa-solid fa-circle"></i>';
+                        e.target.innerHTML =
+                          '<i class="fa-duotone fa-bring-forward"></i>'
                         break;
                 }
                 break;

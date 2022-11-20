@@ -111,7 +111,14 @@
     gap: $control-padding;
 
     .paint-colour {
+      height: $toolbar-width;
       width: $toolbar-width;
+      aspect-ratio: 1;
+
+      &::-webkit-color-swatch-wrapper {
+        // Pad the wrapper for the selector to be square
+        padding: 0.25rem 0.15rem;
+      }
     }
 
     .slider-group {
