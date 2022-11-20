@@ -10,7 +10,10 @@
     <!-- Libraries -->
     <script src="scripts/lib/i18n.min.js"></script>
     <script src="scripts/lib/pixi.min.js"></script>
-    <script src="https://kit.fontawesome.com/b966192883.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/b966192883.js"
+      crossorigin="anonymous"
+    ></script>
     <!-- JS -->
     <script src="scripts/main.js" type="module"></script>
     <script src="scripts/locale.js" type="module"></script>
@@ -48,7 +51,7 @@
           </aside>
         </nav>
         <aside id="controls">
-          <section class="toggles">
+          <section id="toggles" class="neon-group">
             <button
               class="option tooltip"
               data-tool="cycle-view"
@@ -61,11 +64,11 @@
               data-tool="cycle-mode"
               data-tooltip="{controls.editMode}"
             >
-            <i class="fa-duotone fa-scalpel-line-dashed"></i>
+              <i class="fa-duotone fa-scalpel-line-dashed"></i>
             </button>
           </section>
           <section class="tools">
-            <div id="sculpt-buttons">
+            <div id="sculpt-buttons" class="neon-group">
               <button
                 class="option tooltip active"
                 data-sculpt-mode="raise"
@@ -107,44 +110,50 @@
                 <i class="fa-solid fa-dollar-sign"></i>
               </button>
             </div>
-            <div id="paint-buttons" style="display: none">
+            <div id="paint-buttons" class="paint-inputs" style="display: none">
               <input
-              id="color"
-              type="color"
-              value="#ffffff"
-            />
+                id="color"
+                class="paint-colour"
+                type="color"
+                value="#ffffff"
+              />
+              <section class="slider-group">
+                <input
+                  id="blur"
+                  class="slider-vertical tooltip"
+                  data-tooltip="{controls.paint.blur}"
+                  type="range"
+                  orient="vertical"
+                  min="0"
+                  max="1"
+                  value="0"
+                  step="0.05"
+                />
+                <input
+                  id="scale"
+                  class="slider-vertical tooltip"
+                  data-tooltip="{controls.paint.scale}"
+                  type="range"
+                  orient="vertical"
+                  min="0.05"
+                  max="1"
+                  value="1"
+                  step="0.05"
+                />
+                <input
+                  id="opacity"
+                  class="slider-vertical tooltip"
+                  data-tooltip="{controls.paint.opacity}"
+                  type="range"
+                  orient="vertical"
+                  min="0"
+                  max="1"
+                  value="1"
+                  step="0.05"
+                />
+              </section>
             </div>
           </section>
-          <input
-            id="blur"
-            class="slider"
-            type="range"
-            orient="vertical"
-            min="0"
-            max="1"
-            value="0"
-            step="0.05"
-          />
-          <input
-          id="scale"
-          class="slider"
-          type="range"
-          orient="vertical"
-          min="0.05"
-          max="1"
-          value="1"
-          step="0.05"
-        />
-        <input
-        id="opacity"
-        class="slider"
-        type="range"
-        orient="vertical"
-        min="0"
-        max="1"
-        value="1"
-        step="0.05"
-      />
         </aside>
       </div>
       <figure id="canvas-container"></figure>

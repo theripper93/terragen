@@ -29,11 +29,17 @@
     .item {
       @include neon-group($blue);
       @include neon-hover($blue);
-      
+
       display: flex;
       height: calc($navbar-height - 2 * $control-padding);
       padding: $control-padding;
       font-size: 0.9rem;
+
+      span {
+        display: flex;
+        align-items: center;
+        gap: 0 $control-padding;
+      }
     }
   }
 
@@ -70,14 +76,14 @@
   pointer-events: all;
   gap: 1rem;
 
-  .toggles,
-  .tools {
+  .neon-group {
     @include neon-group($blue);
-    
+
     display: flex;
     flex-direction: column;
 
     .option {
+      // Tool buttons for sculpt mode
       @include neon-item($blue);
 
       width: calc($toolbar-width - 2 * $control-padding);
@@ -94,12 +100,80 @@
       }
     }
   }
+
+  .paint-inputs {
+    // Group for the buttons for painting
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: $control-padding;
+
+    .paint-colour {
+      width: $toolbar-width;
+    }
+
+    .slider-group {
+      // Wrapper for the sliders
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+
+      .slider-vertical {
+        transform: rotate(270deg);
+        margin-top: 4rem;
+
+        &::-webkit-slider-thumb {
+          // Reverse rotation for image
+          transform: rotate(-270deg);
+
+          // Maintain square ratio for icon
+          aspect-ratio: 1;
+          width: 1rem;
+          height: 1rem;
+
+          // Remove default styling for thumb
+          background: transparent;
+          background-repeat: no-repeat;
+        }
+
+        &.tooltip::before {
+          // Reverse rotation for text
+          transform: rotate(-270deg);
+
+          // Reverse positioning for tooltip due to translate
+          left: 200%;
+          top: unset;
+        }
+      }
+
+      /* Slider Icons */
+      #blur {
+        &::-webkit-slider-thumb {
+          background-image: url('../../assets/slider/cloud-solid.svg');
+        }
+      }
+
+      #scale {
+        &::-webkit-slider-thumb {
+          background-image: url('../../assets/slider/scale-balanced-solid.svg');
+        }
+      }
+
+      #opacity {
+        &::-webkit-slider-thumb {
+          background-image: url('../../assets/slider/eye-solid.svg');
+        }
+      }
+    }
+  }
 }
 
 .tooltip {
   // Tooltips
   @include tooltip-style($blue);
-  
+
   display: inline-block;
   position: relative;
   text-align: center;

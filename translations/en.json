@@ -15,6 +15,11 @@
             "smooth": "Smooth",
             "mold": "Mold",
             "normal": "Normal"
+        },
+        "paint": {
+            "blur": "Blur",
+            "scale": "Scale",
+            "opacity": "Opacity"
         }
     }
 }

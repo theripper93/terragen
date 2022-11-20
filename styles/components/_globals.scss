@@ -19,13 +19,12 @@ button {
   }
 }
 
+/* Inputs */
 input[type='range'],
 input[type='range' i] {
   /* Difficult to style sliders */
   appearance: none;
   outline: none;
-  transform: rotate(270deg);
-  margin-top: 3.5rem;
   border: 1px solid $blue;
   color: transparent;
   box-shadow: 0 0 0.05rem $white, 0 0 0.1rem $blue,
@@ -44,7 +43,6 @@ input[type='range' i] {
       cursor: pointer;
       background: color.adjust($blue, $lightness: 10%);
     }
-
   }
 
   &::-webkit-slider-runnable-track {
@@ -54,6 +52,17 @@ input[type='range' i] {
 
   &:focus::-webkit-slider-runnable-track {
     background: color.adjust($bg, $blackness: 5%);
+  }
+}
+
+input[type='color'] {
+  @include neon-group($blue);
+  @include neon-hover($blue);
+
+  &::-webkit-color-swatch {
+    border: 1px solid $blue;
+    box-shadow:0 0 0.1rem $blue,
+      0 0 0.2rem color.adjust($blue, $alpha: -0.5);
   }
 }
 
