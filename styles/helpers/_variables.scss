@@ -53,14 +53,13 @@ $control-padding: 0.5rem;
 
 @mixin neon-hover($colour) {
   &:hover {
-    border: 1px solid $colour;
+    border: 1px solid color.adjust($colour, $alpha: -0.2);
     background: color.adjust($bg-dark, $alpha: -0.6);
     box-shadow: 0 0 0.3rem $colour,
       0 0 0.5rem color.adjust($colour, $alpha: -0.85);
   }
 
   &:active {
-    border: 1px solid $colour;
     background: $bg-dark;
     box-shadow: none;
   }
