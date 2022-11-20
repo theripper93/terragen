@@ -1,5 +1,6 @@
 import { initControls } from './controls.js';
 import { initMenu } from './menu.js';
+import { setupInteractions } from './interactions.js';
 
 fetch(`./translations/${navigator.language}.json`).then(async (locale) => {
     const res = await locale.json();
@@ -45,6 +46,7 @@ function initTranslations(data){
     translate(document.querySelector("#ui"));
     initControls();
     initMenu();
+    setupInteractions();
     canvas.loading.localization = true;
     canvas.loading.loadComplete();
 };
