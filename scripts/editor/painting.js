@@ -6,6 +6,10 @@ export function initPainting(textureSize) {
     canvas.painting.metalnessMap = new PIXI.Application({width: textureSize.x, height: textureSize.y});
     canvas.painting.occulsionMap = new PIXI.Application({width: textureSize.x, height: textureSize.y});
 
+    for(let [k,v] of Object.entries(canvas.painting)){
+        v.mapId = k;
+    }
+
     canvas.painting.pixiApps = [canvas.painting.colorMap, canvas.painting.normalMap, canvas.painting.roughnessMap, canvas.painting.metalnessMap, canvas.painting.occulsionMap];
 
     canvas.painting.pixiApps.forEach(a => {
@@ -19,6 +23,14 @@ export function initPainting(textureSize) {
     canvas.painting.brush = new Brush(textureSize);
 
     canvas.painting.brush.commitGraphicsToTexture();
+}
+
+export function clearTextures(){
+    canvas.painting.pixiApps.forEach(a => {
+        a.stage.removeChildren();
+        a.renderer.render(a.stage, a.rTex);
+        a.renderer.render(a.stage, a.spriteTex);
+    });
 }
 
 
@@ -100,14 +112,18 @@ class Brush{
 
     paint(){
         const position = this.getPosition();
-        const stroke = new PIXI.Graphics();
-        stroke.beginTextureFill({texture: this.getTexture("colorMap"), color: this.color, alpha: this.opacity, matrix: this.matrix});
-        stroke.drawCircle(position.x, position.y, this.radius);
-        stroke.endFill();
         const scale = this.brushScale;
-        stroke.scale.set(scale.x, scale.y);
-        stroke.filters = [this.blurFilter];
-        this.maps.colorMap.stage.addChild(stroke);
+        for(const app of canvas.painting.pixiApps){
+            const texture = this.getTexture(app.mapId);
+            if(!texture) continue;
+            const stroke = new PIXI.Graphics();
+            stroke.beginTextureFill({texture, color: this.color, alpha: this.opacity, matrix: this.matrix});
+            stroke.drawCircle(position.x, position.y, this.radius);
+            stroke.endFill();
+            stroke.scale.set(scale.x, scale.y);
+            stroke.filters = [this.blurFilter];
+            app.stage.addChild(stroke);
+        }
         this.updateMaterial();
     }
 

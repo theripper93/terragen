@@ -10,6 +10,12 @@ export class MaterialManager{
         return material;
     }
 
+    removeMaterial(index){
+        const mat = this.materials[index];
+        mat.destroy();
+        this.materials.splice(index, 1);
+    }
+
     currentMaterial(){
         return this.materials[0];
     }
@@ -32,18 +38,18 @@ class Material{
     }
 
     initPixiTextures(){
-        this.pixiTextures.colorMap = this.colorMap ? PIXI.Texture.from(this.colorMap) : this.blank;
-        this.pixiTextures.normalMap = this.normalMap ? PIXI.Texture.from(this.normalMap) : this.blank;
-        this.pixiTextures.roughnessMap = this.roughnessMap ? PIXI.Texture.from(this.roughnessMap) : this.blank;
-        this.pixiTextures.metalnessMap = this.metalnessMap ? PIXI.Texture.from(this.metalnessMap) : this.blank;
-        this.pixiTextures.occulsionMap = this.occulsionMap ? PIXI.Texture.from(this.occulsionMap) : this.blank;
+        this.pixiTextures.colorMap = this.colorMap ? PIXI.Texture.from(this.colorMap) : null;
+        this.pixiTextures.normalMap = this.normalMap ? PIXI.Texture.from(this.normalMap) : null;
+        this.pixiTextures.roughnessMap = this.roughnessMap ? PIXI.Texture.from(this.roughnessMap) : null;
+        this.pixiTextures.metalnessMap = this.metalnessMap ? PIXI.Texture.from(this.metalnessMap) : null;
+        this.pixiTextures.occulsionMap = this.occulsionMap ? PIXI.Texture.from(this.occulsionMap) : null;
     }
 
     destroy(){
-        this.pixiTextures.colorMap.destroy();
-        this.pixiTextures.normalMap.destroy();
-        this.pixiTextures.roughnessMap.destroy();
-        this.pixiTextures.metalnessMap.destroy();
-        this.pixiTextures.occulsionMap.destroy();
+        this.pixiTextures.colorMap.destroy(true);
+        this.pixiTextures.normalMap.destroy(true);
+        this.pixiTextures.roughnessMap.destroy(true);
+        this.pixiTextures.metalnessMap.destroy(true);
+        this.pixiTextures.occulsionMap.destroy(true);
     }
 }

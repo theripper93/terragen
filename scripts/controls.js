@@ -27,7 +27,7 @@ export function initControls(){
                 if(canvas.cursor.mode === "sculpt"){
                     sculptButtons.style.display = "block";
                     paintButtons.style.display = "none";
-                    e.target.innerHTML = '<i class="fa-solid fa-draw-polygon"></i>';
+                    e.target.innerHTML = '<i class="fa-duotone fa-scalpel-line-dashed"></i>';
                 }else{
                     sculptButtons.style.display = "none";
                     paintButtons.style.display = "flex";
