@@ -45,7 +45,7 @@ globalThis.canvas = {
     painting: {},
     materials: {
         wireframe: new THREE.MeshBasicMaterial({color: 0xff9500, wireframe: true, side: THREE.DoubleSide}),
-        noTexture: new THREE.MeshStandardMaterial( { color: 0xffffff, side: THREE.DoubleSide} ),
+        noTexture: new THREE.MeshStandardMaterial( { color: 0xffffff, side: THREE.DoubleSide, map: (new THREE.TextureLoader).load("./assets/uv_grid_opengl.jpg")} ),
         terrain: new THREE.MeshStandardMaterial( { color: 0xffffff, side: THREE.DoubleSide} ),
     },
     MaterialManager: new MaterialManager(true)
@@ -113,21 +113,21 @@ function animate() {
 	canvas.renderer.render(canvas.scene, canvas.camera);
 };
 
-function setupBasicShape(){
-    var geometry = new THREE.PlaneGeometry( canvas.project.geometry.width, canvas.project.geometry.height, 50, 50 );
+function initProject(){
+    const geometry = new THREE.PlaneGeometry( canvas.project.geometry.width, canvas.project.geometry.height, 50, 50 );
     geometry.rotateX(-Math.PI/2);
-    geometry.setAttribute("color", new THREE.BufferAttribute(new Float32Array(geometry.attributes.position.count * 3), 3));
-    for(let i = 0; i < geometry.attributes.color.count; i++){
-        geometry.attributes.color.setXYZ(i, 1,1,1);
-    }
-    var material = canvas.materials.terrain;
+    const material = canvas.materials.terrain;
     material.map = new THREE.CanvasTexture(canvas.painting.colorMap.view);
-    var cube = new THREE.Mesh( geometry, material );
+    material.normalMap = new THREE.CanvasTexture(canvas.painting.normalMap.view);
+    material.roughnessMap = new THREE.CanvasTexture(canvas.painting.roughnessMap.view);
+    material.metalnessMap = new THREE.CanvasTexture(canvas.painting.metalnessMap.view);
+    material.aoMap = new THREE.CanvasTexture(canvas.painting.occulsionMap.view);
+    const cube = new THREE.Mesh( geometry, material );
     cube.geometry.computeBoundsTree();
     canvas.scene.terrain = cube;
     canvas.scene.add( cube );
 }
 
-if(canvas.DEBUG) setupBasicShape();
+if(canvas.DEBUG) initProject();
 
 animate();

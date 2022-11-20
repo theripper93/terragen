@@ -32,11 +32,11 @@ class Material{
     }
 
     initPixiTextures(){
-        this.pixiTextures.colorMap = this.colorMap ? PIXI.Texture.from(this.colorMap) : this.blank;
-        this.pixiTextures.normalMap = this.normalMap ? PIXI.Texture.from(this.normalMap) : this.blank;
-        this.pixiTextures.roughnessMap = this.roughnessMap ? PIXI.Texture.from(this.roughnessMap) : this.blank;
-        this.pixiTextures.metalnessMap = this.metalnessMap ? PIXI.Texture.from(this.metalnessMap) : this.blank;
-        this.pixiTextures.occulsionMap = this.occulsionMap ? PIXI.Texture.from(this.occulsionMap) : this.blank;
+        this.pixiTextures.colorMap = this.colorMap ? PIXI.Texture.from(this.colorMap) : null;
+        this.pixiTextures.normalMap = this.normalMap ? PIXI.Texture.from(this.normalMap) : null;
+        this.pixiTextures.roughnessMap = this.roughnessMap ? PIXI.Texture.from(this.roughnessMap) : null;
+        this.pixiTextures.metalnessMap = this.metalnessMap ? PIXI.Texture.from(this.metalnessMap) : null;
+        this.pixiTextures.occulsionMap = this.occulsionMap ? PIXI.Texture.from(this.occulsionMap) : null;
     }
 
     destroy(){
