@@ -26,6 +26,7 @@ class Brush{
     constructor(textureResolution){
         this.textureResolution = textureResolution;
         this.color = 0xff0000;
+        this._matrix = new PIXI.Matrix();
     }
 
     get maps(){
@@ -56,10 +57,26 @@ class Brush{
     }
 
     get blurStrength(){
-        return this.radius / 2;
+        return (this.radius) * parseFloat(document.getElementById("blur").value) * 2;
     }
 
-    getTexture(){}
+    get opacity(){
+        return parseFloat(document.getElementById("opacity").value);
+    }
+
+    get scale(){
+        return parseFloat(document.getElementById("scale").value);
+    }
+
+    get matrix(){
+        const scale = this.scale;
+        this._matrix.set(scale, 0, 0, scale, 0, 0);
+        return this._matrix;
+    }
+
+    getTexture(mapId){
+        return canvas.MaterialManager.currentMaterial().pixiTextures[mapId]
+    }
 
     getPosition(){
         const cursorPosition = canvas.cursor.mesh.position;
@@ -81,7 +98,20 @@ class Brush{
     paint(){
         const position = this.getPosition();
         const stroke = new PIXI.Graphics();
-        stroke.beginFill(this.color);
+        stroke.beginTextureFill({texture: this.getTexture("colorMap"), color: this.color, alpha: this.opacity, matrix: this.matrix});
+        stroke.drawCircle(position.x, position.y, this.radius);
+        stroke.endFill();
+        const scale = this.brushScale;
+        stroke.scale.set(scale.x, scale.y);
+        stroke.filters = [this.blurFilter];
+        this.maps.colorMap.stage.addChild(stroke);
+        this.updateMaterial();
+    }
+
+    _old_paint(){
+        const position = this.getPosition();
+        const stroke = new PIXI.Graphics();
+        stroke.beginFill(this.color, this.opacity);
         stroke.drawCircle(position.x, position.y, this.radius);
         stroke.endFill();
         const scale = this.brushScale;

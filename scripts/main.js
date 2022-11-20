@@ -3,6 +3,7 @@ import { EXRLoader } from "./lib/EXRLoader.js";
 import { OrbitControls } from './lib/OrbitControls.js';
 import { Cursor } from './editor/cursor.js';
 import { initPainting } from './editor/painting.js';
+import { MaterialManager } from './editor/materialManager.js';
 import { computeBoundsTree, disposeBoundsTree, acceleratedRaycast } from './lib/three-mesh-bvh.js';
 
 THREE.BufferGeometry.prototype.computeBoundsTree = computeBoundsTree;
@@ -47,6 +48,7 @@ globalThis.canvas = {
         noTexture: new THREE.MeshStandardMaterial( { color: 0xffffff, side: THREE.DoubleSide} ),
         terrain: new THREE.MeshStandardMaterial( { color: 0xffffff, side: THREE.DoubleSide} ),
     },
+    MaterialManager: new MaterialManager(true)
 };
 
 initPainting(new THREE.Vector2(1024, 1024));
