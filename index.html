@@ -10,7 +10,10 @@
     <!-- Libraries -->
     <script src="scripts/lib/i18n.min.js"></script>
     <script src="scripts/lib/pixi.min.js"></script>
-    <script src="https://kit.fontawesome.com/b966192883.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/b966192883.js"
+      crossorigin="anonymous"
+    ></script>
     <!-- JS -->
     <script src="scripts/main.js" type="module"></script>
     <script src="scripts/locale.js" type="module"></script>
@@ -61,7 +64,7 @@
               data-tool="cycle-mode"
               data-tooltip="{controls.editMode}"
             >
-            <i class="fa-duotone fa-scalpel-line-dashed"></i>
+              <i class="fa-duotone fa-scalpel-line-dashed"></i>
             </button>
           </section>
           <section class="tools">
@@ -108,11 +111,17 @@
               </button>
             </div>
             <div id="paint-buttons" class="paint-inputs" style="display: none">
-              <input id="color" class="paint-colour" type="color" value="#ffffff" />
+              <input
+                id="color"
+                class="paint-colour"
+                type="color"
+                value="#ffffff"
+              />
               <section class="slider-group">
                 <input
                   id="blur"
-                  class="slider-vertical"
+                  class="slider-vertical tooltip"
+                  data-tooltip="{controls.paint.blur}"
                   type="range"
                   orient="vertical"
                   min="0"
@@ -122,7 +131,8 @@
                 />
                 <input
                   id="scale"
-                  class="slider-vertical"
+                  class="slider-vertical tooltip"
+                  data-tooltip="{controls.paint.scale}"
                   type="range"
                   orient="vertical"
                   min="0.05"
@@ -132,7 +142,8 @@
                 />
                 <input
                   id="opacity"
-                  class="slider-vertical"
+                  class="slider-vertical tooltip"
+                  data-tooltip="{controls.paint.opacity}"
                   type="range"
                   orient="vertical"
                   min="0"
