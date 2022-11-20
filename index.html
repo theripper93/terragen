@@ -51,7 +51,7 @@
           </aside>
         </nav>
         <aside id="controls">
-          <section class="toggles">
+          <section id="toggles" class="neon-group">
             <button
               class="option tooltip"
               data-tool="cycle-view"
@@ -68,7 +68,7 @@
             </button>
           </section>
           <section class="tools">
-            <div id="sculpt-buttons">
+            <div id="sculpt-buttons" class="neon-group">
               <button
                 class="option tooltip active"
                 data-sculpt-mode="raise"
@@ -110,44 +110,42 @@
                 <i class="fa-solid fa-dollar-sign"></i>
               </button>
             </div>
-            <div id="paint-buttons" style="display: none">
-              <input
-              id="color"
-              type="color"
-              value="#ffffff"
-            />
+            <div id="paint-buttons" class="paint-inputs" style="display: none">
+              <input id="color" type="color" value="#ffffff" />
+              <section class="slider-group">
+                <input
+                  id="blur"
+                  class="slider-vertical"
+                  type="range"
+                  orient="vertical"
+                  min="0"
+                  max="1"
+                  value="0"
+                  step="0.05"
+                />
+                <input
+                  id="scale"
+                  class="slider-vertical"
+                  type="range"
+                  orient="vertical"
+                  min="0.05"
+                  max="1"
+                  value="1"
+                  step="0.05"
+                />
+                <input
+                  id="opacity"
+                  class="slider-vertical"
+                  type="range"
+                  orient="vertical"
+                  min="0"
+                  max="1"
+                  value="1"
+                  step="0.05"
+                />
+              </section>
             </div>
           </section>
-          <input
-            id="blur"
-            class="slider"
-            type="range"
-            orient="vertical"
-            min="0"
-            max="1"
-            value="0"
-            step="0.05"
-          />
-          <input
-          id="scale"
-          class="slider"
-          type="range"
-          orient="vertical"
-          min="0.05"
-          max="1"
-          value="1"
-          step="0.05"
-        />
-        <input
-        id="opacity"
-        class="slider"
-        type="range"
-        orient="vertical"
-        min="0"
-        max="1"
-        value="1"
-        step="0.05"
-      />
         </aside>
       </div>
       <figure id="canvas-container"></figure>

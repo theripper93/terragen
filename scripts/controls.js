@@ -30,7 +30,7 @@ export function initControls(){
                     e.target.innerHTML = '<i class="fa-solid fa-draw-polygon"></i>';
                 }else{
                     sculptButtons.style.display = "none";
-                    paintButtons.style.display = "block";
+                    paintButtons.style.display = "flex";
                     e.target.innerHTML = '<i class="fa-solid fa-paintbrush"></i>';
                 }
                 break;

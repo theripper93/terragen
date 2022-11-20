@@ -29,11 +29,17 @@
     .item {
       @include neon-group($blue);
       @include neon-hover($blue);
-      
+
       display: flex;
       height: calc($navbar-height - 2 * $control-padding);
       padding: $control-padding;
       font-size: 0.9rem;
+
+      span {
+        display: flex;
+        align-items: center;
+        gap: 0 $control-padding;
+      }
     }
   }
 
@@ -70,10 +76,9 @@
   pointer-events: all;
   gap: 1rem;
 
-  .toggles,
-  .tools {
+  .neon-group {
     @include neon-group($blue);
-    
+
     display: flex;
     flex-direction: column;
 
@@ -94,12 +99,31 @@
       }
     }
   }
+
+  .paint-inputs {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: $control-padding;
+
+    .slider-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+
+      .slider-vertical {
+        transform: rotate(270deg);
+      }
+    }
+  }
 }
 
 .tooltip {
   // Tooltips
   @include tooltip-style($blue);
-  
+
   display: inline-block;
   position: relative;
   text-align: center;
