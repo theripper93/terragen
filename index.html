@@ -26,6 +26,23 @@
   <body oncontextmenu="return false;">
     <main style="display: none">
       <header id="ui">
+        <div id="new-project" style="position: absolute; z-index: 100;pointer-events:all; background-color: red;width: 20vw; height: 40vh; left: 40vw; top: 30vh">
+          <span>Width</span><input type="number" id="width" value="10" min="1" step="1" />
+          <span>Height</span><input type="number" id="height" value="10" min="1" step="1" />
+          <span>Geomtery Resolution</span><input type="number" id="geometry-resolution" value="2" min="1" max="10" step="1" />
+          <span>Texture Resolution</span><select name="" id="texture-resolution">
+            <option value="1024">1K</option>
+            <option value="2048" selected>2K</option>
+            <option value="4096">4K</option>
+            <option value="8192">8K</option>
+            <option value="16384">16K</option>
+          </select>
+          <p>warning: these settings cannot be changed after initializing a new project</p>
+          <div>
+            <button>Confirm</button>
+            <button>Cancel</button>
+          </div>
+        </div>
         <nav id="menu">
           <section class="left">
             <button class="item" data-action="new">
