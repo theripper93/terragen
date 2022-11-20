@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Terragen</title>
+    <link type="image/svg" href="/assets/ellipse.svg" rel="icon" />
     <!-- Libraries -->
     <script src="scripts/lib/i18n.min.js"></script>
     <script src="scripts/lib/pixi.min.js"></script>
@@ -14,40 +15,41 @@
       crossorigin="anonymous"
     ></script>
     <!-- JS -->
-    <script type="module" src="scripts/main.js"></script>
-    <script type="module" src="scripts/locale.js"></script>
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles/style.css" />
-    <!-- Google Fonts -->
+    <script src="scripts/main.js" type="module"></script>
+    <script src="scripts/locale.js" type="module"></script>
     <style>
+      @import './styles/style.css';
       @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap');
     </style>
   </head>
 
   <body oncontextmenu="return false;">
     <main style="display: none">
-      <nav id="ui">
-        <div id="menu">
+      <div id="ui">
+        <nav id="menu">
           <section class="left">
             <button class="item" data-action="new">
-              <span><i class="fa-regular fa-file"></i> {menu.new}</span>
+              <span><i class="fa-regular fa-file"></i>{menu.new}</span>
             </button>
             <button class="item" data-action="open">
-              <span><i class="fa-regular fa-folder-open"></i> {menu.open}</span>
+              <span><i class="fa-regular fa-folder-open"></i>{menu.open}</span>
             </button>
             <button class="item" data-action="save">
-              <span><i class="fa-regular fa-floppy-disk"></i> {menu.save}</span>
+              <span><i class="fa-regular fa-floppy-disk"></i>{menu.save}</span>
             </button>
             <button class="item" data-action="export">
-              <span><i class="fa-solid fa-download"></i> {menu.export}</span>
+              <span><i class="fa-solid fa-download"></i>{menu.export}</span>
             </button>
           </section>
           <aside class="right">
-            <button id="help" class="side-buttons">
+            <button class="side-buttons" id="reset">
+              <i class="fa-solid fa-rotate-left"></i>
+            </button>
+            <button class="side-buttons" id="help">
               <i class="fa-regular fa-circle-question"></i>
             </button>
           </aside>
-        </div>
+        </nav>
         <aside id="controls">
           <section class="toggles">
             <button
@@ -69,40 +71,40 @@
             <div id="sculpt-buttons">
               <button
                 class="option tooltip active"
-                data-tool="sculpt"
                 data-sculpt-mode="raise"
+                data-tool="sculpt"
                 data-tooltip="{controls.sculpt.raise}"
               >
                 <i class="fa-solid fa-chevron-up"></i>
               </button>
               <button
                 class="option tooltip"
-                data-tool="sculpt"
                 data-sculpt-mode="flat"
+                data-tool="sculpt"
                 data-tooltip="{controls.sculpt.flat}"
               >
                 <i class="fa-solid fa-arrow-right-arrow-left"></i>
               </button>
               <button
                 class="option tooltip"
-                data-tool="sculpt"
                 data-sculpt-mode="smooth"
+                data-tool="sculpt"
                 data-tooltip="{controls.sculpt.smooth}"
               >
                 <i class="fa-solid fa-hands"></i>
               </button>
               <button
                 class="option tooltip"
-                data-tool="sculpt"
                 data-sculpt-mode="mold"
+                data-tool="sculpt"
                 data-tooltip="{controls.sculpt.mold}"
               >
                 <i class="fa-solid fa-mound"></i>
               </button>
               <button
                 class="option tooltip"
-                data-tool="sculpt"
                 data-sculpt-mode="normal"
+                data-tool="sculpt"
                 data-tooltip="{controls.sculpt.normal}"
               >
                 <i class="fa-solid fa-dollar-sign"></i>
@@ -111,24 +113,24 @@
             <div id="paint-buttons" style="display: none">
               <button
                 class="option tooltip"
-                data-tool="paint"
                 data-paint-mode="paint1"
+                data-tool="paint"
                 data-tooltip="{controls.paint.normal}"
               >
                 <span>1</span>
               </button>
               <button
                 class="option tooltip"
-                data-tool="paint"
                 data-paint-mode="paint2"
+                data-tool="paint"
                 data-tooltip="{controls.paint.normal}"
               >
                 <span>2</span>
               </button>
               <button
                 class="option tooltip"
-                data-tool="paint"
                 data-paint-mode="paint3"
+                data-tool="paint"
                 data-tooltip="{controls.paint.normal}"
               >
                 <span>3</span>
@@ -136,15 +138,15 @@
             </div>
           </section>
           <input
+            id="slider"
             type="range"
             orient="vertical"
             min="1"
             max="100"
             value="50"
-            id="slider"
           />
         </aside>
-      </nav>
+      </div>
       <figure id="canvas-container"></figure>
     </main>
     <footer id="mobile-warning">

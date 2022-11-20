@@ -15,7 +15,7 @@
   // Top Navbar
   display: flex;
   height: 3rem;
-  margin: .5rem;
+  margin: $control-padding;
   pointer-events: all;
   align-items: center;
   justify-items: start;
@@ -24,15 +24,16 @@
   .left {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: $control-padding;
 
     .item {
+      @include neon-group($blue);
+      @include neon-hover($blue);
+      
       display: flex;
       height: calc($navbar-height - 2 * $control-padding);
       padding: $control-padding;
-      margin-right: $control-padding;
       font-size: 0.9rem;
-      @include neon-group($pink);
-      @include neon-hover($pink);
     }
   }
 
@@ -67,46 +68,49 @@
   width: $toolbar-width;
   height: calc(100vh - $navbar-height);
   pointer-events: all;
+  gap: 1rem;
 
   .toggles,
   .tools {
     @include neon-group($blue);
     
+    display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
 
     .option {
       @include neon-item($blue);
-      
+
       width: calc($toolbar-width - 2 * $control-padding);
       margin: $control-padding;
       aspect-ratio: 1;
 
       &.tooltip.active {
         // Active Tool
-        background: $bg;
+        @include neon-item($blue);
+
+        background: color.adjust($bg-dark, $alpha: -0.75);
         border: 1px solid color.adjust($blue, $alpha: -0.5);
         border-radius: 2px;
-        @include neon-item($blue);
       }
     }
   }
 }
 
-
 .tooltip {
   // Tooltips
+  @include tooltip-style($blue);
+  
   display: inline-block;
   position: relative;
   text-align: center;
-  @include tooltip-style($blue);
 
   &:hover::before {
-    content: attr(data-tooltip);
     position: absolute;
-    left: 150%;
+    left: 200%;
+    content: attr(data-tooltip);
     padding: 0.1rem 0.25rem;
-    animation: fade 1.5s;
+    font-size: 0.8rem;
     white-space: nowrap;
+    animation: fade 1.5s;
   }
 }

@@ -19,7 +19,7 @@ globalThis.isMobile = function() {
 
 if(isMobile()) {
     document.querySelector("main").style.display = "none";
-    document.getElementById("mobile-warning").style.display = "block";
+    document.getElementById("mobile-warning").style.display = "flex";
 }
 
 globalThis.canvas = {

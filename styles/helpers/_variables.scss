@@ -10,7 +10,7 @@ $bg-dark: hsl(261deg 89% 7%);
 
 /* Sizing */
 $navbar-height: 3rem;
-$toolbar-width: 3rem;
+$toolbar-width: 2.5rem;
 $control-padding: 0.5rem;
 
 /* Mixins */
@@ -23,8 +23,8 @@ $control-padding: 0.5rem;
   backdrop-filter: blur(10px);
   border: 1px solid $colour;
   color: $colour;
-  box-shadow: 0 0 0.1rem $white, 0 0 0.3rem color.adjust($colour, $alpha: -0.5),
-    0 0 0.2rem $colour;
+  box-shadow: 0 0 0.1rem $white, 0 0 0.2rem $colour,
+    0 0 0.3rem color.adjust($colour, $alpha: -0.5);
   transition: all 0.2s;
 
   i,
@@ -34,6 +34,8 @@ $control-padding: 0.5rem;
 }
 
 @mixin neon-item($colour) {
+  @include neon-hover($colour);
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,7 +44,6 @@ $control-padding: 0.5rem;
   border-radius: 2px;
   color: $colour;
   transition: all 0.2s;
-  @include neon-hover($colour);
 
   i,
   span {
@@ -53,9 +54,9 @@ $control-padding: 0.5rem;
 @mixin neon-hover($colour) {
   &:hover {
     border: 1px solid $colour;
-    background: color.adjust($bg-dark, $alpha: -0.5);
-    box-shadow: 0 0 0.5rem color.adjust($colour, $alpha: -0.85),
-      0 0 0.3rem $colour;
+    background: color.adjust($bg-dark, $alpha: -0.6);
+    box-shadow: 0 0 0.3rem $colour,
+      0 0 0.5rem color.adjust($colour, $alpha: -0.85);
   }
 
   &:active {
