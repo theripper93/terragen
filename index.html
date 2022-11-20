@@ -25,7 +25,7 @@
 
   <body oncontextmenu="return false;">
     <main style="display: none">
-      <div id="ui">
+      <header id="ui">
         <nav id="menu">
           <section class="left">
             <button class="item" data-action="new">
@@ -68,7 +68,7 @@
             </button>
           </section>
           <section class="tools">
-            <div id="sculpt-buttons" class="neon-group">
+            <section id="sculpt-buttons" class="neon-group">
               <button
                 class="option tooltip active"
                 data-sculpt-mode="raise"
@@ -109,8 +109,8 @@
               >
                 <i class="fa-duotone fa-mountain-sun"></i>
               </button>
-            </div>
-            <div id="paint-buttons" class="paint-inputs" style="display: none">
+            </section>
+            <section id="paint-buttons" class="paint-inputs" style="display: none">
               <input
                 id="color"
                 class="paint-colour"
@@ -152,11 +152,11 @@
                   step="0.05"
                 />
               </section>
-            </div>
+            </section>
           </section>
         </aside>
-      </div>
-      <figure id="canvas-container"></figure>
+      </header>
+      <figure id="canvas-container"/>
     </main>
     <footer id="mobile-warning">
       <h1>Mobile devices are unsupported for this site.</h1>
