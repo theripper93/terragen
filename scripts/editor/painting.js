@@ -25,7 +25,6 @@ export function initPainting(textureSize) {
 class Brush{
     constructor(textureResolution){
         this.textureResolution = textureResolution;
-        this.color = 0xff0000;
         this._matrix = new PIXI.Matrix();
     }
 
@@ -66,6 +65,10 @@ class Brush{
 
     get scale(){
         return parseFloat(document.getElementById("scale").value);
+    }
+
+    get color(){
+        return parseInt(document.getElementById("color").value.replace("#", "0x"));
     }
 
     get matrix(){
