@@ -10,6 +10,12 @@ export class MaterialManager{
         return material;
     }
 
+    removeMaterial(index){
+        const mat = this.materials[index];
+        mat.destroy();
+        this.materials.splice(index, 1);
+    }
+
     currentMaterial(){
         return this.materials[0];
     }
@@ -40,10 +46,10 @@ class Material{
     }
 
     destroy(){
-        this.pixiTextures.colorMap.destroy();
-        this.pixiTextures.normalMap.destroy();
-        this.pixiTextures.roughnessMap.destroy();
-        this.pixiTextures.metalnessMap.destroy();
-        this.pixiTextures.occulsionMap.destroy();
+        this.pixiTextures.colorMap.destroy(true);
+        this.pixiTextures.normalMap.destroy(true);
+        this.pixiTextures.roughnessMap.destroy(true);
+        this.pixiTextures.metalnessMap.destroy(true);
+        this.pixiTextures.occulsionMap.destroy(true);
     }
 }

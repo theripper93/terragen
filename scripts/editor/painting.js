@@ -25,6 +25,14 @@ export function initPainting(textureSize) {
     canvas.painting.brush.commitGraphicsToTexture();
 }
 
+export function clearTextures(){
+    canvas.painting.pixiApps.forEach(a => {
+        a.stage.removeChildren();
+        a.renderer.render(a.stage, a.rTex);
+        a.renderer.render(a.stage, a.spriteTex);
+    });
+}
+
 
 class Brush{
     constructor(textureResolution){
