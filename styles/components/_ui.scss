@@ -139,11 +139,12 @@
         }
 
         &.tooltip::before {
+          // FIXME: Have tooltips next to thumb
           // Reverse rotation for text
           transform: rotate(-270deg);
 
           // Reverse positioning for tooltip due to translate
-          top: 200%;
+          top: 225%;
           left: unset;
         }
       }
@@ -157,7 +158,7 @@
 
       #scale {
         &::-webkit-slider-thumb {
-          background-image: url('../../assets/slider/scale-balanced-solid.svg');
+          background-image: url('../../assets/slider/arrows-left-right-to-line-solid.svg');
         }
       }
 

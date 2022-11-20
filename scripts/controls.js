@@ -31,7 +31,8 @@ export function initControls(){
                 }else{
                     sculptButtons.style.display = "none";
                     paintButtons.style.display = "flex";
-                    e.target.innerHTML = '<i class="fa-solid fa-paintbrush"></i>';
+                    e.target.innerHTML =
+                      '<i class="fa-duotone fa-paintbrush-fine"></i>'
                 }
                 break;
             case "sculpt":
