@@ -38,11 +38,19 @@ class Brush{
     constructor(textureResolution){
         this.textureResolution = textureResolution;
         this._matrix = new PIXI.Matrix();
-        this.brushTexture = PIXI.Texture.from("../assets/brushes/brush.png");
+        this.brushes = [];
+        this.loadBrushes();
+    }
+
+    loadBrushes(){
+        for(let i = 0; i < 10; i++){
+            const brush = PIXI.Texture.from(`../assets/brushes/${i}.png`);
+            this.brushes.push(brush);
+        }
     }
 
     get brushMask(){
-        return PIXI.Sprite.from(this.brushTexture);
+        return PIXI.Sprite.from(this.brushes[this.brushStrength]);
     }
 
     get maps(){
@@ -118,7 +126,8 @@ class Brush{
             const texture = this.getTexture(app.mapId);
             if(!texture) continue;
             const stroke = new PIXI.Graphics();
-            stroke.beginTextureFill({texture, color: this.color, alpha: this.opacity, matrix: this.matrix});
+            const color = app.mapId === "colorMap" ? this.color : 0xffffff;
+            stroke.beginTextureFill({texture, color, alpha: this.opacity, matrix: this.matrix});
             stroke.drawCircle(position.x, position.y, this.radius);
             stroke.endFill();
             const mask = this.brushMask;
