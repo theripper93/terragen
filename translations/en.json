@@ -24,6 +24,7 @@
     },
     "textures": {
         "title": "Textures",
+        "uploadFile": "Upload File",
         "colorMap": "Color",
         "normalMap": "Normal",
         "metallicMap": "Metallic",

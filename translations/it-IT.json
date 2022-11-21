@@ -15,10 +15,16 @@
             "smooth": "Smooth",
             "mold": "Mold",
             "normal": "Normal"
+        },
+        "paint": {
+            "blur": "Blur",
+            "scale": "Scale",
+            "opacity": "Opacity"
         }
     },
     "textures": {
         "title": "Textures",
+        "uploadFile": "Upload File",
         "colorMap": "Color",
         "normalMap": "Normal",
         "metallicMap": "Metallic",

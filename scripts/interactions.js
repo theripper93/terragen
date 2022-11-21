@@ -3,7 +3,7 @@ export function setupInteractions(){
     setupNewProjectMenu();
     setupUndo();
     setupTextureDragAndDrop();
-
+    globalThis.clearNewTexture = clearNewTexture;
     document.getElementById("help").onclick = (e) => {
         const helpMenu = document.getElementById("help-window");
         helpMenu.style.display = helpMenu.style.display == "block" ? "none" : "block";
@@ -74,7 +74,7 @@ function setupUndo(){
 function setupTextureDragAndDrop(){
     const addTexture = document.getElementById("add-texture");
     const textureDropAreas = addTexture.querySelectorAll(".texture-drop-area");
-    const fileDropAreas = addTexture.querySelectorAll("input[type='file']");
+    const fileDropAreas = addTexture.querySelectorAll(".file-input-label");
     addTexture.querySelectorAll("input[type='file']").forEach((fileInput) => {
         fileInput.addEventListener("change", (e) => {
             const file = e.target.files[0];
@@ -122,12 +122,12 @@ function setupTextureDragAndDrop(){
 }
 
 function loadTextureFromDrop(file, mapId){
-    const fileinput = document.querySelector(`.texture-drop-area[data-map-id="${mapId}"] input[type="file"]`);
+    const fileinputlabel = document.querySelector(`.texture-drop-area[data-map-id="${mapId}"] .file-input-label`);
     const filename = file.name;
     const reader = new FileReader();
     reader.onload = (e) => {
-        fileinput.innerHTML = filename;
-        const parent = fileinput.parentElement;
+        fileinputlabel.innerHTML = filename;
+        const parent = fileinputlabel.parentElement;
         parent.style.backgroundImage = `url(${e.target.result})`;
         parent.style.backgroundSize = "cover";
         canvas.addTexture[mapId] = e.target.result;
@@ -160,4 +160,16 @@ const fileNameMapping = {
     "metalnessMap": ["metalness", "specular"],
     "occlusionMap": ["ao", "ambient", "occlusion"],
     "emissiveMap": ["emissive", "emission"]
+}
+
+export function clearNewTexture(){
+    canvas.addTexture = {};
+    const addTexture = document.getElementById("add-texture");
+    addTexture.querySelectorAll("input[type='file']").forEach((fileInput) => {
+        fileInput.value = "";
+    });
+    addTexture.querySelectorAll(".file-input-label").forEach((fileInputLabel) => {
+        fileInputLabel.innerHTML = i18n("textures.uploadFile");
+        fileInputLabel.parentElement.style.backgroundImage = "";
+    });
 }
