@@ -17,6 +17,14 @@
             "normal": "Normal"
         }
     },
+    "textures": {
+        "title": "Textures",
+        "colorMap": "Color",
+        "normalMap": "Normal",
+        "metallicMap": "Metallic",
+        "roughnessMap": "Roughness",
+        "occlusionMap": "Ambient Occlusion"
+    },
     "settings": {
         "title": "New File",
         "confirm": "Confirm",
@@ -25,5 +33,6 @@
         "geometry": "Geometry Resolution",
         "texture": "Texture Resolution",
         "warning": "These settings cannot be changed after initializing a new project"
-    }
+    },
+    "mobile": "Mobile devices are unsupported for this site."
 }

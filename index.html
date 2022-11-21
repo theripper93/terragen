@@ -24,8 +24,11 @@
   </head>
 
   <body oncontextmenu="return false;">
+    <!-- Element for desktop users -->
     <main id="body-container" style="display: none">
+      <!-- UI Elements -->
       <nav id="ui">
+        <!-- Top Menus -->
         <header id="menu">
           <section class="left">
             <button class="item" data-action="new">
@@ -50,7 +53,9 @@
             </button>
           </aside>
         </header>
+        <!-- Left Menus -->
         <aside id="controls">
+          <!-- Toggle Button Group -->
           <section class="neon-group" id="toggles">
             <button
               class="option tooltip"
@@ -67,7 +72,9 @@
               <i class="fa-duotone fa-scalpel-line-dashed"></i>
             </button>
           </section>
+          <!-- Tool Button Group -->
           <section class="tools">
+            <!-- Sculpt -->
             <section class="neon-group" id="sculpt-buttons">
               <button
                 class="option tooltip active"
@@ -110,17 +117,20 @@
                 <i class="fa-duotone fa-mountain-sun"></i>
               </button>
             </section>
+            <!-- Paint; Visible on Cycle -->
             <section
               class="paint-inputs"
               id="paint-buttons"
               style="display: none"
             >
+              <!-- Brush Colour Inputs -->
               <input
                 class="paint-colour"
                 id="color"
                 type="color"
                 value="#ffffff"
               />
+              <!-- TODO: Active Textures -->
               <ul
                 id="texture-panel"
                 style="
@@ -131,6 +141,7 @@
                   background-color: magenta;
                 "
               ></ul>
+              <!-- Brush Sliders -->
               <section class="slider-group">
                 <input
                   class="slider-vertical tooltip"
@@ -170,15 +181,19 @@
           </section>
         </aside>
       </nav>
+      <!-- Windows -->
       <main class="window-container">
+        <!-- New Project Window -->
         <section class="window" id="new-project">
           <header class="bar">
-            &nbsp;
+            <!-- FIXME: Spacing hack -->
+            <p style="user-select: none">&nbsp;</p>
             <p>{settings.title}</p>
             <button class="cancel">
               <i class="fa-sharp fa-solid fa-xmark"></i>
             </button>
           </header>
+          <!-- Project Option Settings -->
           <article class="content">
             <div class="option-wrapper">
               <label for="width"
@@ -234,53 +249,56 @@
           id="help-window"
           style="display: none"
         ></section>
+        <!-- Texture Uploader -->
         <section class="window" id="add-texture">
           <header class="bar">
-            &nbsp;
+            <!-- FIXME: Spacing hack -->
+            <p style="user-select: none">&nbsp;</p>
             <p>{textures.title}</p>
             <button class="cancel">
               <i class="fa-sharp fa-solid fa-xmark"></i>
             </button>
           </header>
           <article class="content">
-            <label for=""
-              >{textures.colorMap}
+            <label for="">
+              {textures.colorMap}
               <div class="texture-drop-area" data-map-id="colorMap">
                 <input type="file" />
               </div>
             </label>
-            <label for=""
-              >{textures.normalMap}
+            <label for="">
+              {textures.normalMap}
               <div class="texture-drop-area" data-map-id="normalMap">
                 <input type="file" />
               </div>
             </label>
-            <label for=""
-              >{textures.roughnessMap}
+            <label for="">
+              {textures.roughnessMap}
               <div class="texture-drop-area" data-map-id="roughnessMap">
-                <input type="file" /></div
-            ></label>
-
+                <input type="file" />
+              </div>
+            </label>
             <label for=""
               >{textures.metallicMap}
               <div class="texture-drop-area" data-map-id="metalnessMap">
-                <input type="file" /></div
-            ></label>
-
+                <input type="file" />
+              </div>
+            </label>
             <label for=""
               >{textures.occlusionMap}
               <div class="texture-drop-area" data-map-id="occlusionMap">
-                <input type="file" /></div
-            ></label>
-
+                <input type="file" />
+              </div>
+            </label>
             <button class="confirm">Confirm</button>
           </article>
         </section>
       </main>
       <figure id="canvas-container"></figure>
     </main>
+    <!-- Displays for mobile devices -->
     <footer id="mobile-warning">
-      <h1>Mobile devices are unsupported for this site.</h1>
+      <h1>{mobile}</h1>
     </footer>
   </body>
 </html>
