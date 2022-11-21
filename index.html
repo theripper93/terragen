@@ -103,23 +103,20 @@
           <button id="cancel">Cancel</button>
         </header>
         <div class="option-wrapper">
-          <label for="width">Width</label>
+          <label for="width">{settings.width}</label>
           <input id="width" type="number" value="10" min="1" step="1" placeholder="1" />
-          <label for="height">Height</label>
+          <label for="height">{settings.height}</label>
           <input id="height" type="number" value="10" min="1" step="1" placeholder="1" />
-          <label for="geometry-resolution">Geometry Resolution </label>
+          <label for="geometry-resolution">{settings.geometry} </label>
           <input id="geometry-resolution" type="number" value="2" min="1" max="10" step="1" placeholder="2" />
-          <label for="texture-resolution">Texture Resolution</label>
+          <label for="texture-resolution">{settings.texture}</label>
           <select id="texture-resolution" name>
             <option value="1024">1K</option>
             <option value="2048" selected>2K</option>
             <option value="4096">4K</option>
           </select>
         </div>
-        <strong>
-          Warning: These settings cannot be changed after initializing a new
-          project
-        </strong>
+        <strong>{settings.warning}</strong>
         <button id="confirm">Confirm</button>
       </section>
       <section class="window" id="help-window" style="display: none"></section>
