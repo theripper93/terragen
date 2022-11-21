@@ -30,6 +30,9 @@ globalThis.canvas = {
             width: 5,
             height: 5,
             resolution: 5,
+        },
+        texture: {
+            resolution: 1024,
         }
     },
     loading: {
@@ -43,6 +46,21 @@ globalThis.canvas = {
         }
     },
     painting: {},
+    sculpting: {
+        undo: () => {
+            const swap = canvas.scene.terrain.geometry;
+            canvas.scene.terrain.geometry = canvas.sculpting.history;
+            canvas.sculpting.history = swap;
+
+            const geometry = canvas.scene.terrain.geometry;
+            geometry.computeVertexNormals();
+            geometry.normalizeNormals();
+            geometry.computeTangents();
+            geometry.computeBoundsTree();
+            geometry.attributes.position.needsUpdate = true;
+            geometry.attributes.normal.needsUpdate = true;
+        },
+    },
     materials: {
         wireframe: new THREE.MeshBasicMaterial({color: 0xff9500, wireframe: true, side: THREE.DoubleSide}),
         noTexture: new THREE.MeshStandardMaterial( { color: 0xffffff, side: THREE.DoubleSide, map: (new THREE.TextureLoader).load("./assets/uv_grid_opengl.jpg")} ),
@@ -52,7 +70,8 @@ globalThis.canvas = {
     initProject: () => {
         canvas.scene.terrain?.removeFromParent();
         canvas.scene.gridHelper?.removeFromParent();
-        clearTextures();
+        const res = new THREE.Vector2(canvas.project.texture.resolution, canvas.project.texture.resolution)
+        clearTextures(res);
         const geometry = new THREE.PlaneGeometry( canvas.project.geometry.width, canvas.project.geometry.height, Math.round(canvas.project.geometry.width*canvas.project.geometry.resolution), Math.round(canvas.project.geometry.height*canvas.project.geometry.resolution) );
         geometry.rotateX(-Math.PI/2);
         const material = canvas.materials.terrain;
@@ -71,7 +90,7 @@ globalThis.canvas = {
     }
 };
 
-initPainting(new THREE.Vector2(1024, 1024));
+initPainting(new THREE.Vector2(canvas.project.texture.resolution, canvas.project.texture.resolution));
 
 function loadEXR(url) {
     const pmremGenerator = new THREE.PMREMGenerator(canvas.renderer);

@@ -25,9 +25,14 @@ export function initPainting(textureSize) {
     canvas.painting.brush.commitGraphicsToTexture();
 }
 
-export function clearTextures(){
+export function clearTextures(textureSize){
     canvas.painting.pixiApps.forEach(a => {
         a.stage.removeChildren();
+        a.renderer.resize(textureSize.x, textureSize.y);
+        a.rTex?.destroy(true);
+        a.spriteTex?.destroy(true);
+        a.rTex = PIXI.RenderTexture.create({width: textureSize.x, height: textureSize.y});
+        a.spriteTex = PIXI.RenderTexture.create({width: textureSize.x, height: textureSize.y});
         a.renderer.render(a.stage, a.rTex);
         a.renderer.render(a.stage, a.spriteTex);
     });
@@ -35,8 +40,7 @@ export function clearTextures(){
 
 
 class Brush{
-    constructor(textureResolution){
-        this.textureResolution = textureResolution;
+    constructor(){
         this._matrix = new PIXI.Matrix();
         this.brushes = [];
         this.loadBrushes();
@@ -47,6 +51,10 @@ class Brush{
             const brush = PIXI.Texture.from(`../assets/brushes/${i}.png`);
             this.brushes.push(brush);
         }
+    }
+
+    get textureResolution(){
+        return { x: canvas.project.texture.resolution, y: canvas.project.texture.resolution };
     }
 
     get brushMask(){
@@ -142,19 +150,6 @@ class Brush{
         this.updateMaterial();
     }
 
-    _old_paint(){
-        const position = this.getPosition();
-        const stroke = new PIXI.Graphics();
-        stroke.beginFill(this.color, this.opacity);
-        stroke.drawCircle(position.x, position.y, this.radius);
-        stroke.endFill();
-        const scale = this.brushScale;
-        stroke.scale.set(scale.x, scale.y);
-        stroke.filters = [this.blurFilter];
-        this.maps.colorMap.stage.addChild(stroke);
-        this.updateMaterial();
-    }
-
     updateMaterial(){
         const terrainMat = canvas.materials.terrain;
         for(let val of Object.values(terrainMat)){
@@ -167,6 +162,18 @@ class Brush{
     commitGraphicsToTexture(){
         for(const app of canvas.painting.pixiApps){
             app.renderer.render(app.stage, {renderTexture: app.rTex});
+            const swap = app.spriteTex;
+            app.spriteTex = app.rTex;
+            app.rTex = swap;
+            const sprite = new PIXI.Sprite(app.spriteTex);
+            app.stage.removeChildren();
+            app.stage.addChild(sprite);
+        }
+        this.updateMaterial();
+    }
+
+    undo(){
+        for(const app of canvas.painting.pixiApps){
             const swap = app.spriteTex;
             app.spriteTex = app.rTex;
             app.rTex = swap;

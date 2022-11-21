@@ -21,11 +21,16 @@ export class Cursor{
             this.leftDown = event.button === 0;
             this.rightDown = event.button === 2;
             if(!this.mesh.visible) this._lockCursor = true;
+            if(event.button !== 2 && event.button !== 0) return;
+            if(!this.mesh.visible) return;
+            if(this.mode === "sculpt") {canvas.sculpting.history = canvas.scene.terrain.geometry.clone();}
         })
         document.addEventListener('mouseup', (event) => {
             this.leftDown = false;
             this.rightDown = false;
             this._lockCursor = false;
+            if(event.button !== 2 && event.button !== 0) return;
+            if(!this.mesh.visible) return;
             if(this.mode === "paint") canvas.painting.brush.commitGraphicsToTexture();
         })
         document.addEventListener('keydown', (event) => {

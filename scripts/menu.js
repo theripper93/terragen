@@ -8,8 +8,12 @@ export function initMenu(){
         const action = e.target.dataset.action;
         if(!action) return;
         switch (action) {
+            case "new":
+                document.getElementById("new-project").style.display = "block";
+                break;
             case "export":
                 exportGLB();
+                break;
         }
     })
 
