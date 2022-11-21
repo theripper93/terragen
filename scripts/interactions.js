@@ -112,8 +112,9 @@ function loadTextureFromDrop(file, mapId){
     const reader = new FileReader();
     reader.onload = (e) => {
         span.innerHTML = filename;
-        span.style.backgroundImage = `url(${e.target.result})`;
-        span.style.backgroundSize = "cover";
+        const parent = span.parentElement;
+        parent.style.backgroundImage = `url(${e.target.result})`;
+        parent.style.backgroundSize = "cover";
         canvas.addTexture[mapId] = e.target.result;
     }
     reader.readAsDataURL(file);
