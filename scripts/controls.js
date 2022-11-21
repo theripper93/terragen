@@ -62,10 +62,6 @@ export function initControls(){
                         }
                         break;
                 }
-                paintButtons.querySelectorAll("button").forEach((button)=>{
-                    button.classList.remove("active");
-                })
-                e.target.classList.add("active");
                 break;
         }
     })
