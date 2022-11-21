@@ -3,11 +3,11 @@
 
 <head>
   <!-- Metadata -->
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terragen</title>
-  <link type="image/svg" href="/assets/ellipse.svg" rel="icon" />
+  <link type="image/svg" href="/assets/ellipse.svg" rel="icon">
   <!-- Libraries -->
   <script src="scripts/lib/i18n.min.js"></script>
   <script src="scripts/lib/pixi.min.js"></script>
@@ -81,14 +81,14 @@
             </button>
           </section>
           <section class="paint-inputs" id="paint-buttons" style="display: none">
-            <input class="paint-colour" id="color" type="color" value="#ffffff" />
+            <input class="paint-colour" id="color" type="color" value="#ffffff">
             <section class="slider-group">
               <input class="slider-vertical tooltip" id="blur" data-tooltip="{controls.paint.blur}" type="range"
-                orient="vertical" min="0" max="9" value="7" step="1" />
+                orient="vertical" min="0" max="9" value="7" step="1">
               <input class="slider-vertical tooltip" id="scale" data-tooltip="{controls.paint.scale}" type="range"
-                orient="vertical" min="0.05" max="1" value="1" step="0.05" />
+                orient="vertical" min="0.05" max="1" value="1" step="0.05">
               <input class="slider-vertical tooltip" id="opacity" data-tooltip="{controls.paint.opacity}" type="range"
-                orient="vertical" min="0" max="1" value="1" step="0.05" />
+                orient="vertical" min="0" max="1" value="1" step="0.05">
             </section>
           </section>
         </section>
@@ -96,20 +96,20 @@
     </nav>
     <main class="window-container">
       <section class="window" id="new-project">
-        <label for="width">Width</label>
-        <input id="width" type="number" value="10" min="1" step="1" />
-        <label for="height">Height</label>
-        <input id="height" type="number" value="10" min="1" step="1" />
-        <div class="resolution-wrapper">
+        <div class="option-wrapper">
+          <label for="width">Width</label>
+          <input id="width" type="number" value="10" min="1" step="1">
+          <label for="height">Height</label>
+          <input id="height" type="number" value="10" min="1" step="1">
           <label for="geometry-resolution">Geometry Resolution </label>
-          <input id="geometry-resolution" type="number" value="2" min="1" max="10" step="1" />
+          <input id="geometry-resolution" type="number" value="2" min="1" max="10" step="1">
           <label for="texture-resolution">Texture Resolution</label>
-          <select id="texture-resolution" name>
-            <option value="1024">1K</option>
-            <option value="2048" selected>2K</option>
-            <option value="4096">4K</option>
-          </select>
         </div>
+        <select id="texture-resolution" name>
+          <option value="1024">1K</option>
+          <option value="2048" selected>2K</option>
+          <option value="4096">4K</option>
+        </select>
         <strong>
           Warning: These settings cannot be changed after initializing a new
           project
@@ -118,7 +118,7 @@
           <button id="confirm">Confirm</button>
           <button id="cancel">Cancel</button>
         </div>
-        </label>
+
       </section>
       <section class="window" id="help-window" style="display: none"></section>
       <section class="window" id="add-texture">
