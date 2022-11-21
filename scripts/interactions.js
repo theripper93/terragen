@@ -116,6 +116,9 @@ function loadTextureFromDrop(file, mapId){
         parent.style.backgroundImage = `url(${e.target.result})`;
         parent.style.backgroundSize = "cover";
         canvas.addTexture[mapId] = e.target.result;
+        if(mapId == "colorMap"){
+            canvas.addTexture.name = filename;
+        }
     }
     reader.readAsDataURL(file);
 }

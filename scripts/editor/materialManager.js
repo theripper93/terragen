@@ -8,17 +8,38 @@ export class MaterialManager{
     addMaterial(textures){
         const material = new Material(textures);
         this.materials.push(material);
+        const el = this.getElement(material);
+        document.querySelector("#texture-panel").appendChild(el);
         return material;
     }
 
     removeMaterial(index){
         const mat = this.materials[index];
         mat.destroy();
+        const texturePanel = document.querySelector("#texture-panel");
+        texturePanel.removeChild(texturePanel.children[index]);
         this.materials.splice(index, 1);
     }
 
     currentMaterial(){
         return this.materials[this._materialIndex];
+    }
+
+    getElement(material){
+        const li = document.createElement("li");
+        li.style.backgroundImage = `url(${material.colorMap})`;
+        li.innerHTML = `
+        <span class="material-name">${material.name}</span>
+        <button class="material-delete">X</button>
+        `
+        li.onclick = (e) => {
+            this._materialIndex = this.materials.indexOf(material);
+            document.querySelector("#texture-panel").querySelectorAll("li").forEach((el) => {
+                el.classList.remove("selected");
+            });
+            li.classList.add("selected");
+        };
+        return li;
     }
 }
 
@@ -30,6 +51,7 @@ class Material{
         this.roughnessMap = textures.roughnessMap;
         this.metalnessMap = textures.metalnessMap;
         this.occulsionMap = textures.occulsionMap;
+        this.name = textures.name;
         this.pixiTextures = {};
         this.initPixiTextures();
     }
