@@ -44,6 +44,7 @@ function initTranslations(data){
         el.innerHTML = innerHtml;
     }
     translate(document.querySelector("#ui"));
+    translate(document.querySelector(".window-container"));
     initControls();
     initMenu();
     setupInteractions();
