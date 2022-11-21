@@ -104,6 +104,11 @@ function setupTextureDragAndDrop(){
         addTexture.style.display = "none";
         canvas.MaterialManager.addMaterial(canvas.addTexture);
     }
+
+    /*document.getElementById("add-texture-button").onclick = (e) => {
+        canvas.addTexture = {};
+        document.getElementById("add-texture").style.display = "block";
+    };*/
 }
 
 function loadTextureFromDrop(file, mapId){
