@@ -21,5 +21,13 @@
             "scale": "Scale",
             "opacity": "Opacity"
         }
+    },
+    "settings": {
+        "confirm": "Confirm",
+        "width": "Width",
+        "height": "Height",
+        "geometry": "Geometry Resolution",
+        "texture": "Texture Resolution",
+        "warning": "Warning: These settings cannot be changed after initializing a new project"
     }
 }
