@@ -8,17 +8,43 @@ export class MaterialManager{
     addMaterial(textures){
         const material = new Material(textures);
         this.materials.push(material);
+        const el = this.getElement(material);
+        document.querySelector("#texture-panel").appendChild(el);
         return material;
     }
 
     removeMaterial(index){
         const mat = this.materials[index];
         mat.destroy();
+        const texturePanel = document.querySelector("#texture-panel");
+        texturePanel.removeChild(texturePanel.children[index]);
         this.materials.splice(index, 1);
     }
 
     currentMaterial(){
         return this.materials[this._materialIndex];
+    }
+
+    getElement(material){
+        const li = document.createElement("li");
+        li.style.backgroundImage = `url(${material.colorMap})`;
+        li.innerHTML = `
+        <span class="material-name">${material.name}</span>
+        <button class="material-delete">X</button>
+        `
+        li.onclick = (e) => {
+            this._materialIndex = this.materials.indexOf(material);
+            document.querySelector("#texture-panel").querySelectorAll("li").forEach((el) => {
+                el.classList.remove("selected");
+            });
+            li.classList.add("selected");
+        };
+        const deleteBtn = li.querySelector(".material-delete");
+        deleteBtn.onclick = (e) => {
+            e.stopPropagation();
+            this.removeMaterial(this.materials.indexOf(material));
+        }
+        return li;
     }
 }
 
@@ -30,6 +56,7 @@ class Material{
         this.roughnessMap = textures.roughnessMap;
         this.metalnessMap = textures.metalnessMap;
         this.occulsionMap = textures.occulsionMap;
+        this.name = textures.name;
         this.pixiTextures = {};
         this.initPixiTextures();
     }
@@ -47,10 +74,10 @@ class Material{
     }
 
     destroy(){
-        this.pixiTextures.colorMap.destroy(true);
-        this.pixiTextures.normalMap.destroy(true);
-        this.pixiTextures.roughnessMap.destroy(true);
-        this.pixiTextures.metalnessMap.destroy(true);
-        this.pixiTextures.occulsionMap.destroy(true);
+        this.pixiTextures.colorMap?.destroy(true);
+        this.pixiTextures.normalMap?.destroy(true);
+        this.pixiTextures.roughnessMap?.destroy(true);
+        this.pixiTextures.metalnessMap?.destroy(true);
+        this.pixiTextures.occulsionMap?.destroy(true);
     }
 }

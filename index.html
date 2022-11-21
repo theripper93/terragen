@@ -1,263 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Metadata -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Terragen</title>
-    <link type="image/svg" href="/assets/ellipse.svg" rel="icon" />
-    <!-- Libraries -->
-    <script src="scripts/lib/i18n.min.js"></script>
-    <script src="scripts/lib/pixi.min.js"></script>
-    <script
-      src="https://kit.fontawesome.com/b966192883.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- JS -->
-    <script src="scripts/main.js" type="module"></script>
-    <script src="scripts/locale.js" type="module"></script>
-    <style>
-      @import './styles/style.css';
-      @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap');
-    </style>
-  </head>
 
-  <body oncontextmenu="return false;">
-    <main id="body-container" style="display: none">
-      <nav id="ui">
-        <header id="menu">
-          <section class="left">
-            <button class="item" data-action="new">
-              <span><i class="fa-solid fa-file"></i>{menu.new}</span>
-            </button>
-            <button class="item" data-action="open">
-              <span><i class="fa-duotone fa-folder-open"></i>{menu.open}</span>
-            </button>
-            <button class="item" data-action="save">
-              <span><i class="fa-solid fa-floppy-disk"></i>{menu.save}</span>
-            </button>
-            <button class="item" data-action="export">
-              <span><i class="fa-duotone fa-download"></i>{menu.export}</span>
-            </button>
-          </section>
-          <aside class="right">
-            <button class="side-buttons" id="reset">
-              <i class="fa-solid fa-rotate-left"></i>
-            </button>
-            <button class="side-buttons" id="help">
-              <i class="fa-regular fa-circle-question"></i>
-            </button>
-          </aside>
-        </header>
-        <aside id="controls">
-          <section class="neon-group" id="toggles">
-            <button
-              class="option tooltip"
-              data-tool="cycle-view"
-              data-tooltip="{controls.viewMode}"
-            >
-              <i class="fa-duotone fa-bring-forward"></i>
-            </button>
-            <button
-              class="option tooltip"
-              data-tool="cycle-mode"
-              data-tooltip="{controls.editMode}"
-            >
-              <i class="fa-duotone fa-scalpel-line-dashed"></i>
-            </button>
-          </section>
-          <section class="tools">
-            <section class="neon-group" id="sculpt-buttons">
-              <button
-                class="option tooltip active"
-                data-sculpt-mode="raise"
-                data-tool="sculpt"
-                data-tooltip="{controls.sculpt.raise}"
-              >
-                <i class="fa-solid fa-chevron-up"></i>
-              </button>
-              <button
-                class="option tooltip"
-                data-sculpt-mode="flat"
-                data-tool="sculpt"
-                data-tooltip="{controls.sculpt.flat}"
-              >
-                <i class="fa-sharp fa-solid fa-dash"></i>
-              </button>
-              <button
-                class="option tooltip"
-                data-sculpt-mode="smooth"
-                data-tool="sculpt"
-                data-tooltip="{controls.sculpt.smooth}"
-              >
-                <i class="fa-solid fa-circle"></i>
-              </button>
-              <button
-                class="option tooltip"
-                data-sculpt-mode="mold"
-                data-tool="sculpt"
-                data-tooltip="{controls.sculpt.mold}"
-              >
-                <i class="fa-duotone fa-hands"></i>
-              </button>
-              <button
-                class="option tooltip"
-                data-sculpt-mode="normal"
-                data-tool="sculpt"
-                data-tooltip="{controls.sculpt.normal}"
-              >
-                <i class="fa-duotone fa-mountain-sun"></i>
-              </button>
-            </section>
-            <section
-              class="paint-inputs"
-              id="paint-buttons"
-              style="display: none"
-            >
-              <input
-                class="paint-colour"
-                id="color"
-                type="color"
-                value="#ffffff"
-              />
-              <section class="slider-group">
-                <input
-                  class="slider-vertical tooltip"
-                  id="blur"
-                  data-tooltip="{controls.paint.blur}"
-                  type="range"
-                  orient="vertical"
-                  min="0"
-                  max="9"
-                  value="7"
-                  step="1"
-                />
-                <input
-                  class="slider-vertical tooltip"
-                  id="scale"
-                  data-tooltip="{controls.paint.scale}"
-                  type="range"
-                  orient="vertical"
-                  min="0.05"
-                  max="1"
-                  value="1"
-                  step="0.05"
-                />
-                <input
-                  class="slider-vertical tooltip"
-                  id="opacity"
-                  data-tooltip="{controls.paint.opacity}"
-                  type="range"
-                  orient="vertical"
-                  min="0"
-                  max="1"
-                  value="1"
-                  step="0.05"
-                />
-              </section>
-            </section>
-          </section>
+<head>
+  <!-- Metadata -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terragen</title>
+  <link type="image/svg" href="/assets/ellipse.svg" rel="icon" />
+  <!-- Libraries -->
+  <script src="scripts/lib/i18n.min.js"></script>
+  <script src="scripts/lib/pixi.min.js"></script>
+  <script src="https://kit.fontawesome.com/b966192883.js" crossorigin="anonymous"></script>
+  <!-- JS -->
+  <script src="scripts/main.js" type="module"></script>
+  <script src="scripts/locale.js" type="module"></script>
+  <style>
+    @import './styles/style.css';
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap');
+  </style>
+</head>
+
+<body oncontextmenu="return false;">
+  <main id="body-container" style="display: none">
+    <nav id="ui">
+      <header id="menu">
+        <section class="left">
+          <button class="item" data-action="new">
+            <span><i class="fa-solid fa-file"></i>{menu.new}</span>
+          </button>
+          <button class="item" data-action="open">
+            <span><i class="fa-duotone fa-folder-open"></i>{menu.open}</span>
+          </button>
+          <button class="item" data-action="save">
+            <span><i class="fa-solid fa-floppy-disk"></i>{menu.save}</span>
+          </button>
+          <button class="item" data-action="export">
+            <span><i class="fa-duotone fa-download"></i>{menu.export}</span>
+          </button>
+        </section>
+        <aside class="right">
+          <button class="side-buttons" id="reset">
+            <i class="fa-solid fa-rotate-left"></i>
+          </button>
+          <button class="side-buttons" id="help">
+            <i class="fa-regular fa-circle-question"></i>
+          </button>
         </aside>
-      </nav>
-      <main class="window-container">
-        <section class="window" id="new-project">
-          <header class="bar">
-            <button id="cancel">Cancel</button>
-          </header>
-          <div class="option-wrapper">
-            <label for="width">Width</label>
-            <input
-              id="width"
-              type="number"
-              value="10"
-              min="1"
-              step="1"
-              placeholder="1"
-            />
-            <label for="height">Height</label>
-            <input
-              id="height"
-              type="number"
-              value="10"
-              min="1"
-              step="1"
-              placeholder="1"
-            />
-            <label for="geometry-resolution">Geometry Resolution </label>
-            <input
-              id="geometry-resolution"
-              type="number"
-              value="2"
-              min="1"
-              max="10"
-              step="1"
-              placeholder="2"
-            />
-            <label for="texture-resolution">Texture Resolution</label>
-            <select id="texture-resolution" name>
-              <option value="1024">1K</option>
-              <option value="2048" selected>2K</option>
-              <option value="4096">4K</option>
-            </select>
-          </div>
-          <strong>
-            Warning: These settings cannot be changed after initializing a new
-            project
-          </strong>
+      </header>
+      <aside id="controls">
+        <section class="neon-group" id="toggles">
+          <button class="option tooltip" data-tool="cycle-view" data-tooltip="{controls.viewMode}">
+            <i class="fa-duotone fa-bring-forward"></i>
+          </button>
+          <button class="option tooltip" data-tool="cycle-mode" data-tooltip="{controls.editMode}">
+            <i class="fa-duotone fa-scalpel-line-dashed"></i>
+          </button>
+        </section>
+        <section class="tools">
+          <section class="neon-group" id="sculpt-buttons">
+            <button class="option tooltip active" data-sculpt-mode="raise" data-tool="sculpt"
+              data-tooltip="{controls.sculpt.raise}">
+              <i class="fa-solid fa-chevron-up"></i>
+            </button>
+            <button class="option tooltip" data-sculpt-mode="flat" data-tool="sculpt"
+              data-tooltip="{controls.sculpt.flat}">
+              <i class="fa-sharp fa-solid fa-dash"></i>
+            </button>
+            <button class="option tooltip" data-sculpt-mode="smooth" data-tool="sculpt"
+              data-tooltip="{controls.sculpt.smooth}">
+              <i class="fa-solid fa-circle"></i>
+            </button>
+            <button class="option tooltip" data-sculpt-mode="mold" data-tool="sculpt"
+              data-tooltip="{controls.sculpt.mold}">
+              <i class="fa-duotone fa-hands"></i>
+            </button>
+            <button class="option tooltip" data-sculpt-mode="normal" data-tool="sculpt"
+              data-tooltip="{controls.sculpt.normal}">
+              <i class="fa-duotone fa-mountain-sun"></i>
+            </button>
+          </section>
+          <section class="paint-inputs" id="paint-buttons" style="display: none">
+            <input class="paint-colour" id="color" type="color" value="#ffffff" />
+            <ul id="texture-panel"
+              style="position: absolute; pointer-events:all;right:0;top:250px;background-color:magenta">
+
+              <section class="slider-group">
+                <input class="slider-vertical tooltip" id="blur" data-tooltip="{controls.paint.blur}" type="range"
+                  orient="vertical" min="0" max="9" value="7" step="1" />
+                <input class="slider-vertical tooltip" id="scale" data-tooltip="{controls.paint.scale}" type="range"
+                  orient="vertical" min="0.05" max="1" value="1" step="0.05" />
+                <input class="slider-vertical tooltip" id="opacity" data-tooltip="{controls.paint.opacity}" type="range"
+                  orient="vertical" min="0" max="1" value="1" step="0.05" />
+              </section>
+          </section>
+        </section>
+      </aside>
+    </nav>
+    <main class="window-container">
+      <section class="window" id="new-project">
+        <header class="bar">
+          <button id="cancel">Cancel</button>
+        </header>
+        <div class="option-wrapper">
+          <label for="width">Width</label>
+          <input id="width" type="number" value="10" min="1" step="1" placeholder="1" />
+          <label for="height">Height</label>
+          <input id="height" type="number" value="10" min="1" step="1" placeholder="1" />
+          <label for="geometry-resolution">Geometry Resolution </label>
+          <input id="geometry-resolution" type="number" value="2" min="1" max="10" step="1" placeholder="2" />
+          <label for="texture-resolution">Texture Resolution</label>
+          <select id="texture-resolution" name>
+            <option value="1024">1K</option>
+            <option value="2048" selected>2K</option>
+            <option value="4096">4K</option>
+          </select>
+        </div>
+        <strong>
+          Warning: These settings cannot be changed after initializing a new
+          project
+        </strong>
+        <button id="confirm">Confirm</button>
+      </section>
+      <section class="window" id="help-window" style="display: none"></section>
+      <section class="window" id="add-texture">
+        <div class="texture-drop-area" data-map-id="colorMap"
+          style="width: 100%; height: 2rem; background-color: greenyellow">
+          <span class="file-name"></span>
+        </div>
+        <div class="texture-drop-area" data-map-id="normalMap"
+          style="width: 100%; height: 2rem; background-color: greenyellow">
+          <span class="file-name"></span>
+        </div>
+        <div class="texture-drop-area" data-map-id="roughnessMap"
+          style="width: 100%; height: 2rem; background-color: greenyellow">
+          <span class="file-name"></span>
+        </div>
+        <div class="texture-drop-area" data-map-id="metalnessMap"
+          style="width: 100%; height: 2rem; background-color: greenyellow">
+          <span class="file-name"></span>
+        </div>
+        <div class="texture-drop-area" data-map-id="occulsionMap"
+          style="width: 100%; height: 2rem; background-color: greenyellow">
+          <span class="file-name"></span>
+        </div>
+        <div class="btn-container">
           <button id="confirm">Confirm</button>
-        </section>
-        <section
-          class="window"
-          id="help-window"
-          style="display: none"
-        ></section>
-        <section class="window" id="add-texture">
-          <div
-            class="texture-drop-area"
-            data-map-id="colorMap"
-            style="width: 100%; height: 2rem; background-color: greenyellow"
-          >
-            <span class="file-name"></span>
-          </div>
-          <div
-            class="texture-drop-area"
-            data-map-id="normalMap"
-            style="width: 100%; height: 2rem; background-color: greenyellow"
-          >
-            <span class="file-name"></span>
-          </div>
-          <div
-            class="texture-drop-area"
-            data-map-id="roughnessMap"
-            style="width: 100%; height: 2rem; background-color: greenyellow"
-          >
-            <span class="file-name"></span>
-          </div>
-          <div
-            class="texture-drop-area"
-            data-map-id="metalnessMap"
-            style="width: 100%; height: 2rem; background-color: greenyellow"
-          >
-            <span class="file-name"></span>
-          </div>
-          <div
-            class="texture-drop-area"
-            data-map-id="occulsionMap"
-            style="width: 100%; height: 2rem; background-color: greenyellow"
-          >
-            <span class="file-name"></span>
-          </div>
-          <div class="btn-container">
-            <button id="confirm">Confirm</button>
-            <button id="cancel">Cancel</button>
-          </div>
-        </section>
-      </main>
-      <figure id="canvas-container"></figure>
+          <button id="cancel">Cancel</button>
+        </div>
+      </section>
     </main>
-    <footer id="mobile-warning">
-      <h1>Mobile devices are unsupported for this site.</h1>
-    </footer>
-  </body>
+    <figure id="canvas-container"></figure>
+  </main>
+  <footer id="mobile-warning">
+    <h1>Mobile devices are unsupported for this site.</h1>
+  </footer>
+</body>
+
 </html>
