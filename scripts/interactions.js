@@ -2,6 +2,12 @@ export function setupInteractions(){
     setupSliders();
     setupNewProjectMenu();
     setupUndo();
+    setupTextureDragAndDrop();
+
+    document.getElementById("help").onclick = (e) => {
+        const helpMenu = document.getElementById("help-window");
+        helpMenu.style.display = helpMenu.style.display == "block" ? "none" : "block";
+    };
 }
 
 function setupSliders(){
@@ -63,4 +69,76 @@ function setupUndo(){
         }
     });
     //document.getElementById("undo").onclick = undo;
+}
+
+function setupTextureDragAndDrop(){
+    const addTexture = document.getElementById("add-texture");
+    const textureDropAreas = addTexture.querySelectorAll(".texture-drop-area");
+    textureDropAreas.forEach((dropArea) => {
+        dropArea.addEventListener("dragover", (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'copy';
+        });
+        dropArea.addEventListener("drop", (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            const mapId = e.target.dataset.mapId;
+            const files = e.dataTransfer.files;
+            if (files.length == 1){
+                loadTextureFromDrop(files[0], mapId);
+            }
+            if(files.length > 1){
+                const matchedFiles = matchFilesToMap(files);
+                for(let [mapId, file] of Object.entries(matchedFiles)){
+                    loadTextureFromDrop(file, mapId);
+                }
+            }
+        });
+    });
+
+    addTexture.querySelector("#cancel").onclick = (e) => {
+        addTexture.style.display = "none";
+    }
+    addTexture.querySelector("#confirm").onclick = (e) => {
+        addTexture.style.display = "none";
+        canvas.MaterialManager.addMaterial(canvas.addTexture);
+    }
+}
+
+function loadTextureFromDrop(file, mapId){
+    const span = document.querySelector(`.texture-drop-area[data-map-id="${mapId}"] span`);
+    const filename = file.name;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        span.innerHTML = filename;
+        span.style.backgroundImage = `url(${e.target.result})`;
+        span.style.backgroundSize = "cover";
+        canvas.addTexture[mapId] = e.target.result;
+    }
+    reader.readAsDataURL(file);
+}
+
+function matchFilesToMap(files){
+    const matchedFiles = {};
+    for(let file of files){
+        const filename = file.name;
+        const lcFn = filename.toLowerCase();
+        for(let [k,v] of Object.entries(fileNameMapping)){
+            if(v.some((s) => lcFn.includes(s))){
+                matchedFiles[k] = file;
+            }
+        }
+    }
+    return matchedFiles;
+}
+
+
+const fileNameMapping = {
+    "colorMap": ["color", "diffuse", "albedo"],
+    "normalMap": ["normal", "bump"],
+    "roughnessMap": ["roughness", "glossiness"],
+    "metalnessMap": ["metalness", "specular"],
+    "occulsionMap": ["ao", "ambient", "occlusion"],
+    "emissiveMap": ["emissive", "emission"]
 }
