@@ -1,5 +1,4 @@
 {
-    "test": "this is a localized string",
     "menu": {
         "new": "New",
         "save": "Save",
@@ -19,7 +18,8 @@
         "paint": {
             "blur": "Blur",
             "scale": "Scale",
-            "opacity": "Opacity"
+            "opacity": "Opacity",
+            "texture": "Add texture"
         }
     },
     "textures": {

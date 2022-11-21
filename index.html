@@ -124,20 +124,22 @@
               style="display: none"
             >
               <!-- Brush Colour Inputs -->
-              <input
-                class="paint-colour"
-                id="color"
-                type="color"
-                value="#ffffff"
-              />
-              <button
-              class="option tooltip"
-              data-paint-mode="newTexture"
-              data-tool="paint"
-              data-tooltip="{controls.paint.normal}"
-            >
-              <i class="fa-duotone fa-mountain-sun"></i>
-            </button>
+              <section class="neon-group">
+                <button
+                  class="option tooltip"
+                  data-paint-mode="newTexture"
+                  data-tool="paint"
+                  data-tooltip="{controls.paint.texture}"
+                >
+                  <i class="fa-duotone fa-images"></i>
+                </button>
+                <input
+                  class="paint-colour"
+                  id="color"
+                  type="color"
+                  value="#ffffff"
+                />
+              </section>
               <!-- TODO: Active Textures -->
               <ul
                 id="texture-panel"
@@ -258,7 +260,7 @@
           style="display: none"
         ></section>
         <!-- Texture Uploader -->
-        <section class="window" id="add-texture">
+        <section class="window" id="add-texture" style="display: none;">
           <header class="bar">
             <!-- FIXME: Spacing hack -->
             <p style="user-select: none">&nbsp;</p>
@@ -271,35 +273,45 @@
             <label for="">
               {textures.colorMap}
               <div class="texture-drop-area" data-map-id="colorMap">
-                <label for="colorMap-file" class="file-input-label">{textures.uploadFile}</label>
+                <label for="colorMap-file" class="file-input-label"
+                  >{textures.uploadFile}</label
+                >
                 <input type="file" id="colorMap-file" />
               </div>
             </label>
             <label for="">
               {textures.normalMap}
               <div class="texture-drop-area" data-map-id="normalMap">
-                <label for="normalMap-file" class="file-input-label">{textures.uploadFile}</label>
+                <label for="normalMap-file" class="file-input-label"
+                  >{textures.uploadFile}</label
+                >
                 <input type="file" id="normalMap-file" />
               </div>
             </label>
             <label for="">
               {textures.roughnessMap}
               <div class="texture-drop-area" data-map-id="roughnessMap">
-                <label for="roughnessMap-file" class="file-input-label">{textures.uploadFile}</label>
+                <label for="roughnessMap-file" class="file-input-label"
+                  >{textures.uploadFile}</label
+                >
                 <input type="file" id="roughnessMap-file" />
               </div>
             </label>
             <label for=""
               >{textures.metallicMap}
               <div class="texture-drop-area" data-map-id="metalnessMap">
-                <label for="metalnessMap-file" class="file-input-label">{textures.uploadFile}</label>
+                <label for="metalnessMap-file" class="file-input-label"
+                  >{textures.uploadFile}</label
+                >
                 <input type="file" id="metalnessMap-file" />
               </div>
             </label>
             <label for=""
               >{textures.occlusionMap}
               <div class="texture-drop-area" data-map-id="occlusionMap">
-                <label for="occlusionMap-file" class="file-input-label">{textures.uploadFile}</label>
+                <label for="occlusionMap-file" class="file-input-label"
+                  >{textures.uploadFile}</label
+                >
                 <input type="file" id="occlusionMap-file" />
               </div>
             </label>
