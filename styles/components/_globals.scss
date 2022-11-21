@@ -4,6 +4,7 @@
 body {
   font-family: 'Roboto Mono', monospace;
   background: $bg;
+  color: $blue;
   overflow-y: hidden;
 }
 
@@ -12,11 +13,19 @@ button {
   align-items: center;
   background: transparent;
   border: 1px solid transparent;
+  color: $blue;
 
   &:hover,
   &:active {
     cursor: pointer;
   }
+}
+
+p,
+strong, 
+span,
+label {
+  max-width: 65ch;
 }
 
 /* Inputs */
@@ -56,8 +65,8 @@ input[type='range' i] {
 }
 
 input[type='color'] {
-  @include neon-group($blue);
-  @include neon-hover($blue);
+  @include neon-group;
+  @include neon-hover;
 
   &::-webkit-color-swatch {
     border: 1px solid $blue;

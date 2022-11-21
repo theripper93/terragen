@@ -14,17 +14,23 @@ $toolbar-width: 2.5rem;
 $control-padding: 0.5rem;
 
 /* Mixins */
-@mixin neon-group($colour) {
+@mixin neon-base($colour: $blue) {
+  border: 1px solid $colour;
+  color: $colour;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 0.1rem $white, 0 0 0.2rem $colour,
+    0 0 0.3rem color.adjust($colour, $alpha: -0.5);
+  transition: all 0.2s;
+}
+
+@mixin neon-group($colour: $blue) {
+  @include neon-base($colour);
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: color.adjust($bg, $alpha: -0.5);
-  backdrop-filter: blur(10px);
-  border: 1px solid $colour;
-  color: $colour;
-  box-shadow: 0 0 0.1rem $white, 0 0 0.2rem $colour,
-    0 0 0.3rem color.adjust($colour, $alpha: -0.5);
   transition: all 0.2s;
 
   i,
@@ -33,7 +39,7 @@ $control-padding: 0.5rem;
   }
 }
 
-@mixin neon-item($colour) {
+@mixin neon-item($colour: $blue) {
   @include neon-hover($colour);
 
   display: flex;
@@ -51,7 +57,7 @@ $control-padding: 0.5rem;
   }
 }
 
-@mixin neon-hover($colour) {
+@mixin neon-hover($colour: $blue) {
   &:hover {
     border: 1px solid color.adjust($colour, $alpha: -0.2);
     background: color.adjust($bg-dark, $alpha: -0.6);
@@ -62,14 +68,6 @@ $control-padding: 0.5rem;
   &:active {
     background: $bg-dark;
     box-shadow: none;
-  }
-}
-
-@mixin tooltip-style($colour) {
-  &:hover::before {
-    border: 1px solid $blue;
-    background: color.adjust($bg-dark, $alpha: -0.5);
-    color: $blue;
   }
 }
 

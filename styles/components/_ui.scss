@@ -27,8 +27,8 @@
     gap: $control-padding;
 
     .item {
-      @include neon-group($blue);
-      @include neon-hover($blue);
+      @include neon-group;
+      @include neon-hover;
 
       display: flex;
       height: calc($navbar-height - 2 * $control-padding);
@@ -77,7 +77,7 @@
   gap: 1rem;
 
   .neon-group {
-    @include neon-group($blue);
+    @include neon-group;
 
     display: flex;
     flex-direction: column;
@@ -180,13 +180,12 @@
 
 .tooltip {
   // Tooltips
-  @include tooltip-style($blue);
-
   display: inline-block;
   position: relative;
   text-align: center;
 
   &:hover::before {
+    @include neon-base;
     position: absolute;
     left: 200%;
     content: attr(data-tooltip);

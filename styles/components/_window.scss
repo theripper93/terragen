@@ -1,0 +1,35 @@
+@use 'sass:color';
+@import '../helpers/variables';
+
+.window-container {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  place-content: center;
+  height: 100vh;
+  width: 100vw;
+  pointer-events: none;
+  gap: calc($control-padding * 4);
+
+  .window {
+    @include neon-base; 
+
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 2px;
+    z-index: 100;
+    pointer-events: all;
+    gap: 1rem;
+
+    background: color.adjust($bg, $alpha: -0.5);
+
+    .btn-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      align-content: center;
+      justify-content: space-between;
+    }
+  }
+}
