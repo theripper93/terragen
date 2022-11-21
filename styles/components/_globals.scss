@@ -22,13 +22,42 @@ button {
 }
 
 p,
-strong, 
+strong,
 span,
 label {
   max-width: 65ch;
 }
 
 /* Inputs */
+input {
+  @include neon-item;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    appearance: none;
+  }
+
+  &[type='number'] {
+    max-width: 6ch;
+
+    &::placeholder {
+      color: color.adjust($blue, $alpha: -0.6);
+    }
+  }
+
+  &[type='text'],
+  &[type='number'] {
+    &:focus,
+    &:focus-visible {
+      border: 1px solid color.adjust($blue, $alpha: -0.2);
+      background: color.adjust($bg-dark, $alpha: -0.6);
+      box-shadow: 0 0 0.3rem $blue,
+        0 0 0.5rem color.adjust($blue, $alpha: -0.85);
+      outline: none;
+    }
+  }
+}
+
 input[type='range'],
 input[type='range' i] {
   /* Difficult to style sliders */
@@ -70,13 +99,30 @@ input[type='color'] {
 
   &::-webkit-color-swatch {
     border: 1px solid $blue;
-    box-shadow:0 0 0.1rem $blue,
-      0 0 0.2rem color.adjust($blue, $alpha: -0.5);
+    box-shadow: 0 0 0.1rem $blue, 0 0 0.2rem color.adjust($blue, $alpha: -0.5);
   }
 }
 
+select {
+  @include neon-item;
+
+  appearance: none;
+
+  &:focus,
+  &:focus-visible {
+    border: 1px solid color.adjust($blue, $alpha: -0.2);
+    background: color.adjust($bg-dark, $alpha: -0.6);
+    box-shadow: 0 0 0.3rem $blue, 0 0 0.5rem color.adjust($blue, $alpha: -0.85);
+    outline: none;
+  }
+
+  option {
+    background: color.adjust($bg-dark, $alpha: -0.6);
+  }
+}
+
+/* The page for telling mobile users to fuck off */
 #mobile-warning {
-  /* The page for telling mobile users to fuck off */
   display: none;
   width: 100vw;
   height: 100vh;

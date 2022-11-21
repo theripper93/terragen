@@ -12,7 +12,7 @@
   gap: calc($control-padding * 4);
 
   .window {
-    @include neon-base; 
+    @include neon-base;
 
     display: flex;
     flex-direction: column;
@@ -24,6 +24,11 @@
 
     background: color.adjust($bg, $alpha: -0.5);
 
+    .option-wrapper {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(200px, 1fr));
+    }
+
     .btn-container {
       display: flex;
       flex-direction: row;
@@ -32,4 +37,8 @@
       justify-content: space-between;
     }
   }
+}
+
+#confirm {
+  place-self: center;
 }
