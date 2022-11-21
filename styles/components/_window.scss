@@ -15,6 +15,7 @@
 
     display: flex;
     flex-direction: column;
+    max-width: 50%;
     padding: 0.25rem;
     background: color.adjust($bg, $alpha: -0.5);
     border-radius: 2px;
@@ -48,10 +49,8 @@
 
 #confirm {
   @include neon-text; 
-  
-  &:hover {
-    font-weight: bold;
-  }
+
+  align-self: center;
 }
 
 #texture-resolution {

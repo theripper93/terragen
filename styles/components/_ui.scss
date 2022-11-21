@@ -50,139 +50,140 @@
 
     .side-buttons {
       @include neon-text($pink);
-      
+
       color: $pink;
       font-size: 1.25rem;
-  }
-}
-
-#controls {
-  // Side Navbar
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: $control-padding;
-  width: $toolbar-width;
-  height: calc(100vh - $navbar-height);
-  pointer-events: all;
-  gap: 1rem;
-
-  .neon-group {
-    @include neon-group;
-
-    display: flex;
-    flex-direction: column;
-
-    .option {
-      // Tool buttons for sculpt mode
-      @include neon-item($blue);
-
-      width: calc($toolbar-width - 2 * $control-padding);
-      margin: $control-padding;
-      aspect-ratio: 1;
-
-      &.tooltip.active {
-        // Active Tool
-        @include neon-item($blue);
-
-        background: color.adjust($bg-dark, $alpha: -0.75);
-        border: 1px solid color.adjust($blue, $alpha: -0.5);
-        border-radius: 2px;
-      }
     }
   }
 
-  .paint-inputs {
-    // Group for the buttons for painting
+  #controls {
+    // Side Navbar
     display: flex;
-    height: 100%;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: $control-padding;
+    margin: $control-padding;
+    width: $toolbar-width;
+    height: calc(100vh - $navbar-height);
+    pointer-events: all;
+    gap: 1rem;
 
-    .paint-colour {
-      height: $toolbar-width;
-      width: $toolbar-width;
-      aspect-ratio: 1;
+    .neon-group {
+      @include neon-group;
 
-      &::-webkit-color-swatch-wrapper {
-        // Pad the wrapper for the selector to be square
-        padding: 0.25rem 0.15rem;
-      }
-    }
-
-    .slider-group {
-      // Wrapper for the sliders
       display: flex;
       flex-direction: column;
-      gap: 4rem;
 
-      .slider-vertical {
-        transform: rotate(270deg);
-        margin-top: 4rem;
+      .option {
+        // Tool buttons for sculpt mode
+        @include neon-item($blue);
 
-        &::-webkit-slider-thumb {
-          // Reverse rotation for image
-          transform: rotate(-270deg);
+        width: calc($toolbar-width - 2 * $control-padding);
+        margin: $control-padding;
+        aspect-ratio: 1;
 
-          // Maintain square ratio for icon
-          aspect-ratio: 1;
-          width: 1rem;
-          height: 1rem;
+        &.tooltip.active {
+          // Active Tool
+          @include neon-item($blue);
 
-          // Remove default styling for thumb
-          background: transparent;
-          background-repeat: no-repeat;
+          background: color.adjust($bg-dark, $alpha: -0.75);
+          border: 1px solid color.adjust($blue, $alpha: -0.5);
+          border-radius: 2px;
         }
+      }
+    }
 
-        &.tooltip::before {
-          // FIXME: Have tooltips next to thumb
-          // Reverse rotation for text
-          transform: rotate(-270deg);
+    .paint-inputs {
+      // Group for the buttons for painting
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: $control-padding;
 
-          // Reverse positioning for tooltip due to translate
-          top: 225%;
-          left: unset;
+      .paint-colour {
+        height: $toolbar-width;
+        width: $toolbar-width;
+        aspect-ratio: 1;
+
+        &::-webkit-color-swatch-wrapper {
+          // Pad the wrapper for the selector to be square
+          padding: 0.25rem 0.15rem;
         }
       }
 
-      /* Slider Icons */
-      #blur {
-        &::-webkit-slider-thumb {
-          background-image: url('../../assets/slider/cloud-solid.svg');
-        }
-      }
+      .slider-group {
+        // Wrapper for the sliders
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
 
-      #scale {
-        &::-webkit-slider-thumb {
-          background-image: url('../../assets/slider/arrows-left-right-to-line-solid.svg');
-        }
-      }
+        .slider-vertical {
+          transform: rotate(270deg);
+          margin-top: 4rem;
 
-      #opacity {
-        &::-webkit-slider-thumb {
-          background-image: url('../../assets/slider/eye-solid.svg');
+          &::-webkit-slider-thumb {
+            // Reverse rotation for image
+            transform: rotate(-270deg);
+
+            // Maintain square ratio for icon
+            aspect-ratio: 1;
+            width: 1rem;
+            height: 1rem;
+
+            // Remove default styling for thumb
+            background: transparent;
+            background-repeat: no-repeat;
+          }
+
+          &.tooltip::before {
+            // FIXME: Have tooltips next to thumb
+            // Reverse rotation for text
+            transform: rotate(-270deg);
+
+            // Reverse positioning for tooltip due to translate
+            top: 225%;
+            left: unset;
+          }
+        }
+
+        /* Slider Icons */
+        #blur {
+          &::-webkit-slider-thumb {
+            background-image: url('../../assets/slider/cloud-solid.svg');
+          }
+        }
+
+        #scale {
+          &::-webkit-slider-thumb {
+            background-image: url('../../assets/slider/arrows-left-right-to-line-solid.svg');
+          }
+        }
+
+        #opacity {
+          &::-webkit-slider-thumb {
+            background-image: url('../../assets/slider/eye-solid.svg');
+          }
         }
       }
     }
   }
-}
 
-.tooltip {
-  // Tooltips
-  display: inline-block;
-  position: relative;
-  text-align: center;
+  .tooltip {
+    // Tooltips
+    display: inline-block;
+    position: relative;
+    text-align: center;
 
-  &:hover::before {
-    @include neon-base;
-    position: absolute;
-    left: 200%;
-    content: attr(data-tooltip);
-    padding: 0.1rem 0.25rem;
-    font-size: 0.8rem;
-    white-space: nowrap;
-    animation: fade 1.5s;
+    &:hover::before {
+      @include neon-base;
+      position: absolute;
+      left: 200%;
+      content: attr(data-tooltip);
+      padding: 0.1rem 0.25rem;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      animation: fade 1.5s;
+    }
   }
 }
