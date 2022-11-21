@@ -23,11 +23,12 @@ $control-padding: 0.5rem;
   transition: all 0.2s;
 }
 
-@mixin neon-text ($colour: $blue) {
+@mixin neon-text($colour: $blue) {
   text-shadow: 0 0 0.3rem color.adjust($colour, $alpha: -0.5);
 
   &:hover {
-    text-shadow: 0 0 0.1rem $colour, 0 0 0.4rem color.adjust($colour, $alpha: -0.25);
+    text-shadow: 0 0 0.1rem $colour,
+      0 0 0.4rem color.adjust($colour, $alpha: -0.25);
   }
 
   &:active {
@@ -74,7 +75,7 @@ $control-padding: 0.5rem;
   }
 
   &:active {
-    background: $bg-dark;
+    background: color.adjust($bg-dark, $alpha: -0.4);
     box-shadow: none;
   }
 }

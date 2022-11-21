@@ -93,8 +93,9 @@ input[type='range' i] {
 }
 
 input[type='color'] {
-  @include neon-group;
-  @include neon-hover;
+  background: transparent;
+  border: 1px solid transparent;
+  padding: $control-padding;
 
   &::-webkit-color-swatch {
     border: 1px solid $blue;

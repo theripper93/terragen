@@ -9,6 +9,7 @@
   height: 100vh;
   width: 100vw;
   pointer-events: none;
+  gap: 2rem;
 
   .window {
     @include neon-base;

@@ -86,14 +86,24 @@
       width: calc($toolbar-width - 2 * $control-padding);
       margin: $control-padding;
       aspect-ratio: 1;
+      font-size: smaller;
 
       &.tooltip.active {
         // Active Tool
-        @include neon-item($blue);
+        background: $blue;
+        color: $bg;
+        border-radius: 3px;
+        transition: all 0.2s;
 
-        background: color.adjust($bg-dark, $alpha: -0.75);
-        border: 1px solid color.adjust($blue, $alpha: -0.5);
-        border-radius: 2px;
+        i,
+        span {
+          pointer-events: none;
+        }
+
+        &:hover {
+          background: $blue;
+          color: $bg;
+        }
       }
     }
   }
@@ -108,14 +118,10 @@
     gap: $control-padding;
 
     .paint-colour {
+      // Colour input
       height: $toolbar-width;
       width: $toolbar-width;
       aspect-ratio: 1;
-
-      &::-webkit-color-swatch-wrapper {
-        // Pad the wrapper for the selector to be square
-        padding: 0.25rem 0.15rem;
-      }
     }
 
     .slider-group {
