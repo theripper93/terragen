@@ -31,6 +31,9 @@
       @include neon-hover;
 
       display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       height: calc($navbar-height - 2 * $control-padding);
       padding: $control-padding;
       font-size: 0.9rem;
@@ -73,6 +76,8 @@
 
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     .option {
       // Tool buttons for sculpt mode

@@ -29,34 +29,31 @@ label {
 }
 
 /* Inputs */
-input {
-  @include neon-item;
+input[type='number'] {
+  max-width: 6ch;
 
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
     appearance: none;
   }
 
-  &[type='number'] {
-    max-width: 6ch;
-
-    &::placeholder {
-      color: color.adjust($blue, $alpha: -0.6);
-    }
+  &::placeholder {
+    color: color.adjust($blue, $alpha: -0.6);
   }
+}
 
-  &[type='text'],
-  &[type='number'] {
-    padding-right: 0.25rem;
+input[type='text'],
+input[type='number'] {
+  @include neon-item;
 
-    &:focus,
-    &:focus-visible {
-      border: 1px solid color.adjust($blue, $alpha: -0.2);
-      background: color.adjust($bg-dark, $alpha: -0.6);
-      box-shadow: 0 0 0.3rem $blue,
-        0 0 0.5rem color.adjust($blue, $alpha: -0.85);
-      outline: none;
-    }
+  padding-right: 0.25rem;
+
+  &:focus,
+  &:focus-visible {
+    border: 1px solid color.adjust($blue, $alpha: -0.2);
+    background: color.adjust($bg-dark, $alpha: -0.6);
+    box-shadow: 0 0 0.3rem $blue, 0 0 0.5rem color.adjust($blue, $alpha: -0.85);
+    outline: none;
   }
 }
 

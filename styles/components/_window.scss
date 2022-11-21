@@ -51,17 +51,40 @@
   @include neon-group;
   @include neon-hover;
 
+  display: flex;
   align-items: center;
   align-self: center;
   padding: 0.25rem 0.5rem;
-}
-
-#texture-resolution {
-  max-width: 6ch;
+  font-size: smaller;
 }
 
 .texture-drop-area {
+  @include neon-group;
+
+  display: flex;
+  place-items: center;
+  justify-content: center;
   width: 100%;
+  min-width: 30vw;
+  margin-top: 0.25rem;
   height: 2rem;
-  background-color: greenyellow;
+  background: transparent;
+
+  input[type='file'] {
+    display: none;
+  }
+
+  .file-input-label {
+    @include neon-text;
+
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 0 0.5rem;
+    background-color: color.adjust($bg, $alpha: -0.5);
+    text-align: center;
+    font-size: smaller;
+  }
 }

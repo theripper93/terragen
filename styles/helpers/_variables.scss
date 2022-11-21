@@ -38,10 +38,6 @@ $control-padding: 0.5rem;
 @mixin neon-group($colour: $blue) {
   @include neon-base($colour);
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   background: color.adjust($bg, $alpha: -0.5);
   transition: all 0.2s;
 
