@@ -104,12 +104,12 @@
           <label for="geometry-resolution">Geometry Resolution </label>
           <input id="geometry-resolution" type="number" value="2" min="1" max="10" step="1">
           <label for="texture-resolution">Texture Resolution</label>
+          <select id="texture-resolution" name>
+            <option value="1024">1K</option>
+            <option value="2048" selected>2K</option>
+            <option value="4096">4K</option>
+          </select>
         </div>
-        <select id="texture-resolution" name>
-          <option value="1024">1K</option>
-          <option value="2048" selected>2K</option>
-          <option value="4096">4K</option>
-        </select>
         <strong>
           Warning: These settings cannot be changed after initializing a new
           project
