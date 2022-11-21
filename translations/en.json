@@ -23,11 +23,11 @@
         }
     },
     "textures": {
-        "colorMap": "Color Map",
-        "normalMap": "Normal Map",
-        "metallicMap": "Metallic Map",
-        "roughnessMap": "Roughness Map",
-        "occulsionMap": "Ambient Occlusion Map"
+        "colorMap": "Color",
+        "normalMap": "Normal",
+        "metallicMap": "Metallic",
+        "roughnessMap": "Roughness",
+        "occulsionMap": "Ambient Occlusion"
     },
     "settings": {
         "title": "New File",
