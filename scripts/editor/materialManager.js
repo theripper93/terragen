@@ -39,6 +39,11 @@ export class MaterialManager{
             });
             li.classList.add("selected");
         };
+        const deleteBtn = li.querySelector(".material-delete");
+        deleteBtn.onclick = (e) => {
+            e.stopPropagation();
+            this.removeMaterial(this.materials.indexOf(material));
+        }
         return li;
     }
 }
@@ -69,10 +74,10 @@ class Material{
     }
 
     destroy(){
-        this.pixiTextures.colorMap.destroy(true);
-        this.pixiTextures.normalMap.destroy(true);
-        this.pixiTextures.roughnessMap.destroy(true);
-        this.pixiTextures.metalnessMap.destroy(true);
-        this.pixiTextures.occulsionMap.destroy(true);
+        this.pixiTextures.colorMap?.destroy(true);
+        this.pixiTextures.normalMap?.destroy(true);
+        this.pixiTextures.roughnessMap?.destroy(true);
+        this.pixiTextures.metalnessMap?.destroy(true);
+        this.pixiTextures.occulsionMap?.destroy(true);
     }
 }
