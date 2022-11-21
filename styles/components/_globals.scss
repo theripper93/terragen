@@ -47,7 +47,6 @@ input {
 
   &[type='text'],
   &[type='number'] {
-    text-align: right;
     padding-right: 0.25rem;
 
     &:focus,
@@ -110,7 +109,6 @@ select {
   @include neon-item;
 
   appearance: none;
-  text-align: right;
   padding-right: 0.25rem;
 
   &:focus,

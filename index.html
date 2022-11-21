@@ -181,45 +181,49 @@
           </header>
           <article class="content">
             <div class="option-wrapper">
-              <label for="width">{settings.width}</label>
-              <input
-                id="width"
-                type="number"
-                value="10"
-                min="1"
-                step="1"
-                placeholder="1"
-              />
-              <label for="height">{settings.height}</label>
-              <input
-                id="height"
-                type="number"
-                value="10"
-                min="1"
-                step="1"
-                placeholder="1"
-              />
+              <label for="width"
+                >{settings.width}
+                <input
+                  id="width"
+                  type="number"
+                  value="10"
+                  min="1"
+                  step="1"
+                  placeholder="1"
+                />
+              </label>
+              <label for="height"
+                >{settings.height}
+                <input
+                  id="height"
+                  type="number"
+                  value="10"
+                  min="1"
+                  step="1"
+                  placeholder="1"
+                />
+              </label>
               <label class="long-label" for="geometry-resolution"
                 >{settings.geometry}
+                <input
+                  class="long"
+                  id="geometry-resolution"
+                  type="number"
+                  value="2"
+                  min="1"
+                  max="10"
+                  step="1"
+                  placeholder="2"
+                />
               </label>
-              <input
-                class="long"
-                id="geometry-resolution"
-                type="number"
-                value="2"
-                min="1"
-                max="10"
-                step="1"
-                placeholder="2"
-              />
               <label class="long-label" for="texture-resolution"
-                >{settings.texture}</label
-              >
-              <select class="long" id="texture-resolution" name>
-                <option value="1024">1K</option>
-                <option value="2048" selected>2K</option>
-                <option value="4096">4K</option>
-              </select>
+                >{settings.texture}
+                <select class="long" id="texture-resolution" name>
+                  <option value="1024">1K</option>
+                  <option value="2048" selected>2K</option>
+                  <option value="4096">4K</option>
+                </select>
+              </label>
             </div>
             <strong>{settings.warning}</strong>
             <button class="confirm">{settings.confirm}</button>
@@ -239,23 +243,36 @@
             </button>
           </header>
           <article class="content">
+            <label for="">{textures.colorMap}</label>
             <div class="texture-drop-area" data-map-id="colorMap">
-              <span class="file-name"></span>
+              <input type="file" />
             </div>
-            <div class="texture-drop-area" data-map-id="normalMap">
-              <span class="file-name"></span>
-            </div>
-            <div class="texture-drop-area" data-map-id="roughnessMap">
-              <span class="file-name"></span>
-            </div>
-            <div class="texture-drop-area" data-map-id="metalnessMap">
-              <span class="file-name"></span>
-            </div>
-            <div class="texture-drop-area" data-map-id="occlusionMap">
-              <span class="file-name"></span>
-            </div>
+            <label for=""
+              >{textures.normalMap}
+              <div class="texture-drop-area" data-map-id="normalMap">
+                <input type="file" />
+              </div>
+            </label>
+            <label for=""
+              >{textures.roughnessMap}
+              <div class="texture-drop-area" data-map-id="roughnessMap">
+                <input type="file" /></div
+            ></label>
+
+            <label for=""
+              >{textures.metallicMap}
+              <div class="texture-drop-area" data-map-id="metalnessMap">
+                <input type="file" /></div
+            ></label>
+
+            <label for=""
+              >{textures.occlusionMap}
+              <div class="texture-drop-area" data-map-id="occlusionMap">
+                <input type="file" /></div
+            ></label>
+
+            <button class="confirm">Confirm</button>
           </article>
-          <button class="confirm">Confirm</button>
         </section>
       </main>
       <figure id="canvas-container"></figure>
