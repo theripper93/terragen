@@ -1,3 +1,5 @@
+import { clearNewTexture } from "./interactions.js";
+
 export function initControls(){
 
     const controlsElement = document.getElementById('controls');
@@ -50,14 +52,14 @@ export function initControls(){
                 const paintMode = e.target.dataset.paintMode;
                 canvas.cursor.paintMode = paintMode;
                 switch (paintMode) {
-                    case "paint1":
-                        canvas.painting.brush.color = 0x00ff00;
-                        break;
-                    case "paint2":
-                        canvas.painting.brush.color = 0x0000ff;
-                        break;
-                    case "paint3":
-                        canvas.painting.brush.color = 0xff0000;
+                    case "newTexture":
+                        const display = document.getElementById("add-texture").style.display;
+                        if(display === "flex"){
+                            document.getElementById("add-texture").style.display = "none";
+                        }else{
+                            clearNewTexture();
+                            document.getElementById("add-texture").style.display = "flex";
+                        }
                         break;
                 }
                 paintButtons.querySelectorAll("button").forEach((button)=>{

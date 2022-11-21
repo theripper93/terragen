@@ -107,7 +107,7 @@ class Brush{
     }
 
     getTexture(mapId){
-        return canvas.MaterialManager.currentMaterial().pixiTextures[mapId]
+        return canvas.MaterialManager.currentMaterial()?.pixiTextures[mapId]
     }
 
     getPosition(){
