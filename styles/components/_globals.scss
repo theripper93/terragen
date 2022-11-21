@@ -47,6 +47,9 @@ input {
 
   &[type='text'],
   &[type='number'] {
+    text-align: right;
+    padding-right: 0.25rem;
+
     &:focus,
     &:focus-visible {
       border: 1px solid color.adjust($blue, $alpha: -0.2);
@@ -107,6 +110,8 @@ select {
   @include neon-item;
 
   appearance: none;
+  text-align: right;
+  padding-right: 0.25rem;
 
   &:focus,
   &:focus-visible {

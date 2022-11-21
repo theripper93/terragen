@@ -18,11 +18,12 @@
         }
     },
     "settings": {
+        "title": "Options",
         "confirm": "Confirm",
         "width": "Width",
         "height": "Height",
         "geometry": "Geometry Resolution",
         "texture": "Texture Resolution",
-        "warning": "Warning: These settings cannot be changed after initializing a new project"
+        "warning": "These settings cannot be changed after initializing a new project"
     }
 }

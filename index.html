@@ -100,24 +100,28 @@
     <main class="window-container">
       <section class="window" id="new-project">
         <header class="bar">
-          <button id="cancel">Cancel</button>
+          &nbsp;
+          <p>{settings.title}</p>
+          <button id="cancel"><i class="fa-sharp fa-solid fa-xmark"></i></button>
         </header>
-        <div class="option-wrapper">
-          <label for="width">{settings.width}</label>
-          <input id="width" type="number" value="10" min="1" step="1" placeholder="1" />
-          <label for="height">{settings.height}</label>
-          <input id="height" type="number" value="10" min="1" step="1" placeholder="1" />
-          <label for="geometry-resolution">{settings.geometry} </label>
-          <input id="geometry-resolution" type="number" value="2" min="1" max="10" step="1" placeholder="2" />
-          <label for="texture-resolution">{settings.texture}</label>
-          <select id="texture-resolution" name>
-            <option value="1024">1K</option>
-            <option value="2048" selected>2K</option>
-            <option value="4096">4K</option>
-          </select>
-        </div>
-        <strong>{settings.warning}</strong>
-        <button id="confirm">Confirm</button>
+        <article class="content">
+          <div class="option-wrapper">
+            <label for="width">{settings.width}</label>
+            <input id="width" type="number" value="10" min="1" step="1" placeholder="1" />
+            <label for="height">{settings.height}</label>
+            <input id="height" type="number" value="10" min="1" step="1" placeholder="1" />
+            <label for="geometry-resolution">{settings.geometry} </label>
+            <input id="geometry-resolution" type="number" value="2" min="1" max="10" step="1" placeholder="2" />
+            <label for="texture-resolution">{settings.texture}</label>
+            <select id="texture-resolution" name>
+              <option value="1024">1K</option>
+              <option value="2048" selected>2K</option>
+              <option value="4096">4K</option>
+            </select>
+          </div>
+          <strong>{settings.warning}</strong>
+          <button id="confirm">Confirm</button>
+        </article>
       </section>
       <section class="window" id="help-window" style="display: none"></section>
       <section class="window" id="add-texture">
