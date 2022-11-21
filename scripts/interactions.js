@@ -74,16 +74,24 @@ function setupUndo(){
 function setupTextureDragAndDrop(){
     const addTexture = document.getElementById("add-texture");
     const textureDropAreas = addTexture.querySelectorAll(".texture-drop-area");
-    textureDropAreas.forEach((dropArea) => {
-        dropArea.addEventListener("dragover", (e) => {
+    const fileDropAreas = addTexture.querySelectorAll("input[type='file']");
+    addTexture.querySelectorAll("input[type='file']").forEach((fileInput) => {
+        fileInput.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            const mapId = e.target.parentElement.dataset.mapId;
+            loadTextureFromDrop(file, mapId);
+        });
+    });
+    function bindDragAndDropEvents(el){
+        el.addEventListener("dragover", (e) => {
             e.stopPropagation();
             e.preventDefault();
             e.dataTransfer.dropEffect = 'copy';
         });
-        dropArea.addEventListener("drop", (e) => {
+        el.addEventListener("drop", (e) => {
             e.stopPropagation();
             e.preventDefault();
-            const mapId = e.target.dataset.mapId;
+            const mapId = e.target.dataset.mapId || e.target.parentElement.dataset.mapId;
             const files = e.dataTransfer.files;
             if (files.length == 1){
                 loadTextureFromDrop(files[0], mapId);
@@ -95,7 +103,9 @@ function setupTextureDragAndDrop(){
                 }
             }
         });
-    });
+    }
+    textureDropAreas.forEach(bindDragAndDropEvents);
+    fileDropAreas.forEach(bindDragAndDropEvents);
 
     addTexture.querySelector(".cancel").onclick = (e) => {
         addTexture.style.display = "none";
@@ -112,12 +122,12 @@ function setupTextureDragAndDrop(){
 }
 
 function loadTextureFromDrop(file, mapId){
-    const span = document.querySelector(`.texture-drop-area[data-map-id="${mapId}"] span`);
+    const fileinput = document.querySelector(`.texture-drop-area[data-map-id="${mapId}"] input[type="file"]`);
     const filename = file.name;
     const reader = new FileReader();
     reader.onload = (e) => {
-        span.innerHTML = filename;
-        const parent = span.parentElement;
+        fileinput.innerHTML = filename;
+        const parent = fileinput.parentElement;
         parent.style.backgroundImage = `url(${e.target.result})`;
         parent.style.backgroundSize = "cover";
         canvas.addTexture[mapId] = e.target.result;
@@ -148,6 +158,6 @@ const fileNameMapping = {
     "normalMap": ["normal", "bump"],
     "roughnessMap": ["roughness", "glossiness"],
     "metalnessMap": ["metalness", "specular"],
-    "occulsionMap": ["ao", "ambient", "occlusion"],
+    "occlusionMap": ["ao", "ambient", "occlusion"],
     "emissiveMap": ["emissive", "emission"]
 }
