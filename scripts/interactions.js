@@ -31,10 +31,10 @@ function setupSliders(){
 
 function setupNewProjectMenu(){
     const newProjectMenu = document.getElementById("new-project");
-    newProjectMenu.querySelector("#cancel").onclick = (e) => {
+    newProjectMenu.querySelector(".cancel").onclick = (e) => {
         newProjectMenu.style.display = "none";
     }
-    newProjectMenu.querySelector("#confirm").onclick = (e) => {
+    newProjectMenu.querySelector(".confirm").onclick = (e) => {
         newProjectMenu.style.display = "none";
         const width = parseFloat(newProjectMenu.querySelector("#width").value);
         const height = parseFloat(newProjectMenu.querySelector("#height").value);
@@ -97,10 +97,10 @@ function setupTextureDragAndDrop(){
         });
     });
 
-    addTexture.querySelector("#cancel").onclick = (e) => {
+    addTexture.querySelector(".cancel").onclick = (e) => {
         addTexture.style.display = "none";
     }
-    addTexture.querySelector("#confirm").onclick = (e) => {
+    addTexture.querySelector(".confirm").onclick = (e) => {
         addTexture.style.display = "none";
         canvas.MaterialManager.addMaterial(canvas.addTexture);
     }
