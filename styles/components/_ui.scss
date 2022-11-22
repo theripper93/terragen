@@ -197,6 +197,10 @@
   pointer-events: all;
   list-style: none;
 
+  &.empty {
+    display: none;
+  }
+
   li {
     display: flex;
     gap: 0.25rem;
@@ -248,15 +252,11 @@
 
       button {
         @include neon-text($pink);
-        
+
         color: $pink;
       }
     }
   }
-}
-
-.empty {
-  display: none;
 }
 
 .tooltip {
