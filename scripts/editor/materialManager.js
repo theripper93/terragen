@@ -28,8 +28,8 @@ export class MaterialManager{
     getElement(material){
         const li = document.createElement("li");
         li.style.backgroundImage = `url(${material.colorMap})`;
+        //        <span class="material-name">${material.name}</span>
         li.innerHTML = `
-        <span class="material-name">${material.name}</span>
         <button class="material-delete">X</button>
         `
         li.onclick = (e) => {
