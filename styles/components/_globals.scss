@@ -102,6 +102,7 @@ input[type='color'] {
   background: transparent;
   border: 1px solid transparent;
   padding: $control-padding;
+  cursor: pointer;
 
   &::-webkit-color-swatch {
     border: 1px solid $blue;
