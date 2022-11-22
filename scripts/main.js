@@ -72,7 +72,7 @@ globalThis.canvas = {
         noTexture: new THREE.MeshStandardMaterial( { color: 0xffffff, side: THREE.DoubleSide, map: (new THREE.TextureLoader).load("./assets/uv_grid_opengl.jpg")} ),
         terrain: new THREE.MeshStandardMaterial( { color: 0xffffff, side: THREE.DoubleSide} ),
     },
-    MaterialManager: new MaterialManager(true),
+    MaterialManager: new MaterialManager(),
     initProject: () => {
         canvas.scene.terrain?.removeFromParent();
         canvas.scene.gridHelper?.removeFromParent();

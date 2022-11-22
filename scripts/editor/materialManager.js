@@ -1,8 +1,7 @@
 export class MaterialManager{
-    constructor(debug = false){
+    constructor(){
         this.materials = [];
         this._materialIndex = 0;
-        if(debug) this.addMaterial({colorMap: "../assets/uv_grid_opengl.jpg"});
     }
 
     addMaterial(textures){
