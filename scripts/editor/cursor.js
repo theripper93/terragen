@@ -113,6 +113,8 @@ export class Cursor{
         const positionAttributes = geometry.getAttribute("position");
         const normalAttributes = geometry.getAttribute("normal");
         const avgY = vertexData.reduce((a, b) => a + b.y, 0) / vertexData.length;
+        const maxY = vertexData.reduce((a, b) => Math.max(a, b.y), 0);
+        const minY = vertexData.reduce((a, b) => Math.min(a, b.y), 0);
         for(let vertex of vertexData){
             let x = positionAttributes.getX(vertex.index);
             let y = positionAttributes.getY(vertex.index);
@@ -124,13 +126,14 @@ export class Cursor{
                 y += diff;
                 positionAttributes.setY(vertex.index, y);
             }else if(this.sculptMode === "flat"){
-                let diff = this.radius/8;
+                let diff = this.leftDown ? this.radius/30 : -this.radius/30;
                 y += diff;
                 positionAttributes.setY(vertex.index, y);
             }else if(this.sculptMode === "smooth"){
-                let diff = vertex.distance/30;
-                const avgDist = Math.abs(avgY - y);
-                y += avgDist * diff;
+                let diff = vertex.distance/10;
+                const vAvgY = (y + avgY)/2
+                const vDiff = vAvgY - y;
+                y += vDiff * diff;
                 positionAttributes.setY(vertex.index, y);
 
             }else if(this.sculptMode === "mold"){
