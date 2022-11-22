@@ -57,5 +57,5 @@
         "texture": "Texture Resolution",
         "warning": "These settings cannot be changed after initializing a new project"
     },
-    "mobile": "Mobile devices are unsupported for this site."
+    "mobile": "Mobile devices and non-Chromium browsers are unsupported for this site."
 }
