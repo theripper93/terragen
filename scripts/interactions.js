@@ -8,6 +8,9 @@ export function setupInteractions(){
         const helpMenu = document.getElementById("help-window");
         helpMenu.style.display = helpMenu.style.display == "block" ? "none" : "block";
     };
+    document.getElementById("help-window").querySelector(".cancel").onclick = (e) => {
+        document.getElementById("help-window").style.display = "none";
+    }
 }
 
 function setupSliders(){
