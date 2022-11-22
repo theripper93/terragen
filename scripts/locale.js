@@ -45,6 +45,7 @@ function initTranslations(data){
     }
     translate(document.querySelector("#ui"));
     translate(document.querySelector(".window-container"));
+    translate(document.querySelector("#mobile-warning"));
     initControls();
     initMenu();
     setupInteractions();
