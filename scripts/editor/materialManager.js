@@ -31,13 +31,17 @@ export class MaterialManager{
         <div class="texture-image" style="background-image: url(${material.colorMap})"></div>
         <button class="material-delete">X</button>
         `
-        li.onclick = (e) => {
+        function liClick(e){
             this._materialIndex = this.materials.indexOf(material);
             document.querySelector("#texture-panel").querySelectorAll("li").forEach((el) => {
                 el.classList.remove("selected");
             });
             li.classList.add("selected");
-        };
+        }
+
+        li.onclick = liClick.bind(this);
+        li.querySelector(".texture-image").onclick = liClick.bind(this);
+
         const deleteBtn = li.querySelector(".material-delete");
         deleteBtn.onclick = (e) => {
             e.stopPropagation();
