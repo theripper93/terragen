@@ -185,11 +185,11 @@
   @include neon-group;
 
   display: flex;
+  position: absolute;
+  top: $navbar-height;
+  right: 0;
   flex-flow: column wrap;
   gap: 0.5rem;
-  position: absolute;
-  right: 0;
-  top: $navbar-height;
   height: auto;
   max-height: 90vh;
   margin: $control-padding;

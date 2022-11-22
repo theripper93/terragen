@@ -121,19 +121,3 @@ select {
     background: color.adjust($bg-dark, $alpha: -0.6);
   }
 }
-
-/* The page for telling mobile users to fuck off */
-#mobile-warning {
-  display: none;
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-  align-content: center;
-  background: $bg;
-
-  h1 {
-    background: linear-gradient(135deg, $orange, $pink);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-}
