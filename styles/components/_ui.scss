@@ -2,7 +2,7 @@
 @import '../helpers/variables';
 
 #ui {
-  // Page Wrapper
+  // Nav Wrapper
   display: flex;
   position: fixed;
   width: 100vw;
@@ -179,6 +179,15 @@
       }
     }
   }
+}
+
+#texture-panel {
+  @include neon-group;
+
+  width: calc($toolbar-width - 2 * $control-padding);
+  margin: $control-padding;
+  font-size: smaller;
+  pointer-events: all;
 }
 
 .tooltip {
