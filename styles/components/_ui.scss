@@ -226,21 +226,9 @@
 
       font-size: smaller;
     }
-    
+
     .active {
       color: $pink;
-      border: 1px solid $pink;
-      box-shadow: 0 0 0.3rem $pink,
-        0 0 0.5rem color.adjust($pink, $alpha: -0.85);
-
-      &:hover {
-        box-shadow: 0 0 0.2rem $pink,
-          0 0 0.4rem color.adjust($pink, $alpha: -0.85);
-      }
-
-      &:active {
-        box-shadow: none;
-      }
 
       .texture-image {
         width: 4rem;
