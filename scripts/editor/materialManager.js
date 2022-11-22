@@ -30,6 +30,7 @@ export class MaterialManager{
         li.style.backgroundImage = `url(${material.colorMap})`;
         //        <span class="material-name">${material.name}</span>
         li.innerHTML = `
+        <div class="darken"></div>
         <button class="material-delete">X</button>
         `
         li.onclick = (e) => {
