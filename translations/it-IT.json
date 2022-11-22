@@ -31,6 +31,23 @@
         "roughnessMap": "Roughness",
         "occlusionMap": "Ambient Occlusion"
     },
+    "help": {
+        "title": "Help",
+        "howto": "How to use",
+        "wiki": "For a complete guide, visit the wiki",
+        "brush": "To change the brush size, use the scroll wheel.",
+        "undo": "To undo, press CTRL+Z. Only the last action can be undone.",
+        "slider1": "Brush strength",
+        "slider2": "Texture size",
+        "slider3": "Brush opacity",
+        "tooltips": "Hover over buttons to see helpful tooltips.",
+        "license": "License",
+        "licenseText": "You are free to use this software for personal use including free redistribution of the created assets. If you want to use this software for commercial purposes a Patreon subscription is required",
+        "creatorLicense": "Creator License",
+        "credits": "Credits",
+        "creditsText": "UI/UX Design: ",
+        "libraries": "Powered By: "
+    },
     "settings": {
         "title": "New File",
         "confirm": "Confirm",

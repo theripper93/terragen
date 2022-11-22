@@ -24,8 +24,13 @@ button {
 p,
 strong,
 span,
-label {
+label,
+a {
   max-width: 65ch;
+}
+
+a {
+  color: $pink;
 }
 
 /* Inputs */
@@ -120,4 +125,8 @@ select {
   option {
     background: color.adjust($bg-dark, $alpha: -0.6);
   }
+}
+
+.small-text{
+  font-size: x-small;
 }
