@@ -1,8 +1,7 @@
 export class MaterialManager{
-    constructor(debug = false){
+    constructor(){
         this.materials = [];
         this._materialIndex = 0;
-        if(debug) this.addMaterial({colorMap: "../assets/uv_grid_opengl.jpg"});
     }
 
     addMaterial(textures){
@@ -10,6 +9,9 @@ export class MaterialManager{
         this.materials.push(material);
         const el = this.getElement(material);
         document.querySelector("#texture-panel").appendChild(el);
+        this._materialIndex = this.materials.length - 1;
+        this.selectMaterial();
+        this.updateDisplay();
         return material;
     }
 
@@ -19,6 +21,12 @@ export class MaterialManager{
         const texturePanel = document.querySelector("#texture-panel");
         texturePanel.removeChild(texturePanel.children[index]);
         this.materials.splice(index, 1);
+        const selected = document.querySelector("#texture-panel").querySelector(".active");
+        if(!selected){
+            this._materialIndex = 0;
+            this.selectMaterial();
+        }
+        this.updateDisplay();
     }
 
     currentMaterial(){
@@ -29,14 +37,14 @@ export class MaterialManager{
         const li = document.createElement("li");
         li.innerHTML = `
         <div class="texture-image" style="background-image: url(${material.colorMap})"></div>
-        <button class="material-delete">X</button>
+        <button class="material-delete"><i class="fa-duotone fa-trash"></i></button>
         `
         function liClick(e){
             this._materialIndex = this.materials.indexOf(material);
             document.querySelector("#texture-panel").querySelectorAll("li").forEach((el) => {
-                el.classList.remove("selected");
+                el.classList.remove("active");
             });
-            li.classList.add("selected");
+            li.classList.add("active");
         }
 
         li.onclick = liClick.bind(this);
@@ -50,6 +58,25 @@ export class MaterialManager{
         return li;
     }
 
+    selectMaterial(){
+        const index = this._materialIndex;
+        if(index < 0 || index >= this.materials.length) return;
+        const texturePanel = document.querySelector("#texture-panel");
+        texturePanel.querySelectorAll("li").forEach((el) => {
+            el.classList.remove("active");
+        });
+        texturePanel.children[index].classList.add("active");
+    }
+
+    updateDisplay(){
+        const texturePanel = document.querySelector("#texture-panel");
+        if(this.materials.length === 0){
+            texturePanel.classList.add("empty");
+        }else{
+            texturePanel.classList.remove("empty");
+        }
+    }
+
     clear(){
         this.materials.forEach((mat) => {
             mat.destroy();
@@ -57,6 +84,7 @@ export class MaterialManager{
         this.materials = [];
         this._materialIndex = 0;
         document.querySelector("#texture-panel").innerHTML = "";
+        this.updateDisplay();
     }
 }
 

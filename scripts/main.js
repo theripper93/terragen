@@ -72,7 +72,7 @@ globalThis.canvas = {
         noTexture: new THREE.MeshStandardMaterial( { color: 0xffffff, side: THREE.DoubleSide, map: (new THREE.TextureLoader).load("./assets/uv_grid_opengl.jpg")} ),
         terrain: new THREE.MeshStandardMaterial( { color: 0xffffff, side: THREE.DoubleSide} ),
     },
-    MaterialManager: new MaterialManager(true),
+    MaterialManager: new MaterialManager(),
     initProject: () => {
         canvas.scene.terrain?.removeFromParent();
         canvas.scene.gridHelper?.removeFromParent();
@@ -92,7 +92,7 @@ globalThis.canvas = {
         canvas.scene.add( cube );
         canvas.scene.gridHelper = new THREE.GridHelper( Math.max(canvas.project.geometry.height,canvas.project.geometry.width) + 5, Math.max(canvas.project.geometry.height,canvas.project.geometry.width) + 5, new THREE.Color("#00c3ff"), new THREE.Color("magenta") );
         canvas.scene.add( canvas.scene.gridHelper );
-        canvas.scene.gridHelper.position.y -= 0.005;
+        canvas.scene.gridHelper.position.y -= 0.02;
     }
 };
 
@@ -150,6 +150,12 @@ canvas.scene.toggleMode = (mode) => {
 };
 
 canvas.scene.background = new THREE.Color("hsl(261, 56%, 18%)");
+
+const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
+directionalLight.position.set( 5, 5, 5 );
+directionalLight.lookAt( 0, 0, 0 );
+canvas.scene.directionalLight = directionalLight;
+canvas.scene.add( directionalLight );
 
 loadEXR("assets/venice_sunrise_1k.exr")
 
