@@ -46,6 +46,15 @@ export class MaterialManager{
         }
         return li;
     }
+
+    clear(){
+        this.materials.forEach((mat) => {
+            mat.destroy();
+        });
+        this.materials = [];
+        this._materialIndex = 0;
+        document.querySelector("#texture-panel").innerHTML = "";
+    }
 }
 
 
@@ -71,6 +80,17 @@ class Material{
         this.pixiTextures.roughnessMap = this.roughnessMap ? PIXI.Texture.from(this.roughnessMap) : null;
         this.pixiTextures.metalnessMap = this.metalnessMap ? PIXI.Texture.from(this.metalnessMap) : null;
         this.pixiTextures.occulsionMap = this.occulsionMap ? PIXI.Texture.from(this.occulsionMap) : null;
+    }
+
+    export(){
+        return {
+            colorMap: this.colorMap,
+            normalMap: this.normalMap,
+            roughnessMap: this.roughnessMap,
+            metalnessMap: this.metalnessMap,
+            occulsionMap: this.occulsionMap,
+            name: this.name,
+        }
     }
 
     destroy(){

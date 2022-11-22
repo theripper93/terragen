@@ -14,6 +14,12 @@ export function initMenu(){
             case "export":
                 exportGLB();
                 break;
+            case "open":
+                canvas.projectManager.importProject();
+                break;
+            case "save":
+                canvas.projectManager.exportProject();
+                break;
         }
     })
 
