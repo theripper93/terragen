@@ -37,7 +37,7 @@ export class MaterialManager{
         const li = document.createElement("li");
         li.innerHTML = `
         <div class="texture-image" style="background-image: url(${material.colorMap})"></div>
-        <button class="material-delete">X</button>
+        <button class="material-delete"><i class="fa-duotone fa-trash"></i></button>
         `
         function liClick(e){
             this._materialIndex = this.materials.indexOf(material);
