@@ -12,8 +12,8 @@
             "raise": "Raise",
             "flat": "Flat",
             "smooth": "Smooth",
-            "mold": "Mold",
-            "normal": "Normal"
+            "mold": "Pull",
+            "normal": "Inflate"
         },
         "paint": {
             "blur": "Blur",
