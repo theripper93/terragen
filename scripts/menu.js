@@ -31,7 +31,7 @@ function exportGLB() {
   exporter.parse(
     canvas.scene.terrain,
     function (gltf) {
-      saveArrayBuffer(gltf, "scene.glb");
+      saveArrayBuffer(gltf, "terragen-project.glb");
     },
     function (error) {
       console.log("An error happened");
