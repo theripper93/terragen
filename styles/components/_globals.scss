@@ -6,6 +6,7 @@ body {
   background: $bg;
   color: $blue;
   overflow-y: hidden;
+  user-select: none;
 }
 
 button {
