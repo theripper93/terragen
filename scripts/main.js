@@ -4,6 +4,7 @@ import { OrbitControls } from './lib/OrbitControls.js';
 import { Cursor } from './editor/cursor.js';
 import { initPainting, clearTextures } from './editor/painting.js';
 import { MaterialManager } from './editor/materialManager.js';
+import { importProject, exportProject } from './editor/importExport.js';
 import { computeBoundsTree, disposeBoundsTree, acceleratedRaycast } from './lib/three-mesh-bvh.js';
 
 THREE.BufferGeometry.prototype.computeBoundsTree = computeBoundsTree;
@@ -35,6 +36,10 @@ globalThis.canvas = {
         texture: {
             resolution: 1024,
         }
+    },
+    projectManager: {
+        importProject,
+        exportProject,
     },
     loading: {
         exr: false,
@@ -162,4 +167,4 @@ if(canvas.DEBUG) canvas.initProject();
 animate();
 
 
-javascript:(function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='//mrdoob.github.io/stats.js/build/stats.min.js';document.head.appendChild(script);})()
+//javascript:(function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='//mrdoob.github.io/stats.js/build/stats.min.js';document.head.appendChild(script);})()
