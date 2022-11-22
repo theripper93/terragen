@@ -2,7 +2,7 @@ export class MaterialManager{
     constructor(debug = false){
         this.materials = [];
         this._materialIndex = 0;
-        // if(debug) this.addMaterial({colorMap: "../assets/uv_grid_opengl.jpg"});
+        if(debug) this.addMaterial({colorMap: "../assets/uv_grid_opengl.jpg"});
     }
 
     addMaterial(textures){
@@ -27,10 +27,8 @@ export class MaterialManager{
 
     getElement(material){
         const li = document.createElement("li");
-        li.style.backgroundImage = `url(${material.colorMap})`;
-        //        <span class="material-name">${material.name}</span>
         li.innerHTML = `
-        <div class="darken"></div>
+        <div class="texture-image" style="background-image: url(${material.colorMap})"></div>
         <button class="material-delete">X</button>
         `
         li.onclick = (e) => {
