@@ -184,10 +184,20 @@
 #texture-panel {
   @include neon-group;
 
-  width: calc($toolbar-width - 2 * $control-padding);
+  position: absolute;
+  right: 0;
+  top: $navbar-height;
+  height: auto;
+  width: 8rem;
   margin: $control-padding;
-  font-size: smaller;
+  padding: $control-padding;
   pointer-events: all;
+  background-color: magenta;
+  list-style: none;
+
+  li {
+    @include neon-item;
+  }
 }
 
 .tooltip {
