@@ -34,9 +34,9 @@ export class MaterialManager{
         function liClick(e){
             this._materialIndex = this.materials.indexOf(material);
             document.querySelector("#texture-panel").querySelectorAll("li").forEach((el) => {
-                el.classList.remove("selected");
+                el.classList.remove("active");
             });
-            li.classList.add("selected");
+            li.classList.add("active");
         }
 
         li.onclick = liClick.bind(this);
