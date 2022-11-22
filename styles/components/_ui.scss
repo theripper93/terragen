@@ -184,10 +184,73 @@
 #texture-panel {
   @include neon-group;
 
-  width: calc($toolbar-width - 2 * $control-padding);
+  display: flex;
+  flex-flow: column wrap;
+  gap: 0.5rem;
+  position: absolute;
+  right: 0;
+  top: $navbar-height;
+  height: auto;
+  max-height: 90vh;
   margin: $control-padding;
-  font-size: smaller;
+  padding: $control-padding;
   pointer-events: all;
+  list-style: none;
+
+  li {
+    display: flex;
+    gap: 0.25rem;
+
+    .texture-image {
+      width: 4rem;
+      height: 2rem;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transition: all 0.2s;
+      border: 1px solid $blue;
+      box-shadow: 0 0 0.3rem $blue,
+        0 0 0.5rem color.adjust($blue, $alpha: -0.85);
+
+      &:hover {
+        box-shadow: 0 0 0.2rem $blue,
+          0 0 0.4rem color.adjust($blue, $alpha: -0.85);
+      }
+
+      &:active {
+        box-shadow: none;
+      }
+    }
+
+    button {
+      @include neon-text;
+
+      font-size: smaller;
+    }
+
+    .active {
+      color: $pink;
+
+      .texture-image {
+        width: 4rem;
+        height: 2rem;
+        background-size: cover;
+        background-repeat: no-repeat;
+        transition: all 0.2s;
+        border: 1px solid $pink;
+        box-shadow: 0 0 0.3rem $pink,
+          0 0 0.5rem color.adjust($pink, $alpha: -0.85);
+
+        &:hover {
+          box-shadow: 0 0 0.2rem $pink,
+            0 0 0.4rem color.adjust($pink, $alpha: -0.85);
+        }
+      }
+
+      button {
+        @include neon-text($pink);
+      }
+    }
+  }
 }
 
 .tooltip {
