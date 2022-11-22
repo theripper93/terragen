@@ -115,7 +115,8 @@ select {
 
   appearance: none;
   padding-right: 0.25rem;
-
+  width: 6ch;
+  
   &:focus,
   &:focus-visible {
     border: 1px solid color.adjust($blue, $alpha: -0.2);

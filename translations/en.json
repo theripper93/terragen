@@ -37,6 +37,7 @@
         "wiki": "For a complete guide, visit the wiki",
         "brush": "To change the brush size, use the scroll wheel.",
         "undo": "To undo, press CTRL+Z. Only the last action can be undone.",
+        "camera": "To enable camera interactions while the brush is visible, hold ALT.",
         "slider1": "Brush strength",
         "slider2": "Texture size",
         "slider3": "Brush opacity",
