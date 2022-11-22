@@ -164,19 +164,19 @@
       /* Slider Icons */
       #blur {
         &::-webkit-slider-thumb {
-          background-image: url('../../assets/slider/cloud-solid.svg');
+          background-image: url('../assets/slider/cloud-solid.svg');
         }
       }
 
       #scale {
         &::-webkit-slider-thumb {
-          background-image: url('../../assets/slider/arrows-left-right-to-line-solid.svg');
+          background-image: url('../assets/slider/arrows-left-right-to-line-solid.svg');
         }
       }
 
       #opacity {
         &::-webkit-slider-thumb {
-          background-image: url('../../assets/slider/eye-solid.svg');
+          background-image: url('../assets/slider/eye-solid.svg');
         }
       }
     }

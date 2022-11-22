@@ -48,7 +48,7 @@ class Brush{
 
     loadBrushes(){
         for(let i = 0; i < 10; i++){
-            const brush = PIXI.Texture.from(`../assets/brushes/${i}.png`);
+            const brush = PIXI.Texture.from(`./assets/brushes/${i}.png`);
             this.brushes.push(brush);
         }
     }
