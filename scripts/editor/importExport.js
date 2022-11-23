@@ -30,7 +30,7 @@ export async function exportProject(){
     const blob = new Blob([data], {type: "application/json"});
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
-    a.download = "terragen-project.json";
+    a.download = "terrascape-project.json";
     a.href = url;
     a.click();
 
