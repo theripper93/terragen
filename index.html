@@ -11,7 +11,7 @@
     <script src="scripts/lib/i18n.min.js"></script>
     <script src="scripts/lib/pixi.min.js"></script>
     <script
-      src="https://kit.fontawesome.com/b966192883.js"
+      src="https://kit.fontawesome.com/bd49c5a799.js"
       crossorigin="anonymous"
     ></script>
     <!-- JS -->
@@ -59,10 +59,7 @@
             >
               <i class="fa-brands fa-patreon"></i>
             </a>
-            <a
-              class="side-buttons"
-              id="help"
-            >
+            <a class="side-buttons" id="help">
               <i class="fa-duotone fa-circle-question"></i>
             </a>
           </aside>
@@ -120,7 +117,7 @@
                 data-tool="sculpt"
                 data-tooltip="{controls.sculpt.mold}"
               >
-              <i class="fa-solid fa-hand-lizard"></i>
+                <i class="fa-solid fa-hand-lizard"></i>
               </button>
               <button
                 class="option tooltip"
@@ -128,7 +125,7 @@
                 data-tool="sculpt"
                 data-tooltip="{controls.sculpt.normal}"
               >
-              <i class="fa-duotone fa-balloon"></i>
+                <i class="fa-duotone fa-balloon"></i>
               </button>
             </section>
             <!-- Paint; Visible on Cycle -->
@@ -256,36 +253,53 @@
             <button class="confirm">{settings.confirm}</button>
           </article>
         </section>
-        <section
-          class="window"
-          id="help-window"
-          style="display: none"
-        >
-        <header class="bar">
-          <!-- FIXME: Spacing hack -->
-          <p style="user-select: none">&nbsp;</p>
-          <p>{help.title}</p>
-          <button class="cancel">
-            <i class="fa-sharp fa-solid fa-xmark"></i>
-          </button>
-        </header>
-        <article class="content">
-          <h3>{help.howto}</h3>
-          <p class="small-text">
-            <a href="https://theripper93.com/wiki/index.php/Terragen" target="_blank">{help.wiki}</a>
-          </p>
-          <p>{help.brush}</p>
-          <p>{help.undo}</p>
-          <p>{help.camera}</p>
-          <p><i class="fa-solid fa-cloud"></i> {help.slider1} | <i class="fa-solid fa-arrows-left-right-to-line"></i> {help.slider2} | <i class="fa-solid fa-eye"></i> {help.slider3}</p>
-          <p>{help.tooltips}</p>
-          <h3>{help.license}</h3>
-          <p>{help.licenseText} (<a href="https://www.patreon.com/join/theripper93/checkout?rid=8702251" target="_blank">{help.creatorLicense}</a>).</p>
-          <h3>{help.credits}</h3>
-          <p>{help.creditsText} <a href="https://apriltao.art/" target="_blank">April Tao</a></p>
-          <p>{help.libraries} <a href="https://threejs.org/" target="_blank">THREEJS</a> | <a href="https://pixijs.com/" target="_blank">PIXIJS</a></p>
-        </article>
-      </section>
+        <section class="window" id="help-window" style="display: none">
+          <header class="bar">
+            <!-- FIXME: Spacing hack -->
+            <p style="user-select: none">&nbsp;</p>
+            <p>{help.title}</p>
+            <button class="cancel">
+              <i class="fa-sharp fa-solid fa-xmark"></i>
+            </button>
+          </header>
+          <article class="content">
+            <h3>{help.howto}</h3>
+            <p class="small-text">
+              <a
+                href="https://theripper93.com/wiki/index.php/Terragen"
+                target="_blank"
+                >{help.wiki}</a
+              >
+            </p>
+            <p>{help.brush}</p>
+            <p>{help.undo}</p>
+            <p>{help.camera}</p>
+            <p>
+              <i class="fa-solid fa-cloud"></i> {help.slider1} |
+              <i class="fa-solid fa-arrows-left-right-to-line"></i>
+              {help.slider2} | <i class="fa-solid fa-eye"></i> {help.slider3}
+            </p>
+            <p>{help.tooltips}</p>
+            <h3>{help.license}</h3>
+            <p>
+              {help.licenseText} (<a
+                href="https://www.patreon.com/join/theripper93/checkout?rid=8702251"
+                target="_blank"
+                >{help.creatorLicense}</a
+              >).
+            </p>
+            <h3>{help.credits}</h3>
+            <p>
+              {help.creditsText}
+              <a href="https://apriltao.art/" target="_blank">April Tao</a>
+            </p>
+            <p>
+              {help.libraries}
+              <a href="https://threejs.org/" target="_blank">THREEJS</a> |
+              <a href="https://pixijs.com/" target="_blank">PIXIJS</a>
+            </p>
+          </article>
+        </section>
         <!-- Texture Uploader -->
         <section class="window" id="add-texture" style="display: none">
           <header class="bar">
