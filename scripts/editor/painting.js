@@ -112,8 +112,7 @@ class Brush{
 
     async getWebPTexture(mapId){
         const app = canvas.painting[mapId];
-        const texture = await app.renderer.extract.base64(app.stage, "image/jpeg");
-        return texture;
+        return app.view.toDataURL("image/jpeg");
     }
 
     getPosition(){
