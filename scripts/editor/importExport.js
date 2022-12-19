@@ -63,10 +63,12 @@ export async function importProject(){
             geometry.computeBoundsTree();
             geometry.attributes.position.needsUpdate = true;
             geometry.attributes.normal.needsUpdate = true;
+            canvas.painting.brush.updateMaterial();
 
         })
 
         delete canvas.sculpting.history;
+        
 
 }
 

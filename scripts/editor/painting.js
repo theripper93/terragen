@@ -110,6 +110,12 @@ class Brush{
         return canvas.MaterialManager.currentMaterial()?.pixiTextures[mapId]
     }
 
+    async getWebPTexture(mapId){
+        const app = canvas.painting[mapId];
+        const texture = await app.renderer.extract.base64(app.stage, "image/jpeg");
+        return texture;
+    }
+
     getPosition(){
         const cursorPosition = canvas.cursor.mesh.position;
         const cursorPosition2D = new THREE.Vector2(cursorPosition.x, cursorPosition.z);

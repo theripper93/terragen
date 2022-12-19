@@ -25,11 +25,19 @@ export function initMenu(){
 
 }
 
-function exportGLB() {
+async function exportGLB() {
   const exporter = new GLTFExporter();
-  canvas.scene.terrain.material = canvas.materials.terrain;
+  const loader = new THREE.TextureLoader();
+  const material = new THREE.MeshStandardMaterial({
+    map: await loader.loadAsync(await canvas.painting.brush.getWebPTexture('colorMap')),
+    normalMap: await loader.loadAsync(await canvas.painting.brush.getWebPTexture('normalMap')),
+    roughnessMap: await loader.loadAsync(await canvas.painting.brush.getWebPTexture('roughnessMap')),
+    metalnessMap: await loader.loadAsync(await canvas.painting.brush.getWebPTexture('metalnessMap')),
+    aoMap: await loader.loadAsync(await canvas.painting.brush.getWebPTexture('occulsionMap')),
+  });
+  const mesh = new THREE.Mesh(canvas.scene.terrain.geometry, material);
   exporter.parse(
-    canvas.scene.terrain,
+    mesh,
     function (gltf) {
       saveArrayBuffer(gltf, "terragen-project.glb");
     },
