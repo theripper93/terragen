@@ -39,7 +39,7 @@ async function exportGLB() {
   exporter.parse(
     mesh,
     function (gltf) {
-      saveArrayBuffer(gltf, "terragen-project.glb");
+      saveArrayBuffer(gltf, "terrascape-project.glb");
     },
     function (error) {
       console.log("An error happened");
