@@ -115,12 +115,10 @@ class Brush{
         return app.view.toDataURL("image/jpeg");
     }
 
-    getPosition(){
-        const cursorPosition = canvas.cursor.mesh.position;
-        const cursorPosition2D = new THREE.Vector2(cursorPosition.x, cursorPosition.z);
-        const terrainOrigin = new THREE.Vector2(-canvas.project.geometry.width/2, -canvas.project.geometry.height/2);
-        const terrainSize = new THREE.Vector2(canvas.project.geometry.width, canvas.project.geometry.height);
-        const position = cursorPosition2D.sub(terrainOrigin).divide(terrainSize).multiply(this.textureResolution);
+    getPosition() {
+        const avgUVs = canvas.cursor.getAverageUVs();
+        const vertexUVs = new THREE.Vector2(avgUVs.x, 1 - avgUVs.y);
+        const position = vertexUVs.multiply(this.textureResolution);
         const maxSize = Math.max(canvas.project.geometry.width, canvas.project.geometry.height);
         const minSize = Math.min(canvas.project.geometry.width, canvas.project.geometry.height);
         const ratio = maxSize / minSize;
