@@ -73,7 +73,8 @@ export class Cursor{
         return this._radius ?? 1;
     }
 
-    set radius(value){
+    set radius(value) {
+        value = Math.max(0.01, value);
         this.mesh.scale.set(value, value, value);
         this._radius = value;
     }
@@ -101,6 +102,10 @@ export class Cursor{
         return result;
     }
 
+    getAverageUVs() {
+        return this._currentIntersect.uv;
+    }
+
     _onMouseMove(){
         if(this.mode === "sculpt") this._onSculpt();
         if(this.mode === "paint") this._onPaint();
@@ -112,13 +117,65 @@ export class Cursor{
         const geometry = canvas.scene.terrain.geometry;
         const positionAttributes = geometry.getAttribute("position");
         const normalAttributes = geometry.getAttribute("normal");
+        const uvAttributes = geometry.getAttribute("uv");
         const avgY = vertexData.reduce((a, b) => a + b.y, 0) / vertexData.length;
-        const maxY = vertexData.reduce((a, b) => Math.max(a, b.y), 0);
-        const minY = vertexData.reduce((a, b) => Math.min(a, b.y), 0);
+
+        function getRowVerts(geometry, rowNumber) {
+
+            const posArray = geometry.getAttribute("position").array;
+            const rowLength = geometry.parameters.widthSegments + 1;
+            const start = rowNumber * rowLength * 3;
+            const end = start + rowLength * 3;
+            const result = [];
+            for(let i=start; i < end; i+=3){
+                result.push(new THREE.Vector3(posArray[i], posArray[i+1], posArray[i+2]));
+            }
+            return result;
+
+        }
+
+        function getColVerts(geometry, colNumber) {
+                
+            const posArray = geometry.getAttribute("position").array;
+            const rowLength = geometry.parameters.widthSegments + 1;
+            const result = [];
+            for (let i = colNumber * 3; i < posArray.length; i += rowLength * 3){
+                result.push(new THREE.Vector3(posArray[i], posArray[i+1], posArray[i+2]));
+            }
+            return result;
+
+        }
+
+        function getTotalDistance(vertices) {
+            let totalDist = 0;
+            for(let i=0; i < vertices.length - 1; i++){
+                const next = vertices[i + 1];
+                const current = vertices[i];
+                totalDist += current.distanceTo(next)
+                
+            }
+            return totalDist
+        }
+
+        function getDistUpToPoint(vertices, point) {
+            let totalDist = 0;
+            const v2Point = new THREE.Vector2(point.x, point.z);
+            const v2Current = new THREE.Vector2();
+            for(let i=0; i < vertices.length - 1; i++){
+                const next = vertices[i + 1];
+                const current = vertices[i];
+                v2Current.set(current.x, current.z);
+                if (v2Point.distanceTo(v2Current) < 0.0001) return totalDist
+                totalDist += current.distanceTo(next);
+            }
+            return totalDist;
+        }
+
         for(let vertex of vertexData){
             let x = positionAttributes.getX(vertex.index);
             let y = positionAttributes.getY(vertex.index);
             let z = positionAttributes.getZ(vertex.index);
+
             const cameraPosition = canvas.camera.position;
             if(this.sculptMode === "raise"){
                 let diff = this.leftDown ? vertex.distance/30 : -vertex.distance/30;
@@ -154,7 +211,41 @@ export class Cursor{
                 z += direction.z * diff;
                 positionAttributes.setXYZ(vertex.index, x, y, z);
             }
+
+
         }
+
+        function recomputeAllUV(geometry) { 
+            const posCount = geometry.getAttribute("position").count;
+            const uvAttributes = geometry.getAttribute("uv");
+            const positionAttributes = geometry.getAttribute("position");
+            for (let i = 0; i < posCount; i++) {
+                const row = Math.floor( i / (canvas.scene.terrain.geometry.parameters.widthSegments + 1) )
+                const col = i % (canvas.scene.terrain.geometry.parameters.widthSegments + 1)
+                const vertex = new THREE.Vector3(
+                    positionAttributes.getX(i),
+                    positionAttributes.getY(i),
+                    positionAttributes.getZ(i)
+                )
+                const rowVerts = getRowVerts(geometry, row)
+                const colVerts = getColVerts(geometry, col)
+                const rowDist = getTotalDistance(rowVerts)
+                const colDist = getTotalDistance(colVerts)
+                const rowDistUpToPoint = getDistUpToPoint(
+                    rowVerts,
+                    vertex
+                )
+                const colDistUpToPoint = getDistUpToPoint(
+                    colVerts,
+                    vertex
+                )
+                const rowUV = rowDistUpToPoint / rowDist
+                const colUV = colDistUpToPoint / colDist
+                uvAttributes.setXY(i, rowUV, 1 - colUV)
+            }
+        }
+
+        recomputeAllUV(geometry);
 
         geometry.computeVertexNormals();
         geometry.normalizeNormals();
@@ -162,6 +253,7 @@ export class Cursor{
         geometry.computeBoundsTree();
         geometry.attributes.position.needsUpdate = true;
         geometry.attributes.normal.needsUpdate = true;
+        geometry.attributes.uv.needsUpdate = true;
     }
 
     _onPaint(){
@@ -174,7 +266,8 @@ export class Cursor{
         else{
             this.raycaster.setFromCamera(this.mouse, canvas.camera);
             const intersects = this.raycaster.intersectObjects([canvas.scene.terrain], true);
-            if(intersects.length > 0){
+            if (intersects.length > 0) {
+                this._currentIntersect = intersects[0];
                 this.mesh.position.copy(intersects[0].point);
             }
             this.mesh.visible = intersects.length > 0;
