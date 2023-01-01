@@ -142,12 +142,15 @@ class Brush{
             stroke.drawCircle(position.x, position.y, this.radius);
             stroke.endFill();
             const mask = this.brushMask;
-            mask.anchor.set(0.5);
-            mask.width = mask.height = this.radius * 2;
-            mask.position.set(position.x, position.y);
-            stroke.scale.set(scale.x, scale.y);
-            stroke.mask = mask;
-            app.stage.addChild(mask);
+            if (scale.x === scale.y) {
+                mask.anchor.set(0.5);
+                mask.width = mask.height = this.radius * 2;
+                mask.position.set(position.x, position.y);
+                mask.scale.set(scale.x, scale.y);
+                stroke.mask = mask;
+                app.stage.addChild(mask);
+                stroke.scale.set(scale.x, scale.y);
+            }
             app.stage.addChild(stroke);
         }
         this.updateMaterial();
