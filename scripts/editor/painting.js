@@ -43,6 +43,7 @@ class Brush{
     constructor(){
         this._matrix = new PIXI.Matrix();
         this.brushes = [];
+        this._rotation = 0;
         this.loadBrushes();
     }
 
@@ -103,6 +104,7 @@ class Brush{
     get matrix(){
         const scale = this.scale;
         this._matrix.set(scale, 0, 0, scale, 0, 0);
+        this._matrix.rotate(this._rotation);
         return this._matrix;
     }
 
