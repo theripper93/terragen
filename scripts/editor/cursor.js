@@ -123,7 +123,7 @@ export class Cursor{
         function getRowVerts(geometry, rowNumber) {
 
             const posArray = geometry.getAttribute("position").array;
-            const rowLength = geometry.parameters.widthSegments + 1;
+            const rowLength = canvas.project.geometry.width + 1
             const start = rowNumber * rowLength * 3;
             const end = start + rowLength * 3;
             const result = [];
@@ -137,7 +137,7 @@ export class Cursor{
         function getColVerts(geometry, colNumber) {
                 
             const posArray = geometry.getAttribute("position").array;
-            const rowLength = geometry.parameters.widthSegments + 1;
+            const rowLength = canvas.project.geometry.width + 1
             const result = [];
             for (let i = colNumber * 3; i < posArray.length; i += rowLength * 3){
                 result.push(new THREE.Vector3(posArray[i], posArray[i+1], posArray[i+2]));
@@ -220,8 +220,8 @@ export class Cursor{
             const uvAttributes = geometry.getAttribute("uv");
             const positionAttributes = geometry.getAttribute("position");
             for (let i = 0; i < posCount; i++) {
-                const row = Math.floor( i / (canvas.scene.terrain.geometry.parameters.widthSegments + 1) )
-                const col = i % (canvas.scene.terrain.geometry.parameters.widthSegments + 1)
+                const row = Math.floor(i / (canvas.project.geometry.width + 1))
+                const col = i % (canvas.project.geometry.width + 1)
                 const vertex = new THREE.Vector3(
                     positionAttributes.getX(i),
                     positionAttributes.getY(i),
